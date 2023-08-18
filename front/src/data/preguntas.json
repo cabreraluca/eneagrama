@@ -1,0 +1,1052 @@
+{
+    "test":[
+            {
+                "area": 1,
+                "question":"A menudo el efecto final arruina el conjunto."
+            },
+            {
+                "area": 2,
+                "question":"A menudo hay personas que se me acercan pidiéndome que las conforte y aconseje."
+            },
+            {
+                "area": 1,
+                "question":"A menudo me molesta que las cosas no marchen como debieran."
+            },
+            {
+                "area": 5,
+                "question":"A menudo me siento atrás para observar a los demás, en lugar de involucrarme en la acción."
+            },
+            {
+                "area": 1,
+                "question":"A menudo me siento que el tiempo pasa rápido y que queda demasiado por hacer."
+            },
+            {
+                "area": 5,
+                "question":"A menudo, me cuesta, alcanzar o pedir lo que necesito."
+            },
+            {
+                "area": 8,
+                "question":"A veces he irritado a los demás por ser una persona demasiado agresiva."
+            },
+            {
+                "area": 2,
+                "question":"A veces me siento victima de otros, como si me utilizasen."
+            },
+            {
+                "area": 1,
+                "question":"A veces siento en mí mismo un toque puritano."
+            },
+            {
+                "area": 7,
+                "question":"Algunas personas me consideran superficial."
+            },
+            {
+                "area": 5,
+                "question":"Ante la presión de los demás me vuelvo una persona huidiza."
+            },
+            {
+                "area": 6,
+                "question":"Antes de tomar una decisión, obtengo información adicional para estar seguro que estoy preparado."
+            },
+            {
+                "area": 9,
+                "question":"Aunque reconozca algunas diferencias, me da la sensación de que la mayoría de las personas se parecen mucho."
+            },
+            {
+                "area": 6,
+                "question":"Aunque suelo hacer lo que se espera de mí, a veces suelo revelarme."
+            },
+            {
+                "area": 1,
+                "question":"Casi me siento obligado a ser una persona honrada."
+            },
+            {
+                "area": 9,
+                "question":"Casi siempre estoy calmado y tranquilo."
+            },
+            {
+                "area": 8,
+                "question":"Con frecuencia el parecer de los demás no me interesa."
+            },
+            {
+                "area": 6,
+                "question":"Con frecuencia estoy lleno de dudas."
+            },
+            {
+                "area": 6,
+                "question":"Con frecuencia fantaseo sobre mi asunto como si desempeñara el papel de héroe."
+            },
+            {
+                "area": 2,
+                "question":"Con frecuencia he sido posesivo con mis seres queridos."
+            },
+            {
+                "area": 6,
+                "question":"Con frecuencia me encuentro evaluando a los demás en relación con la posibilidad de que constituyan o no una amenaza para mí."
+            },
+            {
+                "area": 1,
+                "question":"Con frecuencia me enfado conmigo mismo por no hacer mejor las cosas."
+            },
+            {
+                "area": 1,
+                "question":"Con frecuencia me siento frustrado porque ni yo ni los demás somos como debiéramos."
+            },
+            {
+                "area": 1,
+                "question":"Con frecuencia mis propias críticas y las de otros pululan en mi cabeza."
+            },
+            {
+                "area": 4,
+                "question":"Con frecuencia muestro un rostro sonriente aunque por dentro me sienta triste."
+            },
+            {
+                "area": 6,
+                "question":"Con frecuencia, suelo actuar con sentido del deber y responsabilidad."
+            },
+            {
+                "area": 8,
+                "question":"Control es una palabra clave para mí."
+            },
+            {
+                "area": 3,
+                "question":"Creo que las apariencias son importantes."
+            },
+            {
+                "area": 8,
+                "question":"Creo que los demás se crean sus propios problemas."
+            },
+            {
+                "area": 2,
+                "question":"Creo que merezco estar en primer término en la vida de algunos, por todo lo que he hecho por ellos."
+            },
+            {
+                "area": 3,
+                "question":"Creo que necesito lograr muchas cosas para que los demás me aprecien."
+            },
+            {
+                "area": 8,
+                "question":"Creo que soy un buen trabajador."
+            },
+            {
+                "area": 2,
+                "question":"Creo que soy una persona que educa."
+            },
+            {
+                "area": 3,
+                "question":"Cuando alguien no me cae bien, normalmente he intentado ser cordial a pesar de mis sentimientos."
+            },
+            {
+                "area": 4,
+                "question":"Cuando estoy enojado conmigo mismo o con otras personas, pienso con frecuencia en mí o en ellas como: tontas, ingnorantes, poco profundas, etc.."
+            },
+            {
+                "area": 2,
+                "question":"Cuando he temido que las necesidades y demandas de los demás me superasen, he evitado la intimidad"
+            },
+            {
+                "area": 6,
+                "question":"Cuando me presentan a alguien, suelo ser una persona entretenida y afectuosa."
+            },
+            {
+                "area": 5,
+                "question":"Cuando me presionan me pongo irascible y tenso."
+            },
+            {
+                "area": 5,
+                "question":"Cuando me siento inseguro reacciono volviéndome terco y poniéndome a la defensiva."
+            },
+            {
+                "area": 3,
+                "question":"Cuando miro mi pasado suelo recordar más, lo que hice bien, que lo que hice mal."
+            },
+            {
+                "area": 8,
+                "question":"Cuando no me siento bien, me aislo."
+            },
+            {
+                "area": 2,
+                "question":"Cuando tengo tiempo libre, me dedico con frecuencia a ayudar a los demás."
+            },
+            {
+                "area": 2,
+                "question":"Cumplo rigurosamente con otra persona."
+            },
+            {
+                "area": 5,
+                "question":"Desde el punto de vista intelectual, me gusta sintetizar y reunir ideas diferentes."
+            },
+            {
+                "area": 8,
+                "question":"Disfruto en el ejercicio del poder."
+            },
+            {
+                "area": 1,
+                "question":"EI contacto con la naturaleza me ayuda a relajarme."
+            },
+            {
+                "area": 9,
+                "question":"En general he sido demasiado abierto e ingenuo."
+            },
+            {
+                "area": 8,
+                "question":"En general no me ocupo demasiado de la introspección, ni del autoanálisis."
+            },
+            {
+                "area": 9,
+                "question":"En general, no tengo gran entusiasmo por las cosas."
+            },
+            {
+                "area": 3,
+                "question":"En general, prefiero estar implicado en el desarrollo de una operación que observar como marcha."
+            },
+            {
+                "area": 7,
+                "question":"En la vida hay pocas cosas que no disfrute."
+            },
+            {
+                "area": 1,
+                "question":"Es fácil que sea, o llegue a ser, una persona escrupulosa."
+            },
+            {
+                "area": 4,
+                "question":"Es frecuente que otras personas carezcan de capacidad para comprender mis sentimientos."
+            },
+            {
+                "area": 6,
+                "question":"Es muy importante para mi la lealtad al grupo."
+            },
+            {
+                "area": 5,
+                "question":"Generalmente me lleva bastante tiempo empezar o hacer algo."
+            },
+            {
+                "area": 9,
+                "question":"Generalmente sigo la línea de menor resistencia."
+            },
+            {
+                "area": 3,
+                "question":"Gran parte de mis éxitos se debieron a mi capacidad de dar una buena impresión."
+            },
+            {
+                "area": 4,
+                "question":"Habitualmente he hecho lo que quería hacer."
+            },
+            {
+                "area": 7,
+                "question":"Hay días en que la vida es maravillosa y otros en que resulta insoportable."
+            },
+            {
+                "area": 2,
+                "question":"Hay muchas personas que dependen de mi ayuda y generosidad."
+            },
+            {
+                "area": 2,
+                "question":"He intentado que no me vean como a una persona egoísta."
+            },
+            {
+                "area": 3,
+                "question":"He sido una persona ambiciosa y muy motivada."
+            },
+            {
+                "area": 7,
+                "question":"He sido una persona demasiado confiada y permisiva conmigo misma."
+            },
+            {
+                "area": 8,
+                "question":"He tenido que ser fuerte para los demás, por lo que no he tenido tiempo para ver mis sentimientos y miedos."
+            },
+            {
+                "area": 3,
+                "question":"La adversidad me ha hecho una persona más dura y resuelta."
+            },
+            {
+                "area": 9,
+                "question":"La adversidad me hace sentir una persona resignada y desanimada."
+            },
+            {
+                "area": 9,
+                "question":"La armonía y la aceptación han sido valores importantes para mí."
+            },
+            {
+                "area": 1,
+                "question":"La gente ha confiado en mí porque soy una persona justa y hago lo que es correcto."
+            },
+            {
+                "area": 7,
+                "question":"La gente suele pensar que soy el alma de las reuniones."
+            },
+            {
+                "area": 7,
+                "question":"La mayor parte del tiempo evito dedicarme a problemas graves."
+            },
+            {
+                "area": 4,
+                "question":"La mayoría de la gente no aprecia la auténtica belleza de la vida."
+            },
+            {
+                "area": 4,
+                "question":"La mayoría de la gente no tiene sentimientos profundos como los míos."
+            },
+            {
+                "area": 9,
+                "question":"La mayoría de la gente se preocupa demasiado por las cosas."
+            },
+            {
+                "area": 6,
+                "question":"La prudencia es una virtud muy importante para mí."
+            },
+            {
+                "area": 4,
+                "question":"Las artes y la expresión artística son muy importantes para mí como medio para canalizar emociones."
+            },
+            {
+                "area": 7,
+                "question":"Las cosas siempre funcionan de la mejor manera posible."
+            },
+            {
+                "area": 3,
+                "question":"Las primeras impresiones son muy importantes."
+            },
+            {
+                "area": 5,
+                "question":"Las sorpresas me producen malestar."
+            },
+            {
+                "area": 4,
+                "question":"ldealizo a las personas cuando están lejos."
+            },
+            {
+                "area": 2,
+                "question":"Los demás se han interesado en mí porque soy extrovertido y me intereso y comprometo por ellos."
+            },
+            {
+                "area": 4,
+                "question":"Los demás se han interesado en mí porque soy tranquilo, original y profundo."
+            },
+            {
+                "area": 8,
+                "question":"Me aburro con facilidad y me gusta moverme."
+            },
+            {
+                "area": 4,
+                "question":"Me acusan de ser distante."
+            },
+            {
+                "area": 4,
+                "question":"Me acusan de ser dramático, pero en realidad no me comprenden."
+            },
+            {
+                "area": 3,
+                "question":"Me adapto con facilidad a las situaciones."
+            },
+            {
+                "area": 2,
+                "question":"Me comunico con mis amigos más a menudo de lo que ellos se comunican conmigo."
+            },
+            {
+                "area": 4,
+                "question":"Me considero una persona especial."
+            },
+            {
+                "area": 8,
+                "question":"Me cuesta dejar que las cosas sigan su curso."
+            },
+            {
+                "area": 1,
+                "question":"Me cuesta relajarme y estar alegre."
+            },
+            {
+                "area": 4,
+                "question":"Me da la sensación de que me apropio con facilidad de los sentimientos de un grupo, de tal manera que, con frecuencia pierdo el sentido de donde acaban mis propios sentimientos y donde comienzan los de los demás."
+            },
+            {
+                "area": 6,
+                "question":"Me da la sensación de que siempre estoy luchando con mis miedos."
+            },
+            {
+                "area": 5,
+                "question":"Me da la sensación que soy más callado que la mayoría. La gente me pregunta con frecuencia que pienso."
+            },
+            {
+                "area": 1,
+                "question":"Me da la sensación que tengo que ser perfecto para que otros me amen o quieran."
+            },
+            {
+                "area": 8,
+                "question":"Me desenvuelvo muy bien manteniendo lo que quiero y luchando por ello."
+            },
+            {
+                "area": 3,
+                "question":"Me disgusta que me digan que no marcha bien lo que estoy haciendo."
+            },
+            {
+                "area": 8,
+                "question":"Me doy cuenta de donde reside el poder en un grupo."
+            },
+            {
+                "area": 8,
+                "question":"Me doy cuenta rápidamente de los puntos débiles de los demás y los ataco si me provocan."
+            },
+            {
+                "area": 4,
+                "question":"Me encuentro a mí mismo pasando por altibajos: o bien estoy muy elevado o muy bajo. En el medio no me siento vivo."
+            },
+            {
+                "area": 1,
+                "question":"Me enojo cuando los demás no escuchan lo que tengo para decirles."
+            },
+            {
+                "area": 1,
+                "question":"Me es fácil identificarme con los que luchan contra el mal."
+            },
+            {
+                "area": 6,
+                "question":"Me es muy difícil ir en contra de lo dispuesto por la autoridad."
+            },
+            {
+                "area": 5,
+                "question":"Me esfuerzo en hacer que se respete mi libertad y mi independencia."
+            },
+            {
+                "area": 1,
+                "question":"e esfuerzo mucho por corregir mis faltas."
+            },
+            {
+                "area": 9,
+                "question":"Me fastidia que me perturben."
+            },
+            {
+                "area": 5,
+                "question":"Me fastidian las personas que no son lógicas."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta animar a la gente."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta casi todo lo que encuentro."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta considerar las ramificaciones cósmicas de los hechos, la importancia universal de lo que ocurre."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta contar relatos."
+            },
+            {
+                "area": 2,
+                "question":"Me gusta cuidar a los demás."
+            },
+            {
+                "area": 6,
+                "question":"Me gusta estar seguro antes de actuar."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta hacer cosas bonitas."
+            },
+            {
+                "area": 4,
+                "question":"Me gusta hacer las cosas bien y con clase."
+            },
+            {
+                "area": 5,
+                "question":"Me gusta más trabajar sólo, que en equipo."
+            },
+            {
+                "area": 4,
+                "question":"Me gusta mucho el teatro y fantaseo como si estuviese en escena."
+            },
+            {
+                "area": 6,
+                "question":"Me gusta que esté delimitado lo que hay que hacer."
+            },
+            {
+                "area": 2,
+                "question":"Me gusta que la gente me necesite."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta que los demás me vean contento."
+            },
+            {
+                "area": 2,
+                "question":"Me gusta rescatar a las personas que veo que están en apuros o en situaciones embarazosas."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta saborear la vida."
+            },
+            {
+                "area": 2,
+                "question":"Me gusta sentirme próximo a las personas."
+            },
+            {
+                "area": 7,
+                "question":"Me gusta sentirme una persona juguetona, infantil."
+            },
+            {
+                "area": 3,
+                "question":"Me gusta ser protagonista."
+            },
+            {
+                "area": 3,
+                "question":"Me gusta tener objetivos claros y saber en qué punto del camino hacia esos objetivos me encuentro."
+            },
+            {
+                "area": 9,
+                "question":"Me gusta tener tiempo para no hacer nada."
+            },
+            {
+                "area": 3,
+                "question":"Me gusta trabajar en equipo y ser un buen miembro del mismo."
+            },
+            {
+                "area": 5,
+                "question":"Me gusta ver las cosas en perspectiva, retroceder e incluirlo todo. Si dejo algo fuera, me acuso por ser tan simplista e ingenuo."
+            },
+            {
+                "area": 4,
+                "question":"Me gustan las situaciones que provocan sensaciones intensas y profundas."
+            },
+            {
+                "area": 3,
+                "question":"Me gustan los diagramas de procesos, los grados y otros indicadores acerca de cómo me desenvuelvo."
+            },
+            {
+                "area": 7,
+                "question":"Me gustaría que los demás estuviesen mejor dispuestos respecto a todo."
+            },
+            {
+                "area": 7,
+                "question":"Me han apreciado por mi inquebrantable espíritu y mi gran sentido del humor."
+            },
+            {
+                "area": 5,
+                "question":"Me he dado cuenta que, frecuentemente, me catalogan como ''demasiado individual''."
+            },
+            {
+                "area": 3,
+                "question":"Me he esforzado mucho para que los demás me acepten y quieran."
+            },
+            {
+                "area": 2,
+                "question":"Me he inclinado a actuar, basándome en mis sentimientos."
+            },
+            {
+                "area": 9,
+                "question":"Me he inclinado a no imponerme lo suficiente ante los demás."
+            },
+            {
+                "area": 4,
+                "question":"Me he inclinado a ser demasiado emotivo y poco disciplinado."
+            },
+            {
+                "area": 1,
+                "question":"Me he sentido orgulloso de mantener mis puntos de vista, soy firme y congruente con lo que creo"
+            },
+            {
+                "area": 3,
+                "question":"Me he sentido orgulloso de mi capacidad para ser flexible."
+            },
+            {
+                "area": 5,
+                "question":"Me he sentido orgulloso de ser una persona objetiva y clara."
+            },
+            {
+                "area": 7,
+                "question":"Me he volcado, sobre todo, hacia el riesgo y la aventura."
+            },
+            {
+                "area": 3,
+                "question":"Me identifico con la precisión y la profesionalidad."
+            },
+            {
+                "area": 3,
+                "question":"Me identifico tanto con mi trabajo o rol que me olvido de quién soy."
+            },
+            {
+                "area": 2,
+                "question":"Me importan mucho los problemas emocionales."
+            },
+            {
+                "area": 5,
+                "question":"Me mantengo con lo que tengo y recojo elementos que pueda necesitar algún día."
+            },
+            {
+                "area": 9,
+                "question":"Me molesta gastar mi energía en nada. Trato de encontrar enfoques de las cosas que no supongan un gasto de }energía."
+            },
+            {
+                "area": 1,
+                "question":"Me molesta malgastar el dinero."
+            },
+            {
+                "area": 8,
+                "question":"Me muestro ante los demás como una persona más dura de lo que realmente soy."
+            },
+            {
+                "area": 2,
+                "question":"Me muestro ante los demás como una persona más preocupada por ellos de lo que realmente estoy"
+            },
+            {
+                "area": 7,
+                "question":"Me olvido fácilmente de lo que me produce dolor."
+            },
+            {
+                "area": 3,
+                "question":"Me parece natural ser capaz de organizar cosas y terminarlas."
+            },
+            {
+                "area": 4,
+                "question":"Me parece que el fin de una relación me afecta más que a la mayoría."
+            },
+            {
+                "area": 6,
+                "question":"Me parece que siento el peligro y la amenaza más que otras personas."
+            },
+            {
+                "area": 9,
+                "question":"Me precio de ser una persona estable."
+            },
+            {
+                "area": 6,
+                "question":"Me pregunto a menudo si tengo suficiente valor para hacer lo que hay que hacer."
+            },
+            {
+                "area": 5,
+                "question":"Me quedo mudo cuando me encuentro en situaciones embarazosas o cuando alguien me pregunta como me siento."
+            },
+            {
+                "area": 7,
+                "question":"Me resulta difícil aceptar compromisos a largo plazo."
+            },
+            {
+                "area": 9,
+                "question":"Me resulta difícil decir no."
+            },
+            {
+                "area": 8,
+                "question":"Me resulta fácil expresar mi insatisfacción."
+            },
+            {
+                "area": 1,
+                "question":"Me siento casi obligado a mejorarme a mí mismo y lo que hago."
+            },
+            {
+                "area": 2,
+                "question":"Me siento obligado a ayudar a otras personas, les guste o no."
+            },
+            {
+                "area": 2,
+                "question":"Mi actitud de servicio me lleva a una dedicación activa, poniendo todo mi tiempo y esfuerzo."
+            },
+            {
+                "area": 9,
+                "question":"Mi calma y lentitud pueden irritar a los demás."
+            },
+            {
+                "area": 4,
+                "question":"Mi deseo de atender mis necesidades personales ha repercutido negativamente, en mis relaciones"
+            },
+            {
+                "area": 2,
+                "question":"Mi deseo de ayudar ha repercutido en mi propia salud y bienestar."
+            },
+            {
+                "area": 4,
+                "question":"Mi medio ambiente es muy importante para mí."
+            },
+            {
+                "area": 1,
+                "question":"Mi sentido del deber me lleva a sacrificar el tiempo dedicado al ocio y al descanso."
+            },
+            {
+                "area": 7,
+                "question":"Mi teoría es que si algo es bueno, más es mejor."
+            },
+            {
+                "area": 5,
+                "question":"Mi tono de voz es muy suave y a menudo tienen que pedirme que hable más fuerte. Esto me irrita."
+            },
+            {
+                "area": 3,
+                "question":"Mis valores y estilo de vida han cambiado varias veces a lo largo de los años."
+            },
+            {
+                "area": 2,
+                "question":"Muchas veces me encuentro sobrecargado por la dependencia de otros respecto de mí."
+            },
+            {
+                "area": 2,
+                "question":"Necesito contacto con los demás para sentirme vivo."
+            },
+            {
+                "area": 9,
+                "question":"Necesito estimulación exterior para moverme."
+            },
+            {
+                "area": 5,
+                "question":"Necesito gran cantidad de espacio y de tiempos privados."
+            },
+            {
+                "area": 2,
+                "question":"Necesito ser importante en la vida de otras personas."
+            },
+            {
+                "area": 7,
+                "question":"No creo que sea bueno estar triste mucho tiempo."
+            },
+            {
+                "area": 9,
+                "question":"No creo que yo sea lo único importante."
+            },
+            {
+                "area": 2,
+                "question":"No creo tener muchas necesidades."
+            },
+            {
+                "area": 9,
+                "question":"No hay nada tan urgente, que no pueda esperar hasta mañana."
+            },
+            {
+                "area": 8,
+                "question":"No me asusta enfrentarme con otros y lo hago."
+            },
+            {
+                "area": 8,
+                "question":"No me gusta estar arrinconado."
+            },
+            {
+                "area": 4,
+                "question":"No me gusta pensar que yo pueda ser vulgar."
+            },
+            {
+                "area": 8,
+                "question":"No me gusta que me digan que me adapte o me conforme."
+            },
+            {
+                "area": 3,
+                "question":"No me gusta que me hagan perder el tiempo."
+            },
+            {
+                "area": 2,
+                "question":"No me gusta que me pongan límites."
+            },
+            {
+                "area": 2,
+                "question":"No me importa sacrificarme por los demás, con tal de hacerlos felices."
+            },
+            {
+                "area": 9,
+                "question":"No merece la pena molestarse por la mayor parte de las cosas de la vida."
+            },
+            {
+                "area": 5,
+                "question":"No sé como participar en conversaciones intrascendentes."
+            },
+            {
+                "area": 8,
+                "question":"No soporto a quien cambia de ropas en función de las conveniencias."
+            },
+            {
+                "area": 2,
+                "question":"No trato de imponer mis ¡deas a los demás, pero si lo hago es por su bien."
+            },
+            {
+                "area": 1,
+                "question":"Normalmente he sido una persona demasiado intransigente y exigente con los demás."
+            },
+            {
+                "area": 8,
+                "question":"Normalmente he sido una persona excitable, habladora y muy exigente."
+            },
+            {
+                "area": 8,
+                "question":"Normalmente me preocupa que alguien se aproveche de mí, cuando bajo la guardia."
+            },
+            {
+                "area": 7,
+                "question":"Normalmente mis pensamientos han sido prácticos en el intento de conseguir que las cosas sigan adelante."
+            },
+            {
+                "area": 7,
+                "question":"Normalmente no he confiado demasiado en mí mismo."
+            },
+            {
+                "area": 6,
+                "question":"Normalmente prefiero depender lo menos posible de los demás."
+            },
+            {
+                "area": 1,
+                "question":"Noto enseguida si algo no funciona o está fuera de lugar."
+            },
+            {
+                "area": 3,
+                "question":"Otras personas me envidian porque hago muchas cosas."
+            },
+            {
+                "area": 3,
+                "question":"Para lograr el éxito, a veces hay que poner entre paréntesis las propias normas."
+            },
+            {
+                "area": 1,
+                "question":"Para mí es importante actuar correctamente."
+            },
+            {
+                "area": 3,
+                "question":"Para mí es muy importante proyectar una imagen triunfadora."
+            },
+            {
+                "area": 6,
+                "question":"Para mí ha sido más importante disfrutar de la seguridad que desarrollar mis propios intereses."
+            },
+            {
+                "area": 3,
+                "question":"Para mí no es problema tomar decisiones."
+            },
+            {
+                "area": 8,
+                "question":"Para mí, la justicia y la injusticia son palabras claves."
+            },
+            {
+                "area": 1,
+                "question":"Parece que me preocupo más que otros."
+            },
+            {
+                "area": 7,
+                "question":"Parece que soy menos suspicaz que otras personas respecto de los demás y sus motivos."
+            },
+            {
+                "area": 1,
+                "question":"Parece que veo todo en términos de correcto o equivocado, bueno o malo."
+            },
+            {
+                "area": 6,
+                "question":"Pienso durante mucho tiempo porque necesito explorar exhaustivamente las diversas opciones."
+            },
+            {
+                "area": 2,
+                "question":"Pongo mas interés en servir a los demás que en cualquier cosa."
+            },
+            {
+                "area": 5,
+                "question":"Por naturaleza soy una persona cauta y reservada."
+            },
+            {
+                "area": 6,
+                "question":"Prefiero que las cosas tengan establecido el principio y el fin a que se dejen abiertas en su realización."
+            },
+            {
+                "area": 6,
+                "question":"Prefiero sacrificar mi independencia con tal de sentirme seguro."
+            },
+            {
+                "area": 8,
+                "question":"Protejo a quienes se encuentran bajo mi autoridad."
+            },
+            {
+                "area": 4,
+                "question":"Puede preocuparme el sufrimiento, la pérdida y la muerte."
+            },
+            {
+                "area": 9,
+                "question":"Puedo ser un arbitro desapasionado, porque para mí las dos partes son iguales."
+            },
+            {
+                "area": 5,
+                "question":"Rara vez he sido demasiado expresivo emocionalmente."
+            },
+            {
+                "area": 7,
+                "question":"Recuerdo mi infancia como una etapa feliz."
+            },
+            {
+                "area": 8,
+                "question":"Sé como hacer las cosas."
+            },
+            {
+                "area": 1,
+                "question":"Si algo no está bien, realmente me molesta."
+            },
+            {
+                "area": 8,
+                "question":"Si estoy seguro de mi propósito, hago caso omiso de la opinión de los demás."
+            },
+            {
+                "area": 5,
+                "question":"Si surge un problema, primero lo estudio por mi cuenta y luego lo discuto con los demás."
+            },
+            {
+                "area": 7,
+                "question":"Si tengo que elegir entre algo nuevo y algo conocido, tiendo a escoger lo nuevo."
+            },
+            {
+                "area": 4,
+                "question":"Siempre me ha atraído el simbolismo."
+            },
+            {
+                "area": 1,
+                "question":"Siento la necesidad de hacerme responsable de la mayor parte de mi tiempo."
+            },
+            {
+                "area": 6,
+                "question":"Sin leyes estrictas, es difícil decir lo que tienen que hacer las personas."
+            },
+            {
+                "area": 6,
+                "question":"Sobre todo he sido una persona pragmática y realista."
+            },
+            {
+                "area": 5,
+                "question":"Son importantes, para mí, las formas y el buen gusto."
+            },
+            {
+                "area": 9,
+                "question":"Soy bastante conservador en cuanto a mi escala de valores."
+            },
+            {
+                "area": 9,
+                "question":"Soy más propenso a resignarme que a luchar."
+            },
+            {
+                "area": 9,
+                "question":"Soy propenso a reprimir los sentimientos."
+            },
+            {
+                "area": 6,
+                "question":"Soy un buen colaborador y los demás pueden fiarse de mí."
+            },
+            {
+                "area": 8,
+                "question":"Soy una persona agresiva y asertiva (que afirma sus posiciones con total certeza)."
+            },
+            {
+                "area": 9,
+                "question":"Soy una persona extremadamente tratable."
+            },
+            {
+                "area": 1,
+                "question":"Soy una persona metódica y organizada."
+            },
+            {
+                "area": 4,
+                "question":"Soy una persona propensa a la nostalgia, a la melancolía y a revivir el pasado."
+            },
+            {
+                "area": 3,
+                "question":"Soy visto por los demás como una persona segura y decidida."
+            },
+            {
+                "area": 6,
+                "question":"Soy, básicamente, una persona moderada."
+            },
+            {
+                "area": 5,
+                "question":"Suelo dejar la iniciativa a los otros."
+            },
+            {
+                "area": 7,
+                "question":"Suelo fijarme en el lado bueno de las cosas y dejar de lado el aspecto negativo de la vida."
+            },
+            {
+                "area": 5,
+                "question":"Suelo guardar mis sentimientos para mí."
+            },
+            {
+                "area": 7,
+                "question":"Suelo pasar de una cosa a otra, en vez de profundizar en una sola."
+            },
+            {
+                "area": 6,
+                "question":"Suelo ser consciente de las contradicciones y soy muy sensible a ellas."
+            },
+            {
+                "area": 7,
+                "question":"Suelo ser muy entusiasta en cuanto al futuro."
+            },
+            {
+                "area": 8,
+                "question":"Tengo cierta dificultad en centrar mi atención."
+            },
+            {
+                "area": 9,
+                "question":"Tengo dificultad para aceptar y expresar mi lado tierno, agradable, suave, femenino."
+            },
+            {
+                "area": 6,
+                "question":"Tengo la sensación de que me preocupo más que otras personas de defenderme a mí mismo o a mí posición."
+            },
+            {
+                "area": 9,
+                "question":"Tengo tendencia a desvalorizarme."
+            },
+            {
+                "area": 4,
+                "question":"Tengo una nostalgia casi compulsiva de mi pasado."
+            },
+            {
+                "area": 1,
+                "question":"Tiendo a cuidar los detalles, el orden y la precisión."
+            },
+            {
+                "area": 6,
+                "question":"Tiendo a dividir el mundo en bandos y me preocupa de qué lado están las personas."
+            },
+            {
+                "area": 9,
+                "question":"Tiendo a no juzgar a las personas."
+            },
+            {
+                "area": 9,
+                "question":"Tiendo a quitar importancia a las cosas para que los demás se tranquilicen."
+            },
+            {
+                "area": 5,
+                "question":"Tiendo a ser más receptor que donante."
+            },
+            {
+                "area": 3,
+                "question":"Tiendo a ser una persona emprendedora y realizadora, con fuertes motivaciones."
+            },
+            {
+                "area": 9,
+                "question":"Tiendo a ser una persona optimista."
+            },
+            {
+                "area": 5,
+                "question":"Tiendo a ser una persona solitaria."
+            },
+            {
+                "area": 5,
+                "question":"Tiendo a ser una persona tacaña con mi tiempo, mi dinero y mi yo."
+            },
+            {
+                "area": 4,
+                "question":"Tiendo a ser voluble y a permanecer en mi mundo."
+            },
+            {
+                "area": 8,
+                "question":"Tiendo más a actuar que a detenerme en los sentimientos."
+            },
+            {
+                "area": 4,
+                "question":"Trato de parecer natural."
+            },
+            {
+                "area": 5,
+                "question":"Trato de resolver mis problemas pensando."
+            },
+            {
+                "area": 4,
+                "question":"Una de mis cualidades ha sido la habilidad para describir estados internos."
+            },
+            {
+                "area": 3,
+                "question":"Vivo con cierta tensión porque me propongo demasiados objetivos."
+            }
+     ]
+}
