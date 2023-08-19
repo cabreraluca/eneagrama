@@ -1,4 +1,4 @@
-const User = require("../../Schemas/user")
+const User = require("../Schemas/user")
 
 function updateUser(req, res){
     const {id} = req.params;

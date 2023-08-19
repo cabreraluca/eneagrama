@@ -1,6 +1,6 @@
 const express = require('express');
-const UserController = require('../Eneagrama/Controladores/user');
-const md_auth = require("../Eneagrama/Middlewares/auth");
+const UserController = require('../Controladores/user');
+const md_auth = require("../Middlewares/auth");
 
 const api = express.Router();
 

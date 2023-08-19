@@ -1,4 +1,4 @@
-const User = require("../../Schemas/user");
+const User = require("../Schemas/user");
 
 const checkEmailExists = async (req, res, next) => {
     const { email } = req.body;

@@ -1,6 +1,6 @@
 const express = require('express');
-const AuthController =  require('../Eneagrama/Controladores/auth');
-const md_auth = require("../Eneagrama/Middlewares/checkEmail");
+const AuthController =  require('../Controladores/auth');
+const md_auth = require("../Middlewares/checkEmail");
 
 const api = express.Router();
 
