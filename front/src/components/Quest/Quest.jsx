@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ContextPrueba } from '../../context/ContextPrueba';
+
 
 export const Quest = ({quest}) => {
     const {select, setSelect} = useContext(ContextPrueba);

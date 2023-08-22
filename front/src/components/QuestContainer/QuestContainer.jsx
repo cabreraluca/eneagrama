@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import data from '../../data/preguntas.json'
 import { Quest } from '../Quest/Quest';
-import { ContextPrueba } from '../../Context/ContextPrueba';
+import { ContextPrueba } from '../../context/ContextPrueba';
 import { Result } from '../Quest/Result';
 
 export const QuestContainer = () => {
