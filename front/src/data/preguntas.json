@@ -171,27 +171,27 @@
           "id": 34
         },
         {
-          "area": 4,
+          "area": 5,
           "question": "Cuando estoy enojado conmigo mismo o con otras personas, pienso con frecuencia en mí o en ellas como: tontas, ingnorantes, poco profundas, etc..",
           "id": 35
         },
         {
-          "area": 2,
+          "area": 3,
           "question": "Cuando he temido que las necesidades y demandas de los demás me superasen, he evitado la intimidad",
           "id": 36
         },
         {
-          "area": 6,
+          "area": 7,
           "question": "Cuando me presentan a alguien, suelo ser una persona entretenida y afectuosa.",
           "id": 37
         },
         {
-          "area": 5,
+          "area": 6,
           "question": "Cuando me presionan me pongo irascible y tenso.",
           "id": 38
         },
         {
-          "area": 5,
+          "area": 6,
           "question": "Cuando me siento inseguro reacciono volviéndome terco y poniéndome a la defensiva.",
           "id": 39
         },
@@ -961,17 +961,17 @@
           "id": 192
         },
         {
-          "area": 7,
+          "area": 6,
           "question": "Normalmente mis pensamientos han sido prácticos en el intento de conseguir que las cosas sigan adelante.",
           "id": 193
         },
         {
-          "area": 7,
+          "area": 6,
           "question": "Normalmente no he confiado demasiado en mí mismo.",
           "id": 194
         },
         {
-          "area": 6,
+          "area": 5,
           "question": "Normalmente prefiero depender lo menos posible de los demás.",
           "id": 195
         },
@@ -1126,7 +1126,7 @@
           "id": 225
         },
         {
-          "area": 5,
+          "area": 4,
           "question": "Son importantes, para mí, las formas y el buen gusto.",
           "id": 226
         },
@@ -1211,12 +1211,12 @@
           "id": 242
         },
         {
-          "area": 8,
+          "area": 9,
           "question": "Tengo cierta dificultad en centrar mi atención.",
           "id": 243
         },
         {
-          "area": 9,
+          "area": 8,
           "question": "Tengo dificultad para aceptar y expresar mi lado tierno, agradable, suave, femenino.",
           "id": 244
         },
