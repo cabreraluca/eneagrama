@@ -48,7 +48,6 @@ export function Login() {
                 Entrar
         </Form.Button>
       </Form>
-      <Users/>
     </div>
   )
 }

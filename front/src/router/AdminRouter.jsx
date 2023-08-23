@@ -4,6 +4,7 @@ import {AdminLayout} from '../layouts'
 import { Login } from '../components/Auth';
 import {useAuth} from '../hooks';
 import { QuestContainer } from '../components/QuestContainer';
+import { Users } from '../components/Users/Users';
 export function AdminRouter() {
   const {user} = useAuth();
   const loadLayout = (Layout, Page) =>{
@@ -20,7 +21,7 @@ export function AdminRouter() {
       ):
         <>
         <Route path='/admin' element={loadLayout(AdminLayout, QuestContainer)}/>
-        <Route path='/admin/users' element={loadLayout(AdminLayout, Login)}/>
+        <Route path='/admin/users' element={loadLayout(AdminLayout, Users)}/>
         </>
       }
     </Routes>
