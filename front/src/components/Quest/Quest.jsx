@@ -6,7 +6,6 @@ export const Quest = ({quest}) => {
     const {select, setSelect} = useContext(ContextPrueba);
     const {id, area, question} = quest;
 
-
     const handleChange = (event) =>{
         const {value, checked} = event.target;
         console.log(value, checked)

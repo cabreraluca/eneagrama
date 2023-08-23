@@ -24,8 +24,26 @@ function deleteUser(req, res){
         res.status(400).send({msg: "error al eliminar"});
     }
 }
+async function getMe(req, res){
+    const { user_id } = req.user;
+    
+    const response = await User.findById(user_id);
+
+    if(!response){
+        res.status(400).send({msg: "No se encuentra usuario"});
+    }else{
+        res.status(200).send(response);
+    }
+}
+
+async function getUsers(req, res){
+    const response = await User.find();
+    res.status(200).send(response);
+}
 
 module.exports = {
     updateUser,
-    deleteUser
+    deleteUser,
+    getMe,
+    getUsers
 }

@@ -49,7 +49,7 @@ function login (req, res) {
             }
         });
     }).catch((err)=>{
-        res.status(400).send({msg: err})
+        res.status(200).send({msg: err})
     })
 }
 
