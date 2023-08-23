@@ -37,13 +37,16 @@ async function getMe(req, res){
 }
 
 async function getUsers(req, res){
-    const {finished} = req.query;
 
-    if(!finished){
-        const response = await User.find();
-    }else{
-        const response = await User.find({finished});
-    }
+    // const {finished} = req.query;
+
+    // if(!finished){
+    //     const response = await User.find();
+    // }else{
+    //     const response = await User.find({finished});
+    // }
+    
+    const response = await User.find();
     
     res.status(200).send(response);
 }

@@ -35,7 +35,7 @@ export const QuestContainer = () => {
         <div>
           <h2>
             Terminaste el quest, tus resultados son:
-            {resultadoQuest.map((item) => <Result result={item}/>)}
+            {<Result result={resultadoQuest}/>}
           </h2>
         </div>
       ) : (
