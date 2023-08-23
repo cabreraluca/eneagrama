@@ -1,19 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
-import { QuestContainer } from './components/QuestContainer/QuestContainer';
+import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { PruebaProvider } from './context/ContextPrueba';
-import { Login } from './components/Auth/Login';
+import { AdminRouter } from './router/AdminRouter';
+import { WebRouter } from './router/WebRouter';
 
 function App() {
 
   return (
     <div className="App">
       <AuthProvider>
-        <PruebaProvider>
-          <Login />
-          {/* <QuestContainer/> */}
-        </PruebaProvider>
+        <BrowserRouter>
+          <PruebaProvider>
+            <AdminRouter />
+            <WebRouter />
+          </PruebaProvider>
+        </BrowserRouter>
       </AuthProvider>
     </div>
   );
