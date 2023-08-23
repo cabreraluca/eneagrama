@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import data from "../../data/preguntas.json";
 import { Quest } from "../Quest/Quest";
-import { ContextPrueba } from "../../Context/ContextPrueba";
+import { ContextPrueba } from "../../context/ContextPrueba";
 import { Result } from "../Restult/Result";
 
 export const QuestContainer = () => {
@@ -35,7 +35,7 @@ export const QuestContainer = () => {
         <div>
           <h2>
             Terminaste el quest, tus resultados son:
-            {<Result result={resultadoQuest} />}
+            {resultadoQuest.map((item) => <Result result={item}/>)}
           </h2>
         </div>
       ) : (

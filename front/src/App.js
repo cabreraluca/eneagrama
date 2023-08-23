@@ -1,9 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { QuestContainer } from './components/QuestContainer/QuestContainer';
-import { AuthProvider } from './Context/AuthContext';
-import { PruebaProvider } from './Context/ContextPrueba';
+import { AuthProvider } from './context/AuthContext';
+import { PruebaProvider } from './context/ContextPrueba';
 import { Login } from './components/Auth/Login';
+import { Users } from './components/Users/Users';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
       <AuthProvider>
         <PruebaProvider>
           <Login />
-          {/* <QuestContainer/> */}
+          <QuestContainer/>
         </PruebaProvider>
       </AuthProvider>
     </div>
