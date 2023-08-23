@@ -49,9 +49,9 @@ export class User{
             console.log(error)
         }
     }
-    async getUsers(accessToken, active = undefined){
+    async getUsers(accessToken){
         try {
-            const url = `${this.baseApi}/${Env.API_ROUTES.USERS}?active=${active}`,
+            const url = `${this.baseApi}/${Env.API_ROUTES.USERS}`,
             params = {
                 headers: {
                     Authorization: accessToken,
