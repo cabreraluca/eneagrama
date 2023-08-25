@@ -79,9 +79,6 @@ export class User{
             Object.keys(data).forEach((key)=>{
                 formData.append(key, data[key])
             });
-            if (data.fileAvatar){
-                formData.append("avatar", data.fileAvatar);
-            }
             const url = `${Env.BASE_API}/${Env.API_ROUTES.USER}/${idUser}`;
             const params = {
                 method: "PATCH",
@@ -133,4 +130,31 @@ export class User{
             
         }
     } 
+
+    async pushResults(accessToken, idUser, data){
+        try {
+            const results = data;
+            console.log(results);
+            console.log(idUser);
+            console.log(accessToken);
+            const url = `${Env.BASE_API}/${Env.API_ROUTES.USER}/${idUser}`;
+            console.log(url);
+            const params = {
+                method: "PATCH",
+                headers: {
+                    Authorization: accessToken,
+                    'Content-Type': 'application/json',
+                },
+                body: results,
+            };
+
+            const response = await fetch(url, params);
+            console.log(params)
+            const result = await response.json();
+
+            console.log(result)
+        } catch (error) {
+            
+        }
+    }
 }

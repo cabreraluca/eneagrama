@@ -3,13 +3,16 @@ const User = require("../Schemas/user")
 function updateUser(req, res){
     const {id} = req.params;
     const userData = req.body;
+    console.log(userData);
 
     try {
-        User.findByIdAndUpdate({_id: id}, userData, {new: true}).then((updated)=>{
+        User.findByIdAndUpdate({_id: id}, userData).then((updated)=>{
             res.status(200).send(updated);
+            console.log("guardado")
         })
     } catch (error) {
         res.status(400).send("No se pudo actualizar");
+        console.log(error)
     }
 }
 

@@ -5,11 +5,17 @@ const cors = require('cors');
 
 const app = express();
 
-//BodyParser para recibir correctamente los bodys en las requests
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(cors());
+app.use(
+    cors({
+      origin: 'http://localhost:3000',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials: true,
+      optionsSuccessStatus: 204,
+    })
+  );
 
 const AuthRoutes = require('./Router/auth');
 const UserRoutes = require('./Router/user');
