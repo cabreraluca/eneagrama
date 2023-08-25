@@ -3,16 +3,12 @@ export function ClientLayout(props) {
     const {children} = props;
   return (
     <div className='admin-Layout'>
-      <div className='admin-Layout__left'>
-        <div className='admin-Layout__left__logo'>
-          <span>logo</span>
-        </div>
-
+      <div>
+        <h2>Logo</h2>
       </div>
       <div className='admin-Layout__right'>
         <div className='admin-Layout__right-header'>
           {/* <Logout /> */}
-          <p>hola</p>
         </div>
         <div>
           <div className='admin-Layout__right-content'>
