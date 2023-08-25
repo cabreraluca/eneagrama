@@ -7,7 +7,6 @@ export const Quest = ({ quest }) => {
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
-    console.log(value, checked);
     if (checked) {
       setSelect([...select, { id: value, area: area }]);
     } else {

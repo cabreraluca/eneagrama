@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import data from "../../data/preguntas.json";
 import { Quest } from "../Quest/Quest";
 import { ContextPrueba } from "../../context/ContextPrueba";
-import { Result } from "../Restult/Result";
+import { Result } from "../Result/Result";
 
 export const QuestContainer = () => {
   const { select, resultadoQuest } = useContext(ContextPrueba);
@@ -17,11 +17,12 @@ export const QuestContainer = () => {
     event.preventDefault();
     setQuest([]);
     for (const item of select) {
-      resultadoQuest[item.area - 1] += 1;
+      if (item.area === resultadoQuest[item.area - 1].area) {
+        resultadoQuest[item.area - 1].puntaje += 1;
+      }
     }
     setTestComplete(true);
-    console.log(resultadoQuest);
-  };
+    }
 
   return (
     <div>
@@ -35,7 +36,7 @@ export const QuestContainer = () => {
         <div>
           <h2>
             Terminaste el quest, tus resultados son:
-            {<Result result={resultadoQuest}/>}
+            {resultadoQuest.map((res) => <Result result={res}/>)}
           </h2>
         </div>
       ) : (

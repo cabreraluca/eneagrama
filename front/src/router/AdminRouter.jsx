@@ -17,7 +17,8 @@ export function AdminRouter() {
   return (
     <Routes>
       {!user?(
-        <Route path='/admin/*' element= {<Login />}/>
+        <Route path='/admin/*' element={<Login/>}/>
+
       ):
         <>
         <Route path='/admin' element={loadLayout(AdminLayout, QuestContainer)}/>
