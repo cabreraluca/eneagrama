@@ -21,7 +21,10 @@ export const QuestContainer = () => {
     const userId = user._id;
     console.log(userId)
     const results = array;
-    await UserController.pushResults(accessToken, userId, {results})
+    const userData = await UserController.getUser(accessToken, userId);
+    console.log(userData.results);
+    userData.results = results;
+    await UserController.updateUser(accessToken, userId, userData)
   };
   const submitChange = async (event) => {
     event.preventDefault();
@@ -33,9 +36,9 @@ export const QuestContainer = () => {
     }
     console.log(resultadoQuest);
     await updateDBResults(resultadoQuest);
-  };
     setTestComplete(true);
-    }
+  };
+    
 
   return (
     <div>
@@ -58,3 +61,4 @@ export const QuestContainer = () => {
     </div>
   );
 };
+ 
