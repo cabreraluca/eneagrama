@@ -15,42 +15,41 @@ async function updateUser(req, res){
     }
 }
 
-function deleteUser(req, res){
-    const {id} = req.params;
+function deleteUser(req, res) {
+  const { id } = req.params;
 
-    try {
-        User.findByIdAndDelete(id).then((deleted) =>{
-            res.status(200).send(deleted);
-        })
-    } catch (error) {
-        res.status(400).send({msg: "error al eliminar"});
-    }
+  try {
+    User.findByIdAndDelete(id).then((deleted) => {
+      res.status(200).send(deleted);
+    });
+  } catch (error) {
+    res.status(400).send({ msg: "error al eliminar" });
+  }
 }
-async function getMe(req, res){
-    const { user_id } = req.user;
-    
-    const response = await User.findById(user_id);
+async function getMe(req, res) {
+  const { user_id } = req.user;
 
-    if(!response){
-        res.status(400).send({msg: "No se encuentra usuario"});
-    }else{
-        res.status(200).send(response);
-    }
-}
+  const response = await User.findById(user_id);
 
-async function getUsers(req, res){
-
-    // const {finished} = req.query;
-
-    // if(!finished){
-    //     const response = await User.find();
-    // }else{
-    //     const response = await User.find({finished});
-    // }
-    
-    const response = await User.find();
-    
+  if (!response) {
+    res.status(400).send({ msg: "No se encuentra usuario" });
+  } else {
     res.status(200).send(response);
+  }
+}
+
+async function getUsers(req, res) {
+  // const {finished} = req.query;
+
+  // if(!finished){
+  //     const response = await User.find();
+  // }else{
+  //     const response = await User.find({finished});
+  // }
+
+  const response = await User.find();
+
+  res.status(200).send(response);
 }
 
 async function getUser(req, res) {

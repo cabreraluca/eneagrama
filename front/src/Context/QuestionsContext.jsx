@@ -1,10 +1,12 @@
 import { createContext, useState } from "react"
 
-export const ContextPrueba = createContext()
+export const QuestionsContext = createContext()
 
-export const PruebaProvider = ({children}) =>{
+export const QuestionsProvider = ({children}) =>{
     
     const [select, setSelect] = useState([]);
+    const [questionsAnswered, setQuestionsAnswered] = useState(0);
+    const [indexAnswer, setIndexAnswer] = useState(0);
     const resultadoQuest = [
         {
             "area": 1,
@@ -45,9 +47,17 @@ export const PruebaProvider = ({children}) =>{
     ];
 
     return (
-        <ContextPrueba.Provider value={{select, setSelect, resultadoQuest}}>
+        <QuestionsContext.Provider 
+        value={{
+            select, 
+            setSelect, 
+            resultadoQuest, 
+            questionsAnswered, 
+            setQuestionsAnswered, 
+            indexAnswer, 
+            setIndexAnswer}}>
             {children}
-        </ContextPrueba.Provider>
+        </QuestionsContext.Provider>
     )
 
 }
