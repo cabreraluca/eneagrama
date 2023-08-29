@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import { PruebaProvider } from './context/ContextPrueba';
+import { QuestionsProvider } from './context/QuestionsContext';
 import { AdminRouter } from './router/AdminRouter';
 import { WebRouter } from './router/WebRouter';
 
@@ -11,10 +11,10 @@ function App() {
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
-          <PruebaProvider>
+          <QuestionsProvider>
             <AdminRouter />
             <WebRouter />
-          </PruebaProvider>
+          </QuestionsProvider>
         </BrowserRouter>
       </AuthProvider>
     </div>
