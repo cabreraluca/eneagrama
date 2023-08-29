@@ -21,7 +21,7 @@ export const QuestContainer = () => {
   }, [indexAnswer]);
   
 
-  const updateDBResults = async (results) => {
+  const updateDBResults = async (array) => {
     const userId = user._id;
     console.log(userId)
     const results = array;

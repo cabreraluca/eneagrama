@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Tab } from "semantic-ui-react"
 import { Login } from '../../../components/Auth';
+import { RegisterForm } from '../../../components/Auth';
 export function Auth() {
   const [active, setActive] = useState(0);
 
@@ -14,14 +15,14 @@ export function Auth() {
         </Tab.Pane>
       )
     },
-    // {
-    //   menuItem: "Nuevo usuario",
-    //   render: () =>(
-    //     <Tab.Pane>
-    //       <RegisterForm openLogin={openLogin}/>
-    //     </Tab.Pane>
-    //   )
-    // }
+     {
+       menuItem: "Nuevo usuario",
+       render: () =>(
+         <Tab.Pane>
+           <RegisterForm openLogin={openLogin}/>
+         </Tab.Pane>
+       )
+     }
   ]
   return (
     <div className='auth'>
