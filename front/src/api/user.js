@@ -92,7 +92,6 @@ export class User{
             const response = await fetch(url, params);
             const result = await response.json();
 
-            console.log(result)
         } catch (error) {
             throw error;
         }
