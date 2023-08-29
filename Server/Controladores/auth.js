@@ -2,12 +2,12 @@ const User = require("../Schemas/user");
 const bcrypt = require("bcrypt");
 const jwt = require("../Utils/jwt");
 function register(req, res) {
-  const { name, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password } = req.body;
   if (!email) res.status(400).send({ msg: "Es obligatorio registar un email" });
   if (!password)
     res.status(400).send({ msg: "Es obligatorio registar una contraseña" });
   const user = new User({
-    name,
+    firstname,
     lastname,
     password,
     email: email.toLowerCase(),

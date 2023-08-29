@@ -4,6 +4,8 @@ export function registerInitialValues() {
         email: "",
         password:"",
         repeatPassword:"",
+        firstname: "",
+        lastname:"",
         termsAccepted: false
     };
 }
@@ -13,6 +15,8 @@ export function registerValidationSchema(){
         email: Yup.string()
             .email("El email no es valido")
             .required("Campo obligatorio"),
+        firstname: Yup.string().required("Campo Obligatorio"),
+        lastname: Yup.string().required("Campo Obligatorio"),
         password: Yup.string().required("Campo obligatorio"),
         repeatPassword: Yup.string()
             .required("Campo obligatorio")

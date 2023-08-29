@@ -5,6 +5,7 @@ export class Auth {
 
     async register(data) {
         try {
+            console.log(data);
             const url = `${this.baseApi}/${Env.API_ROUTES.REGISTER}`;
             const params = {
                 method: "POST",
@@ -13,7 +14,9 @@ export class Auth {
                 },
                 body: JSON.stringify({
                     email: data.email,
-                    password: data.password
+                    password: data.password,
+                    firstname: data.firstname,
+                    lastname: data.lastname
                 }),
             };
 

@@ -4,7 +4,7 @@ import { ClientLayout } from '../layouts';
 import { Auth } from '../pages/admin/Auth';
 import { useAuth } from '../hooks';
 import { QuestContainer } from '../components/QuestContainer';
-import { Users } from '../components/Users/Users';
+import { UserResults } from '../components/Users/UserResults';
 export function WebRouter() {
   const {user} = useAuth()
   const loadLayout = (Layout, Page) =>{
@@ -21,7 +21,7 @@ export function WebRouter() {
       ):
         <>
         <Route path='/' element={loadLayout(ClientLayout, QuestContainer)}/>
-        {/* <Route path='/user' element={loadLayout(ClientLayout, Users)} /> */}
+        <Route path='/user/:id' element={loadLayout(ClientLayout, UserResults)} />
         </>
       }
     </Routes>
