@@ -8,6 +8,7 @@ export const Users = () => {
   const { accessToken } = useAuth();
 
   const [users, setUsers] = useState([]);
+  console.log(users)
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -22,6 +23,7 @@ export const Users = () => {
       {users.map((user) => 
         <article key={user.email}>
           <p>Email: {user.email}</p>
+          {/* <p>Results: {user.results[0]}</p> */}
           <button>Ver más</button>
         </article>
       )}

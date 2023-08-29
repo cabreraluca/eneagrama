@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import data from "../../data/preguntas.json";
 import { Quest } from "../Quest/Quest";
-import { ContextPrueba } from "../../context/ContextPrueba";
+import { QuestionsContext } from "../../context/QuestionsContext";
 import { Result } from "../Result/Result";
 import { User } from "../../api";
 import { useAuth } from "../../hooks";
@@ -9,20 +9,23 @@ import { useAuth } from "../../hooks";
 const UserController = new User();
 
 export const QuestContainer = () => {
-  const {user, accessToken} = useAuth();
-  const { select, resultadoQuest } = useContext(ContextPrueba);
-  const [quest, setQuest] = useState([]);
+  
+  const { user, accessToken } = useAuth();
+  const { select, resultadoQuest, indexAnswer, questionsAnswered } = useContext(QuestionsContext);
+  const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
 
   useEffect(() => {
-    setQuest(data.test);
-  }, []);
-  const updateDBResults = async (array) =>{
+    const allQuestions  = data.test;
+    setQuest(allQuestions[indexAnswer]);
+  }, [indexAnswer]);
+  
+
+  const updateDBResults = async (results) => {
     const userId = user._id;
-    console.log(userId)
-    const results = array;
-    await UserController.pushResults(accessToken, userId, {results})
+    await UserController.pushResults(accessToken, userId, { results });
   };
+
   const submitChange = async (event) => {
     event.preventDefault();
     setQuest([]);
@@ -31,25 +34,24 @@ export const QuestContainer = () => {
         resultadoQuest[item.area - 1].puntaje += 1;
       }
     }
-    console.log(resultadoQuest);
+
     await updateDBResults(resultadoQuest);
-  };
     setTestComplete(true);
-    }
+  };
 
   return (
     <div>
-      <form>
-        {quest.map((item) => (
-          <Quest quest={item} />
-        ))}
-        {!testComplete ? <input type="submit" onClick={submitChange} /> : <></>}
-      </form>
+      <main>
+        {!testComplete ? <Quest quest={quest}/> : <></>}
+        {questionsAnswered === data.test.length && !testComplete ? <input type="submit" onClick={submitChange} value={"Generar informe"}/> : <></>}
+      </main>
       {testComplete ? (
         <div>
           <h2>
-            Terminaste el quest, tus resultados son:
-            {resultadoQuest.map((res) => <Result result={res}/>)}
+             Tus resultados son:
+            {resultadoQuest.map((res) => (
+              <Result key={res.area} result={res} />
+            ))}
           </h2>
         </div>
       ) : (

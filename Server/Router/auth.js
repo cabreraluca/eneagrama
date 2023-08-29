@@ -1,5 +1,5 @@
-const express = require('express');
-const AuthController =  require('../Controladores/auth');
+const express = require("express");
+const AuthController = require("../Controladores/auth");
 const md_auth = require("../Middlewares/checkEmail");
 
 const api = express.Router();

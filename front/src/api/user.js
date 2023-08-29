@@ -134,22 +134,17 @@ export class User{
     async pushResults(accessToken, idUser, data){
         try {
             const results = data;
-            console.log(results);
-            console.log(idUser);
-            console.log(accessToken);
             const url = `${Env.BASE_API}/${Env.API_ROUTES.USER}/${idUser}`;
-            console.log(url);
             const params = {
                 method: "PATCH",
                 headers: {
                     Authorization: accessToken,
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'json',
                 },
                 body: results,
             };
-
             const response = await fetch(url, params);
-            console.log(params)
+            console.log(response)
             const result = await response.json();
 
             console.log(result)
