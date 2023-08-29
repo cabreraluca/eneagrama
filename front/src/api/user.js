@@ -83,9 +83,10 @@ export class User{
             const params = {
                 method: "PATCH",
                 headers: {
-                    Authorization: accessToken
+                    Authorization: accessToken,
+                    "Content-Type": "application/json"
                 },
-                body: formData,
+                body: JSON.stringify(data),
             };
 
             const response = await fetch(url, params);
@@ -115,7 +116,10 @@ export class User{
 
     async getUser(accessToken, idUser) {
         try {
+            console.log(accessToken);
+            console.log(idUser);
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}/${idUser}`;
+            console.log(url)
             const params ={
                 method: "GET",
                 headers: {
@@ -145,8 +149,8 @@ export class User{
             };
             const response = await fetch(url, params);
             console.log(response)
+            console.log(params);
             const result = await response.json();
-
             console.log(result)
         } catch (error) {
             

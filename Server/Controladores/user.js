@@ -1,20 +1,18 @@
-const User = require("../Schemas/user");
+const User = require("../Schemas/user")
 
-function updateUser(req, res) {
-  console.log(req.body)
-  const { id } = req.params;
-  const userData = req.body;
-  console.log(userData);
+async function updateUser(req, res){
+    const {id} = req.params;
+    const userData = req.body;
+    console.log(userData);
 
-  try {
-    User.findByIdAndUpdate({ _id: id }, userData).then((updated) => {
-      res.status(200).send(updated);
-      console.log("guardado");
-    });
-  } catch (error) {
-    res.status(400).send("No se pudo actualizar");
-    console.log(error);
-  }
+    try {
+        const updatedUser = await User.findByIdAndUpdate({_id: id}, userData);
+        res.status(200).send(updatedUser);
+        console.log("guardado");
+    } catch (error) {
+        res.status(400).send("No se pudo actualizar");
+        console.log(error)
+    }
 }
 
 function deleteUser(req, res) {
@@ -54,9 +52,20 @@ async function getUsers(req, res) {
   res.status(200).send(response);
 }
 
+async function getUser(req, res) {
+    const {id} = req.params;
+    try {
+        const response = await User.findById(id);
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(400).send({msg: "No se encontró usuario"})
+    }
+}
+
 module.exports = {
-  updateUser,
-  deleteUser,
-  getMe,
-  getUsers,
-};
+    updateUser,
+    deleteUser,
+    getMe,
+    getUsers,
+    getUser
+}
