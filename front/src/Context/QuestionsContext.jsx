@@ -47,7 +47,7 @@ export const QuestionsProvider = ({children}) =>{
     ];
 
     useEffect(() => {
-      const storageResults = JSON.parse(localStorage.getItem("storageResults") || []); 
+      const storageResults = JSON.parse(localStorage.getItem("storageResults")) || []; 
       storageResults !== [] ? setSelect(storageResults) : setSelect([]);
     }, [])
     
