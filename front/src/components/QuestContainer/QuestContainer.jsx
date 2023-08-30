@@ -14,12 +14,13 @@ export const QuestContainer = () => {
   const { select, resultadoQuest, indexAnswer, questionsAnswered, setSelect } = useContext(QuestionsContext);
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
-  const storageResults = JSON.parse(localStorage.getItem("storageResults") || []);
+  const storageResults = JSON.parse(localStorage.getItem("storageResults")) || [];
   const [testInProgress, setTestInProgress] = useState(true);
 
 
   useEffect(() => {
-    const idStorage = JSON.parse(localStorage.getItem("id"));
+    const idStorage = JSON.parse(localStorage.getItem("id"))  || 0;
+    console.log(idStorage)
     const allQuestions  = data.test;
     if (storageResults !== []) {
       setQuest(allQuestions[idStorage])
@@ -45,8 +46,8 @@ export const QuestContainer = () => {
         resultadoQuest[item.area - 1].puntaje += 1;
       }
     }
-    localStorage.setItem("id", 0);
-    localStorage.setItem("storageResults", "[]");
+    localStorage.removeItem("id");
+    localStorage.removeItem("storageResults");
     await updateDBResults(resultadoQuest);
     setTestComplete(true);
     setTestInProgress(false);

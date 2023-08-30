@@ -4,16 +4,22 @@ import data  from '../../data/preguntas.json'
 
 export const Quest = ({ quest }) => {
   const questionsLength = data.test.length;
-  let { select, setSelect, questionsAnswered, setQuestionsAnswered, setIndexAnswer } = useContext(QuestionsContext);
+  const { select, setSelect, questionsAnswered, setQuestionsAnswered, setIndexAnswer } = useContext(QuestionsContext);
   const { id, area, question } = quest;
 
+  useEffect(() => {
+    select.length !== questionsLength ? localStorage.setItem("storageResults", JSON.stringify(select)) : "";
+  }, [select])
+  
+  
   const checkAnswer = (e) =>{
     if (e.target.value === "si") {
+      console.log(select)
       const newResult = {
         id: id,
         area: area
       }
-      setSelect([...select, { id: id, area: area }]);
+      setSelect([...select, newResult]);
     }
     if (id !== questionsLength) {
       setIndexAnswer(id);
@@ -23,8 +29,6 @@ export const Quest = ({ quest }) => {
     }
     localStorage.setItem("id", id);
   }
-
-  localStorage.setItem("storageResults", JSON.stringify(select));
 
 
   return (
