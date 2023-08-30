@@ -1,30 +1,43 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom';
-import {AdminLayout} from '../layouts'
+import React from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { AdminLayout } from '../layouts';
 import { Login } from '../components/Auth';
-import {useAuth} from '../hooks';
+import { useAuth } from '../hooks';
 import { QuestContainer } from '../components/QuestContainer';
 import { Users } from '../components/Users/Users';
+
 export function AdminRouter() {
-  const {user} = useAuth();
-  const loadLayout = (Layout, Page) =>{
-    return(
-      <Layout>
-        <Page />
-      </Layout>
-    )
+  const { user } = useAuth();
+  const navigate = useNavigate()
+
+  const isAdmin = user && user.role === 'admin';
+
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="/admin/*" />
+      </Routes>
+    );
   }
+
   return (
     <Routes>
-      {!user?(
-        <Route path='/admin/*' element={<Login/>}/>
-
-      ):
+      {isAdmin ? (
         <>
-        <Route path='/admin' element={loadLayout(AdminLayout, QuestContainer)}/>
-        <Route path='/admin/users' element={loadLayout(AdminLayout, Users)}/>
+          <Route path="/admin" element={loadLayout(AdminLayout, Users)} />
+          <Route path="/admin/users" element={loadLayout(AdminLayout, Users)} />
         </>
-      }
+      ) : (
+        <Route path="/admin/*" element={<div>Acceso denegado <button onClick={()=> navigate("/")}>Ir al inicio</button> </div>} />
+      )}
     </Routes>
-  )
+  );
+}
+
+function loadLayout(Layout, Page) {
+  return (
+    <Layout>
+      <Page />
+    </Layout>
+  );
 }

@@ -21,6 +21,10 @@ export function AdminMenu() {
             <Icon name='user outline' />
             Usuarios
         </Menu.Item>
+        <Menu.Item as={Link} to="/admin/" active={isActive("/admin/")}>
+            <Icon name='home outline' />
+            Home
+        </Menu.Item>
         </>
         )}
     </Menu>

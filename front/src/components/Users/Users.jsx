@@ -26,7 +26,7 @@ export const Users = () => {
         <article key={user.email}>
           <p>Email: {user.email}</p>
           {/* <p>Results: {user.results[0]}</p> */}
-          <p>{user.results.length > 0 ? "Test en progreso" : ""}</p>
+          <p>{user.results.length > 0 ? "Test finalizado" : ""}</p>
           <button onClick={()=> navigate(`/user/${user._id}`)}>Ver más</button>
         </article>
       )}
