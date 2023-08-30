@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const QuestionsContext = createContext()
 
@@ -45,6 +45,12 @@ export const QuestionsProvider = ({children}) =>{
             "puntaje": 0
         }
     ];
+
+    useEffect(() => {
+      const storageResults = JSON.parse(localStorage.getItem("storageResults") || []); 
+      storageResults !== [] ? setSelect(storageResults) : setSelect([]);
+    }, [])
+    
 
     return (
         <QuestionsContext.Provider 

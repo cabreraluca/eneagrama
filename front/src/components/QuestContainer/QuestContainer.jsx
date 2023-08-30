@@ -11,22 +11,28 @@ const UserController = new User();
 export const QuestContainer = () => {
   
   const { user, accessToken } = useAuth();
-  const { select, resultadoQuest, indexAnswer, questionsAnswered } = useContext(QuestionsContext);
+  const { select, resultadoQuest, indexAnswer, questionsAnswered, setSelect } = useContext(QuestionsContext);
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
+  const storageResults = JSON.parse(localStorage.getItem("storageResults") || []);
+  const [testInProgress, setTestInProgress] = useState(true);
+
 
   useEffect(() => {
+    const idStorage = JSON.parse(localStorage.getItem("id"));
     const allQuestions  = data.test;
-    setQuest(allQuestions[indexAnswer]);
+    if (storageResults !== []) {
+      setQuest(allQuestions[idStorage])
+    } else {
+      setQuest(allQuestions[indexAnswer]);
+    }
   }, [indexAnswer]);
   
 
   const updateDBResults = async (array) => {
     const userId = user._id;
-    console.log(userId)
     const results = array;
     const userData = await UserController.getUser(accessToken, userId);
-    console.log(userData.results);
     userData.results = results;
     await UserController.updateUser(accessToken, userId, userData)
   };
@@ -39,9 +45,11 @@ export const QuestContainer = () => {
         resultadoQuest[item.area - 1].puntaje += 1;
       }
     }
-
+    localStorage.setItem("id", 0);
+    localStorage.setItem("storageResults", "[]");
     await updateDBResults(resultadoQuest);
     setTestComplete(true);
+    setTestInProgress(false);
   };
 
   return (
