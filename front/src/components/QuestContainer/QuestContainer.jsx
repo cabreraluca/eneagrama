@@ -15,11 +15,26 @@ export const QuestContainer = () => {
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
   const storageResults = JSON.parse(localStorage.getItem("storageResults")) || [];
+  const [dbResults, setDbResults] = useState([]);
   const [testInProgress, setTestInProgress] = useState(true);
 
+  useEffect(() => {
+    const fetchData = async () =>{
+      const userData = await UserController.getUser(accessToken, user._id);
+      if(userData.finished){
+        setTestComplete(true);
+        setDbResults(userData.results);
+      }
+      userData.started = true;
+      UserController.updateUser(accessToken, user._id, userData);
+    }
+    fetchData()
+  }, [])
+  
 
   useEffect(() => {
     const idStorage = JSON.parse(localStorage.getItem("id"))  || 0;
+    console.log(questionsAnswered);
     console.log(idStorage)
     const allQuestions  = data.test;
     if (storageResults !== []) {
@@ -29,12 +44,12 @@ export const QuestContainer = () => {
     }
   }, [indexAnswer]);
   
-
   const updateDBResults = async (array) => {
     const userId = user._id;
     const results = array;
     const userData = await UserController.getUser(accessToken, userId);
     userData.results = results;
+    userData.finished = true;
     await UserController.updateUser(accessToken, userId, userData)
   };
 
@@ -46,6 +61,7 @@ export const QuestContainer = () => {
         resultadoQuest[item.area - 1].puntaje += 1;
       }
     }
+    setDbResults(resultadoQuest);
     localStorage.removeItem("id");
     localStorage.removeItem("storageResults");
     await updateDBResults(resultadoQuest);
@@ -63,7 +79,7 @@ export const QuestContainer = () => {
         <div>
           <h2>
              Tus resultados son:
-            {resultadoQuest.map((res) => (
+            {dbResults.map((res) => (
               <Result key={res.area} result={res} />
             ))}
           </h2>

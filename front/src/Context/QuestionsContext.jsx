@@ -7,7 +7,7 @@ export const QuestionsProvider = ({children}) =>{
     const [select, setSelect] = useState([]);
     const [questionsAnswered, setQuestionsAnswered] = useState(0);
     const [indexAnswer, setIndexAnswer] = useState(0);
-    const resultadoQuest = [
+    let resultadoQuest = [
         {
             "area": 1,
             "puntaje": 0
@@ -45,7 +45,6 @@ export const QuestionsProvider = ({children}) =>{
             "puntaje": 0
         }
     ];
-
     useEffect(() => {
       const storageResults = JSON.parse(localStorage.getItem("storageResults")) || []; 
       storageResults !== [] ? setSelect(storageResults) : setSelect([]);
