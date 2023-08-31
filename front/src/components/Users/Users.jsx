@@ -9,29 +9,35 @@ export const Users = () => {
   const { accessToken } = useAuth();
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  console.log(users)
+  const [query, setQuery] = useState("");
   
   useEffect(() => {
     const fetchUsers = async () => {
-      const x = await userController.getUsers(accessToken);
-      setUsers(x)
+      if (query === "") {
+        const usersList = await userController.getUsers(accessToken);
+        setUsers(usersList);
+      } else {
+        const usersList = await userController.filterUsers(accessToken, query);
+        setUsers(usersList);
+      }
     };
     fetchUsers();
-  }, [accessToken]);
+  }, [accessToken, query]);
 
-  
-  
   return (
     <div>
-      {users.map((user) => 
+      <div>
+        <button onClick={() => setQuery("finished")}>Finalizado</button>
+        <button onClick={() => setQuery("started")}>Empezado</button>
+      </div>
+      {users?.map((user) => (
         <article key={user.email}>
           <p>Email: {user.email}</p>
           {/* <p>Results: {user.results[0]}</p> */}
           <p>{user.results.length > 0 ? "Test finalizado" : ""}</p>
-          <button onClick={()=> navigate(`/user/${user._id}`)}>Ver más</button>
+          <button onClick={() => navigate(`/user/${user._id}`)}>Ver más</button>
         </article>
-      )}
+      ))}
     </div>
-  )
-  
+  );
 };
