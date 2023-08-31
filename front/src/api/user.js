@@ -68,25 +68,16 @@ export class User{
             console.log(error)
         }
     }
-    async filterUsers(accessToken, param) {
+    async filterUsers(accessToken, param){
         try {
-          const url = `${this.baseApi}/${Env.API_ROUTES.USERS}/?${param}=true`;
-          console.log(url);
-          console.log(param);
-          const params = {  // Definir 'params' como un objeto aquí
-            headers: {
-              Authorization: accessToken,
-            },
-          };
-      
-          const response = await fetch(url, params);
-          const result = await response.json();
-      
-          if (response.status !== 200) throw result;
-      
-          return result;
+            const url = `${this.baseApi}/${Env.API_ROUTES.USERS}/?${param}=true`
+            params = {
+                headers: {
+                    Authorization: accessToken,
+                }
+            }
         } catch (error) {
-          console.log(error);
+            
         }
     }
     async updateUser(accessToken, idUser, userData) {
