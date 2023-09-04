@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Icon } from 'semantic-ui-react';
 import {useNavigate} from "react-router-dom";
 import { useAuth } from '../../../hooks';
-export function Logout() {
+export const Logout = () => {
     const {logout} = useAuth();
     const navigate = useNavigate();
     const onLogout = () => {

@@ -11,7 +11,7 @@ const UserController = new User();
 export const QuestContainer = () => {
   
   const { user, accessToken } = useAuth();
-  const { select, resultadoQuest, indexAnswer, questionsAnswered, setSelect } = useContext(QuestionsContext);
+  const { select, resultadoQuest, indexAnswer, questionsAnswered} = useContext(QuestionsContext);
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
   const storageResults = JSON.parse(localStorage.getItem("storageResults")) || [];

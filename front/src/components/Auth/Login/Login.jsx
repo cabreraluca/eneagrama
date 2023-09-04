@@ -9,7 +9,7 @@ import { Users } from '../../Users/Users';
 const authController = new Auth();
 
 
-export function Login() {
+export const Login = () => {
   const {login} = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),

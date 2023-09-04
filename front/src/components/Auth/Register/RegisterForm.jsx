@@ -6,7 +6,7 @@ import { registerInitialValues, registerValidationSchema } from './RegisterForm.
 
 const authController = new Auth();
 
-export function RegisterForm(props) {
+export const RegisterForm = (props) => {
     const {openLogin} = props;
     const formik = useFormik({
         initialValues: registerInitialValues(),
