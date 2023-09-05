@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 const authController = new Auth();
 
-
 export const Login = () => {
   const navigate = useNavigate();
   const {login} = useAuth();
@@ -53,6 +52,7 @@ export const Login = () => {
                 ¿No puedes iniciar sesión?
         </Form.Button>
       </Form>
+      
     </div>
   )
 }
