@@ -6,5 +6,6 @@ const api = express.Router();
 
 api.post("/auth/register", md_auth.checkEmailExists, AuthController.register);
 api.post("/auth/login", AuthController.login);
+api.post("/auth/resetpassword", AuthController.sendPasswordResetEmail);
 
 module.exports = api;

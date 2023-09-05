@@ -8,11 +8,13 @@ import { validationSchema, initialValues } from './LoginForm';
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 import { AuthComponent } from '../../../pages/admin/Auth';
+import { Users } from '../../Users/Users';
+import { useNavigate } from 'react-router-dom';
 
 const authController = new Auth();
 
-
 export const Login = () => {
+  const navigate = useNavigate();
   const {login} = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
@@ -62,7 +64,12 @@ export const Login = () => {
         <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
                 Ingresar
         </Form.Button>
+        <Form.Button onClick={()=> navigate("/reset-password")}>
+                ¿No puedes iniciar sesión?
+        </Form.Button>
       </Form>
     </section>
+      
+    </div>
   )
 }
