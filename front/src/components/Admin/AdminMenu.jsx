@@ -4,7 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 import { useAuth } from '../../hooks';
 
 
-export function AdminMenu() {
+export const AdminMenu = () => {
     const {pathname} = useLocation();
     const {user:{role}} = useAuth();
     const isAdmin = role === "admin";

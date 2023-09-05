@@ -9,8 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const authController = new Auth();
 
-export function Login() {
-  const navigate = useNavigate();
+export const Login = () => {
   const {login} = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
