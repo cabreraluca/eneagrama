@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import { Tab } from "semantic-ui-react"
 import { Login } from '../../../components/Auth';
 import { RegisterForm } from '../../../components/Auth';
-export function Auth() {
+export const AuthComponent = () => {
   const [active, setActive] = useState(0);
 
   const openLogin = () => setActive(0);
   const panes = [
     {
-      menuItem: "Entrar",
+      menuItem: "Iniciar sesión",
       render: () =>(
         <Tab.Pane>
           <Login />
@@ -16,7 +16,7 @@ export function Auth() {
       )
     },
      {
-       menuItem: "Nuevo usuario",
+       menuItem: "Registrarse",
        render: () =>(
          <Tab.Pane>
            <RegisterForm openLogin={openLogin}/>
