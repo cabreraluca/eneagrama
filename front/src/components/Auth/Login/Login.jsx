@@ -5,11 +5,13 @@ import { Auth } from '../../../api';
 import { useAuth } from '../../../hooks';
 import { validationSchema, initialValues } from './LoginForm';
 import { Users } from '../../Users/Users';
+import { useNavigate } from 'react-router-dom';
 
 const authController = new Auth();
 
 
 export const Login = () => {
+  const navigate = useNavigate();
   const {login} = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
@@ -46,6 +48,9 @@ export const Login = () => {
             error={formik.errors.password}/>
         <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
                 Entrar
+        </Form.Button>
+        <Form.Button onClick={()=> navigate("/reset-password")}>
+                ¿No puedes iniciar sesión?
         </Form.Button>
       </Form>
     </div>

@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 import { ClientLayout } from '../layouts';
 import { Auth } from '../pages/admin/Auth';
 import { useAuth } from '../hooks';
+import { ResetPassword } from '../components/Auth';
 import { QuestContainer } from '../components/QuestContainer';
 import { UserResults } from '../components/Users/UserResults';
 import { Home } from '../components/Home/Home';
@@ -18,7 +19,10 @@ export function WebRouter() {
   return (
     <Routes>
       {!user?(
+        <>
+        <Route path='/reset-password' element={<ResetPassword />}/>
         <Route path='/*' element= {<Auth />}/>
+        </>
       ):
         <>
         <Route path='/' element={loadLayout(ClientLayout, Home)}/>
