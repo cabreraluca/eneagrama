@@ -5,6 +5,7 @@ import { Auth } from '../pages/admin/Auth';
 import { useAuth } from '../hooks';
 import { QuestContainer } from '../components/QuestContainer';
 import { UserResults } from '../components/Users/UserResults';
+import { Home } from '../components/Home/Home';
 export function WebRouter() {
   const {user} = useAuth()
   const loadLayout = (Layout, Page) =>{
@@ -20,7 +21,8 @@ export function WebRouter() {
         <Route path='/*' element= {<Auth />}/>
       ):
         <>
-        <Route path='/' element={loadLayout(ClientLayout, QuestContainer)}/>
+        <Route path='/' element={loadLayout(ClientLayout, Home)}/>
+        <Route path='/cuestionario' element={loadLayout(ClientLayout, QuestContainer)}/>
         <Route path='/user/:id' element={loadLayout(ClientLayout, UserResults)} />
         </>
       }

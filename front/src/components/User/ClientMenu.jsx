@@ -2,7 +2,7 @@ import React from 'react'
 import {Menu, Icon} from "semantic-ui-react";
 import {Link, useLocation} from "react-router-dom";
 
-export function ClientMenu() {
+export const ClientMenu = () => {
     const {pathname} = useLocation();
 
     const isActive = (path) =>{

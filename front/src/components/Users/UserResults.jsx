@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks';
 
 const userController = new User();
-export function UserResults() {
+
+export const UserResults = () => {
     const {accessToken} = useAuth()
     const {pathname} = useLocation();
     const id = pathname.replace("/user/", "");
@@ -13,9 +14,9 @@ export function UserResults() {
     useEffect(() => {
         const fetchUser = async () => {
           const data = await userController.getUser(accessToken, id);
+          console.log(data)
           setUser(data)
           setUserResults(data.results);
-          console.log(userResults)
         };
         fetchUser();
       }, [accessToken, pathname]);

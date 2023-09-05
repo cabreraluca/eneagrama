@@ -1,25 +1,24 @@
 import React from 'react'
 import { Logout } from '../components/Auth';
-export function ClientLayout(props) {
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks';
+
+export const  ClientLayout = (props) => {
+    const navigate = useNavigate();
+    const {user} = useAuth()
+    console.log(user._id)
     const {children} = props;
   return (
     <div className='admin-Layout'>
-      <div className='admin-Layout__left'>
-        <div className='admin-Layout__left__logo'>
-          <span>client panel</span>
-        </div>
-
-      </div>
-      <div className='admin-Layout__right'>
-        <div className='admin-Layout__right-header'>
+      <header>
+          <button onClick={() => {navigate(`/user/${user._id}`)}}>Mis resultados</button>
           <Logout />
-        </div>
-        <div>
+      <header>
           <div className='admin-Layout__right-content'>
             {children}
           </div>
-        </div>
-      </div>
+        </header>
+      </header>
     </div> 
     
   )
