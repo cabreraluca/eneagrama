@@ -27,6 +27,9 @@ export const Users = () => {
   return (
     <div>
       <div>
+        <button>Agregar usuario</button>
+      </div>
+      <div>
         <button onClick={() => setQuery("finished")}>Finalizado</button>
         <button onClick={() => setQuery("started")}>Empezado</button>
       </div>
