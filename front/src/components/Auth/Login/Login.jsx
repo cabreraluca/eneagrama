@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Form} from 'semantic-ui-react';
 import {useFormik} from 'formik';
 import { Auth } from '../../../api';
@@ -6,7 +6,6 @@ import { useAuth } from '../../../hooks';
 
 import { validationSchema, initialValues } from './LoginForm';
 import './Login.css'
-import { useNavigate } from 'react-router-dom';
 import { AuthComponent } from '../../../pages/admin/Auth';
 import { Users } from '../../Users/Users';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +22,7 @@ export const Login = () => {
     onSubmit: async (formValue) =>{
       try {
         const response = await authController.login(formValue);
-        console.log(response)
+        console.log(response.status)
         authController.setAccesstoken(response.access);
         authController.setRefreshToken(response.refresh);
         login(response.access);
@@ -33,6 +32,7 @@ export const Login = () => {
     }
   })
   return (
+    <div>
     <section className='formContainer'>
       <div className='logoContainer'>
         <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
@@ -69,7 +69,6 @@ export const Login = () => {
         </Form.Button>
       </Form>
     </section>
-      
     </div>
   )
 }

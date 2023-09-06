@@ -1,6 +1,7 @@
 const express = require("express");
 const AuthController = require("../Controladores/auth");
 const md_auth = require("../Middlewares/checkEmail");
+const login_auth = require("../Middlewares/auth");
 
 const api = express.Router();
 

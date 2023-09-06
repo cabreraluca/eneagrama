@@ -20,11 +20,10 @@ export function WebRouter() {
   return (
     <Routes>
       {!user?(
-        <Route path='/*' element= {<Login/>}/>
-
         <>
+        <Route path='/*' element= {<Login/>}/>
         <Route path='/reset-password' element={<ResetPassword />}/>
-        <Route path='/*' element= {<Auth />}/>
+        <Route path='/*' element= {<AuthComponent />}/>
         </>
       ):
         <>

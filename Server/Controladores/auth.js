@@ -30,6 +30,8 @@ function register(req, res) {
 
 function login(req, res) {
   const { email, password } = req.body;
+  console.log(email);
+  console.log(password);
 
   if (!email) res.status(400).send({ msg: "Introduzca un email" });
   if (!password) res.status(400).send({ msg: "Introduzca una contraseña" });
