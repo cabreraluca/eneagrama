@@ -9,16 +9,25 @@ export const  ClientLayout = (props) => {
     console.log(user._id)
     const {children} = props;
   return (
-    <div className='admin-Layout'>
+    <div>
       <header>
-          <button onClick={() => {navigate(`/user/${user._id}`)}}>Mis resultados</button>
-          <Logout />
-      <header>
-          <div className='admin-Layout__right-content'>
+          <nav>
+            <button onClick={() => {navigate('/')}}>
+              <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
+            </button>
+            <ul>
+              <li>
+                <button onClick={() => {navigate(`/user/${user._id}`)}}>Mis resultados</button>
+              </li>
+              <li>
+                <Logout />
+              </li>
+            </ul>
+          </nav>
+      </header>
+          <div>
             {children}
           </div>
-        </header>
-      </header>
     </div> 
     
   )

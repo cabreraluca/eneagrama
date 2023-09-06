@@ -9,7 +9,6 @@ import './Login.css'
 import { useNavigate } from 'react-router-dom';
 import { AuthComponent } from '../../../pages/admin/Auth';
 import { Users } from '../../Users/Users';
-import { useNavigate } from 'react-router-dom';
 
 const authController = new Auth();
 
@@ -39,7 +38,7 @@ export const Login = () => {
         <h1>Viaja dentro de tí mismo</h1>
       </div>
       <Form onSubmit={formik.handleSubmit} className='formLogin'>
-        <div>
+        <section>
           <label htmlFor="email">Email</label>
           <Form.Input
               name='email' 
@@ -49,8 +48,8 @@ export const Login = () => {
               error={formik.errors.email}
               className='input'
           />
-        </div>
-        <div>
+        </section>
+        <section>
           <label htmlFor="password">Contraseña</label>
           <Form.Input 
               name='password' 
@@ -60,16 +59,19 @@ export const Login = () => {
               value={formik.values.password} 
               error={formik.errors.password}
               className='input'/>
-        </div>
+        </section>
         <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
                 Ingresar
         </Form.Button>
-        <Form.Button onClick={()=> navigate("/reset-password")}>
-                ¿No puedes iniciar sesión?
-        </Form.Button>
+        <section className='buttonsLogin'>
+          <p className='newAccount'>¿No tienes cuenta? <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
+            Registrate.
+          </Form.Button></p>
+          <Form.Button className='resetPass' onClick={()=> navigate("/reset-password")}>
+                  ¿Olvidaste tu contraseña?
+          </Form.Button>
+        </section>
       </Form>
     </section>
-      
-    </div>
   )
 }
