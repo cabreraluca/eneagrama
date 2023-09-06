@@ -29,6 +29,20 @@ function createRefreshToken(user){
     return jwt.sign(payload, JWT_SECRET_KEY);
 }
 
+function generateResetToken(user){
+    const expToken = new Date();
+    expToken.getMonth(expToken.getMonth() + 1);
+
+    const payload = {
+        token_type: "reset_password",
+        user_id: user._id,
+        iat: Date.now(),
+        exp: expToken.getTime()
+    }
+
+    return jwt.sign(payload, JWT_SECRET_KEY);
+}
+
 function decoded(token) {
     return jwt.decode(token, JWT_SECRET_KEY, true)
 };
@@ -36,5 +50,6 @@ function decoded(token) {
 module.exports = {
     createAccessToken, 
     createRefreshToken, 
+    generateResetToken,
     decoded
 };

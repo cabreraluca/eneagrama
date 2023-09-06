@@ -59,6 +59,7 @@ function login(req, res) {
 }
 
 async function sendPasswordResetEmail(req, res) {
+
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -68,20 +69,21 @@ async function sendPasswordResetEmail(req, res) {
     },
   });
   const { email } = req.body;
+  const emailToLower = email.toLowerCase();
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: emailToLower });
+    console.log(user)
 
     if (!user) {
       return res.status(404).json({ message: 'El usuario no existe' });
     }
 
-    // IMPLEMENTAR LOGICA DE TOKENS PARA MÁS SEGURIDAD
-    // const resetToken = generateResetToken();
+    const resetToken = jwt.generateResetToken(user);
 
-    // user.resetPasswordToken = resetToken;
-    // user.resetPasswordExpires = Date.now() + 3600000;
-    // await user.save();
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpires = Date.now() + 3600000;
+    user.save();
 
     const mailOptions = {
       from: 'no-responder@eneagrama.com',
@@ -90,11 +92,13 @@ async function sendPasswordResetEmail(req, res) {
       text: `Para restablecer tu contraseña, haz clic en el siguiente enlace: http://localhost:3000/reset-password/${resetToken}`,
     };
 
+    console.log(mailOptions)
+    res.status(200).send(mailOptions)
     transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error al enviar el correo electrónico: ', error);
-        return res.status(500).json({ message: 'Error al enviar el correo electrónico' });
-      } else {
+    if (error) {
+      console.error('Error al enviar el correo electrónico: ', error);
+      return res.status(500).json({ message: 'Error al enviar el correo electrónico' });
+    } else {
         console.log('Correo electrónico enviado: ', info.response);
         res.status(200).json({ message: 'Correo electrónico enviado' });
       }

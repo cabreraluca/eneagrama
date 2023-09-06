@@ -1,9 +1,16 @@
 const User = require("../Schemas/user")
+const bcrypt = require('bcrypt')
 
 async function updateUser(req, res){
     const {id} = req.params;
     const userData = req.body;
     console.log(userData);
+
+    if(userData.password){
+      const salt = bcrypt.genSaltSync(10);
+      const hashPassword = bcrypt.hashSync(userData.password, salt);
+      userData.password = hashPassword;
+  }
 
     try {
         const updatedUser = await User.findByIdAndUpdate({_id: id}, userData);
@@ -15,7 +22,8 @@ async function updateUser(req, res){
     }
 }
 
-function deleteUser(req, res) {
+
+async function deleteUser(req, res) {
   const { id } = req.params;
 
   try {
@@ -38,8 +46,9 @@ async function getMe(req, res) {
   }
 }
 
+
 async function getUsers(req, res) {
-  const {finished} = req.query;
+  const {finished, started} = req.query;
   console.log(finished);
   if(!finished){
       const response = await User.find();
@@ -49,6 +58,19 @@ async function getUsers(req, res) {
       res.status(200).send(response);
   }
   
+}
+
+async function getUserByToken(req, res){
+  const {token} = req.params;
+  console.log(token)
+  try {
+    const response = await User.findOne({resetPasswordToken: token})
+    .then((user) => {
+      res.status(200).send(user);
+    })
+  } catch (error) {
+    res.status(400).send("Error");
+  }
 }
 
 async function getUser(req, res) {
@@ -66,5 +88,6 @@ module.exports = {
     deleteUser,
     getMe,
     getUsers,
-    getUser
+    getUser,
+    getUserByToken,
 }
