@@ -45,6 +45,8 @@ export class Auth {
             const response = await fetch(url, params);
             const result = await response.json();
 
+            if(response.status !== 200) throw result;
+            
             return result;
         } catch (error) {
             throw error
@@ -74,6 +76,7 @@ export class Auth {
             throw error;
         }
     }
+
 
     setAccesstoken(token) {
         localStorage.setItem(Env.JWT.ACCESS, token);

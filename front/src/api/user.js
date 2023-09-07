@@ -89,7 +89,19 @@ export class User{
           console.log(error);
         }
     }
-    async updateUser(accessToken, idUser, userData) {
+
+    async getUserByToken(token){
+        try {
+            const url = `${this.baseApi}/${Env.API_ROUTES.USER_TOKEN}/${token}`
+            const response = await fetch(url);
+            const result = await response.json();
+
+            return result;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async updateUser( idUser, userData) {
         try {
             const data = userData;
             console.log(data)
@@ -104,7 +116,6 @@ export class User{
             const params = {
                 method: "PATCH",
                 headers: {
-                    Authorization: accessToken,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data),
