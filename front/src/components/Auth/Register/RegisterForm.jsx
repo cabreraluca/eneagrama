@@ -74,7 +74,7 @@ export const RegisterForm = () => {
                 <Form.Input className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
             </section>
             <Form.Checkbox
-                className='checkBox' 
+                className='checkBox inline-block' 
                 name='termsAccepted' 
                 label="He leído y acepto las politicas de privacidad"
                 onChange={(_, data)=> formik.setFieldValue("termsAccepted", data.checked)}

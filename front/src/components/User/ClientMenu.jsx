@@ -1,28 +1,21 @@
-import React from 'react'
-import {Menu, Icon} from "semantic-ui-react";
-import {Link, useLocation} from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useAuth } from '../../hooks';
+
 
 export const ClientMenu = () => {
-    const {pathname} = useLocation();
 
-    const isActive = (path) =>{
-        if(path === pathname) return true;
-        return false;
-    }
+    const { user} = useAuth()
+
   return (
-    <Menu fluid vertical icon text className='admin-menu'>
-        {(
-         <>   
-        <Menu.Item as={Link} to="/" active={isActive("/")}>
-            <Icon name='home' />
-            Inicio
-        </Menu.Item>
-        </>
-        )}
-        <Menu.Item as={Link} to="/user" active={isActive("/user" )}>
-            <Icon name='user' />
-            Usuario
-        </Menu.Item>
-    </Menu>
+    <section className='w-[100vw] h-[70vh] flex flex-col gap-6 p-6'>
+        <div>
+            <h1 className='text-2xl'>Informacion del usuario</h1>
+            <h2 className='text-md'>Detalles personales.</h2>
+        </div>
+        <div>
+            <p>Nombre completo: {user.firstname} {user.lastname}.</p>
+            <p>Rol: {user.role}.</p>
+        </div>
+    </section>
   )
 }

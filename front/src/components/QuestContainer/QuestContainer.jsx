@@ -5,6 +5,8 @@ import { QuestionsContext } from "../../context/QuestionsContext";
 import { Result } from "../Result/Result";
 import { User } from "../../api";
 import { useAuth } from "../../hooks";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { UserResultsPDF } from "../Users/UserResultsPDF";
 
 const UserController = new User();
 
@@ -43,13 +45,12 @@ export const QuestContainer = () => {
     }
   }, [indexAnswer]);
   
-  const updateDBResults = async (array) => {
-    const userId = user._id;
-    const results = array;
-    const userData = await UserController.getUser(accessToken, userId);
+  const updateDBResults = async (results) => {
+    const userData = await UserController.getUser(accessToken, user._id);
     userData.results = results;
     userData.finished = true;
-    await UserController.updateUser(userId, userData)
+    userData.password = null;
+    await UserController.updateUser(user._id, userData)
   };
 
   const submitChange = async (event) => {
@@ -82,6 +83,9 @@ export const QuestContainer = () => {
               <Result key={res.area} result={res} />
             ))}
           </h2>
+          <PDFDownloadLink document={<UserResultsPDF result={dbResults}/>} fileName="Resultado-Test-Eneagrama">
+            <button>Descargar</button>
+          </PDFDownloadLink>
         </div>
       ) : (
         <></>
