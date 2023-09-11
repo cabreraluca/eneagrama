@@ -2,15 +2,35 @@ import React, { useEffect } from 'react'
 import {Form} from "semantic-ui-react"
 import {useFormik} from 'formik'
 import { Auth } from '../../../api'
-import { useAuth } from '../../../hooks'
+import './Register.css'
 import { registerInitialValues, registerValidationSchema } from './RegisterForm.form'
+import { Login, validationSchema } from '../Login'
 import { useNavigate } from 'react-router-dom'
-import './RegisterForm.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const authController = new Auth();
 
 export const RegisterForm = () => {
     const navigate = useNavigate();
+
+    const notify = () => {
+        toast.success('Cuenta creada con éxito, será redirigido al inicio de sesión', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+        setTimeout(() => {
+            navigate('/')
+            }, "4000");
+        
+    };
+
     const formik = useFormik({
         initialValues: registerInitialValues(),
         validationSchema: registerValidationSchema(),
@@ -18,7 +38,8 @@ export const RegisterForm = () => {
         onSubmit: async (formValue) =>{
             try {
                 await authController.register(formValue);
-                navigate("/login");
+                notify();
+                // openLogin();
             } catch (error) {
                 console.log(error)
             }
@@ -26,22 +47,48 @@ export const RegisterForm = () => {
     })
 
   return (
-    <Form className='register-form' onSubmit={formik.handleSubmit}>
-        <Form.Input name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
-        <Form.Input name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
-        <Form.Input name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
-        <Form.Input name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
-        <Form.Input name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
-        <Form.Checkbox 
-            name='termsAccepted' 
-            label="He leído y acepto las politicas de privacidad"
-            onChange={(_, data)=> formik.setFieldValue("termsAccepted", data.checked)}
-            checked={formik.values.termsAccepted}
-            error={formik.errors.termsAccepted}
-        />
-        <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
-            Crear cuenta
-        </Form.Button>
-    </Form>
+    <section className='formContainer'>
+        <div className='logoContainer'>
+            <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
+            <h1>Viaja dentro de tí mismo</h1>
+        </div>
+        <Form className='register-form' onSubmit={formik.handleSubmit}>
+            <section className='inputsForm'>
+                <label htmlFor="email">Email</label>
+                <Form.Input className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
+            </section>
+            <section className='inputsForm'>
+                <label htmlFor="email">Nombre</label>
+                <Form.Input className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
+            </section>
+            <section className='inputsForm'>
+                <label htmlFor="email">Apellido</label>
+                <Form.Input className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.name}/>
+            </section>
+            <section className='inputsForm'>
+                <label htmlFor="email">Contraseña</label>
+                <Form.Input className='inputsRegister' name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
+            </section>
+            <section className='inputsForm'>
+                <label htmlFor="email">Repita la contraseña</label>
+                <Form.Input className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
+            </section>
+            <Form.Checkbox
+                className='checkBox' 
+                name='termsAccepted' 
+                label="He leído y acepto las politicas de privacidad"
+                onChange={(_, data)=> formik.setFieldValue("termsAccepted", data.checked)}
+                checked={formik.values.termsAccepted}
+                error={formik.errors.termsAccepted}
+            />
+            <Form.Button className="buttonRegister" type='submit' primary fluid loading={formik.isSubmitting}>
+                Crear cuenta
+            </Form.Button>
+            <ToastContainer/>
+            <section className='buttonsRegister'>
+                <p>¿Ya tienes cuenta?</p><Form.Button onClick={() => {navigate('/')}} className='buttonIS'>Inicia sesión.</Form.Button>
+            </section>
+        </Form>
+    </section>
   )
 }

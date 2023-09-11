@@ -19,7 +19,7 @@ export const AuthComponent = () => {
        menuItem: "Registrarse",
        render: () =>(
          <Tab.Pane>
-           <RegisterForm openLogin={openLogin}/>
+           <RegisterForm/>
          </Tab.Pane>
        )
      }

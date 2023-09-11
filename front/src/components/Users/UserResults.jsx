@@ -14,7 +14,6 @@ export const UserResults = () => {
     useEffect(() => {
         const fetchUser = async () => {
           const data = await userController.getUser(accessToken, id);
-          console.log(data)
           setUser(data)
           setUserResults(data.results);
         };
@@ -23,7 +22,7 @@ export const UserResults = () => {
   return (
     <div>
         <p>{user.firstname} {user.lastname}</p>
-        {userResults.map((result, index) => (
+        {userResults === [] ? <h2>ypsi</h2> : userResults.map((result, index) => (
             <p key={index}>Area {result.area}: {result.puntaje}</p>
         ))}
     </div>
