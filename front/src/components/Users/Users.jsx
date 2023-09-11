@@ -32,12 +32,16 @@ export const Users = () => {
       <div>
         <button onClick={() => setQuery("finished")}>Finalizado</button>
         <button onClick={() => setQuery("started")}>Empezado</button>
+        <button onClick={() => setQuery("")}>Todos</button>
+        
       </div>
       {users?.map((user) => (
         <article key={user.email}>
           <p>Email: {user.email}</p>
           {/* <p>Results: {user.results[0]}</p> */}
-          <p>{user.results.length > 0 ? "Test finalizado" : ""}</p>
+          <p>{ user.finished ? "Test finalizado" : ""}</p>
+          <p>{ !user.finished && user.started ? "Test comenzado" : ""}</p>
+          <p>{ !user.started ? "No empezado" : ""}</p>
           <button onClick={() => navigate(`/user/${user._id}`)}>Ver más</button>
         </article>
       ))}

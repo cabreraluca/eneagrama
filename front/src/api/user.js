@@ -70,7 +70,7 @@ export class User{
     }
     async filterUsers(accessToken, param) {
         try {
-          const url = `${this.baseApi}/${Env.API_ROUTES.USERS}/?${param}=true`;
+          const url = `${this.baseApi}/${Env.API_ROUTES.FILTER_USERS}/?${param}=true`;
           console.log(url);
           console.log(param);
           const params = {
@@ -101,7 +101,7 @@ export class User{
             console.log(error);
         }
     }
-    async updateUser( idUser, userData) {
+    async updateUser(idUser, userData) {
         try {
             if(!userData.password){
                 delete userData.password;
@@ -121,6 +121,8 @@ export class User{
 
             const response = await fetch(url, params);
             const result = await response.json();
+
+            return result;
 
         } catch (error) {
             throw error;

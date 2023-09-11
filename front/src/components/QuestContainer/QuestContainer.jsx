@@ -29,7 +29,7 @@ export const QuestContainer = () => {
       }
       userData.started = true;
       userData.password = null;
-      UserController.updateUser(user._id, userData);
+      UserController.updateUser( user._id, userData);
     }
     fetchData()
   }, [])

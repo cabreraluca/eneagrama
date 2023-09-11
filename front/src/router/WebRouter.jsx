@@ -26,6 +26,7 @@ export function WebRouter() {
         <Route path='/reset-password' element={<ResetPassword />}/>
         <Route path='/register' element= {<RegisterForm/>}/>
         <Route path='/reset-password/:token' element={<ChangePassword />} />
+        <Route path='/register' element= {<RegisterForm />}/>
         </>
       ):
         <>
