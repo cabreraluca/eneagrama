@@ -26,7 +26,8 @@ export const QuestContainer = () => {
         setDbResults(userData.results);
       }
       userData.started = true;
-      UserController.updateUser(accessToken, user._id, userData);
+      userData.password = null;
+      UserController.updateUser( user._id, userData);
     }
     fetchData()
   }, [])
@@ -34,8 +35,6 @@ export const QuestContainer = () => {
 
   useEffect(() => {
     const idStorage = JSON.parse(localStorage.getItem("id"))  || 0;
-    console.log(questionsAnswered);
-    console.log(idStorage)
     const allQuestions  = data.test;
     if (storageResults !== []) {
       setQuest(allQuestions[idStorage])
@@ -50,7 +49,7 @@ export const QuestContainer = () => {
     const userData = await UserController.getUser(accessToken, userId);
     userData.results = results;
     userData.finished = true;
-    await UserController.updateUser(accessToken, userId, userData)
+    await UserController.updateUser(userId, userData)
   };
 
   const submitChange = async (event) => {

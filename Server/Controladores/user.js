@@ -13,6 +13,7 @@ async function updateUser(req, res){
   }
 
     try {
+        console.log(userData);
         const updatedUser = await User.findByIdAndUpdate({_id: id}, userData);
         res.status(200).send(updatedUser);
         console.log("guardado");
@@ -48,16 +49,29 @@ async function getMe(req, res) {
 
 
 async function getUsers(req, res) {
+  const response = await User.find();
+  res.status(200).send(response);
+}
+
+async function filterUsers(req, res){
   const {finished, started} = req.query;
-  console.log(finished);
-  if(!finished){
-      const response = await User.find();
-      res.status(200).send(response);
-  }else{
+  console.log(req.query);
+  if(req.query !== ""){
+    if(finished){
       const response = await User.find({finished});
       res.status(200).send(response);
+    }else if(!finished){
+        // const response = await User.find({started});
+        // res.status(200).send(response);
+        if(started){
+          const response = await User.find({started: true, finished: false});
+          res.status(200).send(response);
+        }else{
+          const response = await User.find({started: false, finished: false});
+          res.status(200).send(response);
+        }
+      } 
   }
-  
 }
 
 async function getUserByToken(req, res){
@@ -90,4 +104,5 @@ module.exports = {
     getUsers,
     getUser,
     getUserByToken,
+    filterUsers
 }

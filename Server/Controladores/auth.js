@@ -64,8 +64,8 @@ async function sendPasswordResetEmail(req, res) {
     service: 'Gmail',
     auth: {
       // credenciales del email remitente
-      user: '',
-      pass: '', 
+      user: 'cabrera.luca10@gmail.com',
+      pass: 'btczaprsonbpwvwk', 
     },
   });
   const { email } = req.body;

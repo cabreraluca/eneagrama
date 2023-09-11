@@ -31,6 +31,28 @@ export class Auth {
         }
     }
 
+    async sendPasswordResetEmail(email){
+        try {
+            const url = `${this.baseApi}/${Env.API_ROUTES.RESET_PASSWORD}`
+            const params = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: email
+            }
+
+            const response = await fetch(url, params);
+            const result = await response.json();
+
+            if(response !== 200) throw result;
+
+            return result;
+        } catch (error) {
+            throw error
+        }
+    }
+
     async login(data) {
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.LOGIN}`
