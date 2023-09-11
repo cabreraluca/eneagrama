@@ -59,6 +59,7 @@ function login(req, res) {
 }
 
 async function sendPasswordResetEmail(req, res) {
+  const { email } = req.body;
 
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -68,12 +69,9 @@ async function sendPasswordResetEmail(req, res) {
       pass: 'btczaprsonbpwvwk', 
     },
   });
-  const { email } = req.body;
-  const emailToLower = email.toLowerCase();
 
   try {
-    const user = await User.findOne({ email: emailToLower });
-    console.log(user)
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: 'El usuario no existe' });

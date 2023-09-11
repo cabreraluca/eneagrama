@@ -3,34 +3,46 @@ import { Form } from 'semantic-ui-react';
 import { Auth } from '../../../api';
 import {useFormik} from 'formik'
 import { emailInitialValues, emailValidationSchema} from './ResetPassword.form';
+import { ToastContainer, toast } from 'react-toastify';
 const AuthController = new Auth();
 
 export function ResetPassword() {
-    const [email, setEmail] = useState("");
 
-    useEffect(() => {
-      console.log(email);
-    
-    }, [email])
+    const notify = () =>{
+        toast.success('Email enviado', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
 
     const formik = useFormik({
         initialValues: emailInitialValues(),
         validationSchema: emailValidationSchema(),
         validateOnChange: false,
+        onSubmit: async (formValue) =>{
+            try {
+                console.log(formValue);
+                const {email} = formValue;
+                console.log(email)
+                notify()
+                const emailSent = await AuthController.sendPasswordResetEmail(email);
+            } catch (error) {
+                console.log(error)
+            }
+        }
     });
 
-    const formSubmit = async (e) =>{
-        e.preventDefault();
-        const {email} = formik.values;
-        console.log(email)
-        const emailSent = await AuthController.sendPasswordResetEmail(email);
-        console.log(emailSent);
-    }
     
 
     return (
         <div className='resetPassContainer'>
-            <Form className='formReset' onSubmit={formSubmit}>
+            <Form className='formReset' onSubmit={formik.handleSubmit}>
                 <section className='resetContainerForm'>
                     <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
                     <h2>Recuperá tu contraseña</h2>
@@ -41,11 +53,14 @@ export function ResetPassword() {
                         className='resetInput'
                         name='email' 
                         placeholder="Correo electronico"
-                        onChange={(e)=> setEmail(e.value)} 
+                        value={formik.values.email} 
+                        error={formik.errors.email} 
+                        onChange={formik.handleChange} 
                     />
                     <Form.Button className='buttonResetPass' type="submit" primary fluid>
                             Enviar correo electrónico
                     </Form.Button>
+                    <ToastContainer />
                 </section>
             </Form>
         </div>

@@ -33,13 +33,16 @@ export class Auth {
 
     async sendPasswordResetEmail(email){
         try {
+            console.log(email)
             const url = `${this.baseApi}/${Env.API_ROUTES.RESET_PASSWORD}`
             const params = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: email
+                body: JSON.stringify({
+                    email: email
+                })
             }
 
             const response = await fetch(url, params);

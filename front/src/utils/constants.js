@@ -11,7 +11,7 @@ export const Env = {
         USER: "user",
         USERS: "users",
         USER_TOKEN: "userToken",
-        RESET_PASSWORD: "auth/resetPassword",
+        RESET_PASSWORD: "auth/resetpassword",
         FILTER_USERS: "filterUsers"
     },
     JWT: {

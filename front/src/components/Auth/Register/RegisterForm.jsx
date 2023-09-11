@@ -63,7 +63,7 @@ export const RegisterForm = () => {
             </section>
             <section className='inputsForm'>
                 <label htmlFor="email">Apellido</label>
-                <Form.Input className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.name}/>
+                <Form.Input className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
             </section>
             <section className='inputsForm'>
                 <label htmlFor="email">Contraseña</label>
