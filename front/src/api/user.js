@@ -103,14 +103,12 @@ export class User{
     }
     async updateUser( idUser, userData) {
         try {
-            const data = userData;
-            console.log(data)
-            if(!data.password){
-                delete data.password;
+            if(!userData.password){
+                delete userData.password;
             }
             const formData = new FormData();
-            Object.keys(data).forEach((key)=>{
-                formData.append(key, data[key])
+            Object.keys(userData).forEach((key)=>{
+                formData.append(key, userData[key])
             });
             const url = `${Env.BASE_API}/${Env.API_ROUTES.USER}/${idUser}`;
             const params = {
@@ -118,7 +116,7 @@ export class User{
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(userData),
             };
 
             const response = await fetch(url, params);

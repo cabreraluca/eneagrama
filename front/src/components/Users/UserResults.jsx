@@ -8,7 +8,7 @@ const userController = new User();
 export const UserResults = () => {
     const {accessToken} = useAuth()
     const {pathname} = useLocation();
-    const id = pathname.replace("/user/", "");
+    const id = pathname.replace("/user/result/", "");
     const [user, setUser] = useState({});
     const [userResults, setUserResults] = useState([]);
     useEffect(() => {
@@ -22,7 +22,7 @@ export const UserResults = () => {
   return (
     <div>
         <p>{user.firstname} {user.lastname}</p>
-        {userResults === [] ? <h2>ypsi</h2> : userResults.map((result, index) => (
+        {!user.finished ? <h2>No has realizado el test.</h2> : userResults.map((result, index) => (
             <p key={index}>Area {result.area}: {result.puntaje}</p>
         ))}
     </div>

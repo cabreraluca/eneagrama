@@ -8,6 +8,7 @@ import { QuestContainer } from '../components/QuestContainer';
 import { UserResults } from '../components/Users/UserResults';
 import { Home } from '../components/Home/Home';
 import { Login, RegisterForm } from '../components/Auth';
+import { ClientMenu } from '../components/User/ClientMenu';
 export function WebRouter() {
   const {user} = useAuth()
   const loadLayout = (Layout, Page) =>{
@@ -25,13 +26,13 @@ export function WebRouter() {
         <Route path='/reset-password' element={<ResetPassword />}/>
         <Route path='/register' element= {<RegisterForm/>}/>
         <Route path='/reset-password/:token' element={<ChangePassword />} />
-        <Route path='/*' element= {<AuthComponent />}/>
         </>
       ):
         <>
-        <Route path='/' element={loadLayout(ClientLayout, Home)}/>
+        <Route path='/home' element={loadLayout(ClientLayout, Home)}/>
         <Route path='/cuestionario' element={loadLayout(ClientLayout, QuestContainer)}/>
-        <Route path='/user/:id' element={loadLayout(ClientLayout, UserResults)} />
+        <Route path='/user/result/:id' element={loadLayout(ClientLayout, UserResults)} />
+        <Route path='/user/:id' element={loadLayout(ClientLayout, ClientMenu)} />
         </>
       }
     </Routes>

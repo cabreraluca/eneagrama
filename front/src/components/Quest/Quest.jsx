@@ -1,8 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { QuestionsContext } from "../../context/QuestionsContext";
-import data  from '../../data/preguntas.json'
+import data  from '../../data/preguntas.json';
+import { Progress, Button } from "@material-tailwind/react";
 
 export const Quest = ({ quest }) => {
+
+  const buttonStyle = "bg-orange-800 w-[40%]";
   const questionsLength = data.test.length;
   const { select, setSelect, questionsAnswered, setQuestionsAnswered, setIndexAnswer } = useContext(QuestionsContext);
   const { id, area, question } = quest;
@@ -32,14 +35,17 @@ export const Quest = ({ quest }) => {
 
 
   return (
-    <section >
+    <section className="w-[100%] h-[70vh] flex items-center justify-center">
       {questionsAnswered !== questionsLength ? 
-      <article>
-        <h2>Pregunta {id} de {questionsLength}</h2>
-        <p style={{padding: "10px"}}>{question}</p>
-        <div style={{marginTop: "10px"}}>
-          <button onClick={checkAnswer} value={"si"}>SI</button>
-          <button onClick={checkAnswer} value={"no"}>NO</button>
+      <article className="h-[50vh] flex items-center flex-col justify-evenly">
+        <div className="flex items-center flex-col px-2 gap-2">
+          <h2 className="text-2xl">Pregunta {id} de {questionsLength}</h2>
+          <Progress value={(id*100)/questionsLength} color="blue-gray"/>
+          <p className="text-center text-lg p-2 h-[10rem]">{question}</p>
+        </div>
+        <div className="flex w-[100%] justify-evenly">
+          <Button onClick={checkAnswer} className={buttonStyle} value={"si"}>SI</Button>
+          <Button onClick={checkAnswer} className={buttonStyle} value={"no"}>NO</Button>
         </div>
       </article>
       : 

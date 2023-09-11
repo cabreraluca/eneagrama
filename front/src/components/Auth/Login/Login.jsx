@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import {Form} from 'semantic-ui-react';
 import {useFormik} from 'formik';
 import { Auth } from '../../../api';
@@ -6,8 +6,8 @@ import { useAuth } from '../../../hooks';
 
 import { validationSchema, initialValues } from './LoginForm';
 import './Login.css'
-import { AuthComponent } from '../../../pages/admin/Auth';
-import { Users } from '../../Users/Users';
+import { useNavigate } from 'react-router-dom';
+
 
 const authController = new Auth();
 
@@ -21,7 +21,6 @@ export const Login = () => {
     onSubmit: async (formValue) =>{
       try {
         const response = await authController.login(formValue);
-        console.log(response.status)
         authController.setAccesstoken(response.access);
         authController.setRefreshToken(response.refresh);
         login(response.access);
@@ -39,7 +38,7 @@ export const Login = () => {
       </div>
       <Form onSubmit={formik.handleSubmit} className='formLogin'>
         <section>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" form='email'>Email</label>
           <Form.Input
               name='email' 
               placeholder="Correo electronico"
@@ -60,13 +59,14 @@ export const Login = () => {
               error={formik.errors.password}
               className='input'/>
         </section>
-        <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
+        <Form.Button type="submit" primary fluid loading={formik.isSubmitting} onClick={()=>navigate('/home')} className='buttonEnviar'>
                 Ingresar
         </Form.Button>
         <section className='buttonsLogin'>
-          <p className='newAccount'>¿No tienes cuenta? <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
+          <p className='newAccount'>¿No tienes cuenta?</p>
+          <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
             Registrate.
-          </Form.Button></p>
+          </Form.Button>
           <Form.Button className='resetPass' onClick={()=> navigate("/reset-password")}>
                   ¿Olvidaste tu contraseña?
           </Form.Button>

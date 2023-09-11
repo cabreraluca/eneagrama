@@ -84,6 +84,8 @@ label{
     margin-top: 1.5rem;
     cursor: pointer;
     transition: .2s;
+    animation-name: show;
+    animation-duration: 2.5s;
 }
 
 .buttonEnviar button:hover{
@@ -117,6 +119,8 @@ label{
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation-name: show;
+    animation-duration: 2.5s;
 }
 
 /* RESET PASSWORD CLASSES */
