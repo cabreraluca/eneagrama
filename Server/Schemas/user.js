@@ -10,6 +10,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         unique: true
     },
+    company: String,
     password: String,
     resetPasswordToken: String,
     resetPasswordExpires: Date,

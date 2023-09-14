@@ -20,21 +20,17 @@ export class User{
         }
     }
     async createUser(accessToken, data){
+        console.log(accessToken, data)
         try {
-            const formData = new FormData();
-            Object.keys(data).forEach((key)=>{
-                formData.append(key, data[key])
-            });
-            if (data.fileAvatar){
-                formData.append("avatar", data.fileAvatar);
-            }
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}`
+            console.log(url)
             const params = {
                 method: "POST",
                 headers: {
+                    "Content-Type" : "application/json",
                     Authorization: accessToken
                 },
-                body: formData,
+                body: JSON.stringify(data),
             };
 
             const response = await fetch(url, params);
