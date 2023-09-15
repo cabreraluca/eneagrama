@@ -20,6 +20,7 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
+import { CreateUser } from "./CreateUser";
 
 const userController = new User();
 
@@ -29,19 +30,23 @@ export const Users = () => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
+
    
   const TABLE_HEAD = ["Nombre", "Email", "Estado",  "Rol", "Detalles", ""];
-  
+  const [createUser, setCreateUser] = useState(false);
+
+  const showCreateUser = () =>setCreateUser((prevState) => !prevState);
+
+  const fetchUsers = async () => {
+    if (query === "") {
+      const usersList = await userController.getUsers(accessToken);
+      setUsers(usersList);
+    } else {
+      const usersList = await userController.filterUsers(accessToken, query);
+      setUsers(usersList);
+    }
+  };
   useEffect(() => {
-    const fetchUsers = async () => {
-      if (query === "") {
-        const usersList = await userController.getUsers(accessToken);
-        setUsers(usersList);
-      } else {
-        const usersList = await userController.filterUsers(accessToken, query);
-        setUsers(usersList);
-      }
-    };
     fetchUsers();
   }, [accessToken, query]);
 
@@ -54,7 +59,11 @@ export const Users = () => {
     filtrado.length === 0 ? filtrado = users.filter((item) => item.lastname.toLowerCase().includes(search.toLowerCase()))  : "";
     setSearchResults(filtrado);
   }, [search, users]);
-
+  
+  const onDelete =  async (userId) =>{
+    await userController.deleteUser(accessToken, userId);
+    fetchUsers();
+  };
   return (
     // <div>
     //   <div>
@@ -81,9 +90,10 @@ export const Users = () => {
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <Button className="flex items-center gap-3" size="sm">
+            <Button className="flex items-center gap-3" size="sm" onClick={()=> showCreateUser()}>
               <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Agregar un usuario
             </Button>
+            {createUser ? <CreateUser accessToken={accessToken} userController={userController} /> : ""}
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -145,5 +155,4 @@ export const Users = () => {
         </div>
       </CardFooter>
     </Card>
-  );
 };

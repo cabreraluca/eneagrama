@@ -1,6 +1,24 @@
 const User = require("../Schemas/user")
 const bcrypt = require('bcrypt')
 
+async function createUser(req, res){
+  const {password} = req.body;
+  const user = new User({ ...req.body});
+  console.log('usuario:', user)
+  const salt = bcrypt.genSaltSync(10);
+  const hashPassword = bcrypt.hashSync(password, salt);
+  user.password = hashPassword;
+
+  try {
+    user.save().then((userStored) => {
+      res.status(200).send(userStored);
+    });
+  } catch (err) { 
+    console.log('No guardado');
+    res.status(400).send({ msg: err });
+  }
+}
+
 async function updateUser(req, res){
     const {id} = req.params;
     const userData = req.body;
@@ -55,14 +73,11 @@ async function getUsers(req, res) {
 
 async function filterUsers(req, res){
   const {finished, started} = req.query;
-  console.log(req.query);
   if(req.query !== ""){
     if(finished){
       const response = await User.find({finished});
       res.status(200).send(response);
     }else if(!finished){
-        // const response = await User.find({started});
-        // res.status(200).send(response);
         if(started){
           const response = await User.find({started: true, finished: false});
           res.status(200).send(response);
@@ -104,5 +119,6 @@ module.exports = {
     getUsers,
     getUser,
     getUserByToken,
+    createUser,
     filterUsers
 }

@@ -39,7 +39,6 @@ export const RegisterForm = () => {
             try {
                 await authController.register(formValue);
                 notify();
-                // openLogin();
             } catch (error) {
                 console.log(error)
             }
