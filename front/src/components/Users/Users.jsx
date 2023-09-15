@@ -30,8 +30,6 @@ export const Users = () => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
-
-   
   const TABLE_HEAD = ["Nombre", "Email", "Estado",  "Rol", "Detalles", ""];
   const [createUser, setCreateUser] = useState(false);
 
@@ -65,19 +63,6 @@ export const Users = () => {
     fetchUsers();
   };
   return (
-    // <div>
-    //   <div>
-    //     <Button>Agregar usuario</Button>
-    //   </div>
-    //   <div>
-    //     <Button onClick={() => setQuery("finished")}>Finalizados</Button>
-    //     <Button onClick={() => setQuery("started")}>Comenzados</Button>
-    //     <Button onClick={() => setQuery("")}>Todos</Button>
-    //     <input value={search} type="text" placeholder="Busqueda por nombre" onChange={inputChange}/>
-    //   </div>
-    //   {searchResults.length === 0 && search !== "" && <h2>No se encontraron resultados</h2>}
-    //   {searchResults.length > 0 ? searchResults.map((user) => <UserView user={user}/>) : search === "" && users?.map((user) => <UserView user={user}/>)}
-    // </div>
     <Card className="h-[100%] w-[full]">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-8 flex items-center justify-between gap-8">
@@ -89,11 +74,11 @@ export const Users = () => {
               Vea la información de todos los usuarios.
             </Typography>
           </div>
+          {createUser ? <CreateUser accessToken={accessToken} userController={userController} /> : ""}
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
             <Button className="flex items-center gap-3" size="sm" onClick={()=> showCreateUser()}>
               <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Agregar un usuario
             </Button>
-            {createUser ? <CreateUser accessToken={accessToken} userController={userController} /> : ""}
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -155,4 +140,5 @@ export const Users = () => {
         </div>
       </CardFooter>
     </Card>
-};
+  )
+}

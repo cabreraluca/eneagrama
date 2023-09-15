@@ -3,6 +3,7 @@ import {Form} from 'semantic-ui-react';
 import {useFormik} from 'formik';
 import { Auth } from '../../../api';
 import { useAuth } from '../../../hooks';
+import { ToastContainer, toast } from 'react-toastify';
 import { validationSchema, initialValues } from './LoginForm';
 import './Login.css'
 import { AuthComponent } from '../../../pages/admin/Auth';
@@ -14,18 +15,30 @@ const authController = new Auth();
 export const Login = () => {
   const navigate = useNavigate();
   const {login} = useAuth();
+  const notify = (error) => {
+    toast.error(error, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+};
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validateOnChange: false,
-    onSubmit: async (formValue) =>{
+    onSubmit: async (formValue) => {
       try {
         const response = await authController.login(formValue);
         authController.setAccesstoken(response.access);
         authController.setRefreshToken(response.refresh);
         login(response.access);
-      }catch (error){
-        console.log(error)
+      } catch (error) {
+        notify(error.msg);
       }
     }
   })
@@ -59,9 +72,10 @@ export const Login = () => {
               error={formik.errors.password}
               className='input'/>
         </section>
-        <Form.Button type="submit" primary fluid loading={formik.isSubmitting} onClick={()=>navigate('/home')} className='buttonEnviar'>
+        <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
                 Ingresar
         </Form.Button>
+        <ToastContainer />
         <section className='buttonsLogin'>
           <div style={{display: "flex", gap: ".5rem"}}>
             <p className='newAccount'>¿No tienes cuenta?</p>

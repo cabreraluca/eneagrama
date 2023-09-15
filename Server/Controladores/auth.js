@@ -20,7 +20,6 @@ function register(req, res) {
   user.password = hashPassword;
   try {
     user.save().then((userStored) => {
-      console.log("Usuario registrado");
       res.status(200).send(userStored);
     });
   } catch (error) {
@@ -30,31 +29,28 @@ function register(req, res) {
 
 function login(req, res) {
   const { email, password } = req.body;
-  console.log(email);
-  console.log(password);
-
   if (!email) res.status(400).send({ msg: "Introduzca un email" });
   if (!password) res.status(400).send({ msg: "Introduzca una contraseña" });
 
   const emailToLower = email.toLowerCase();
-
   User.findOne({ email: emailToLower })
     .then((userStore) => {
       bcrypt.compare(password, userStore.password, (bcryptErr, bcryptCheck) => {
         if (bcryptErr) {
-          res.status(500).send({ msg: "error del servidor" });
+          return res.status(500).send({ msg: "Error del servidor" });
         } else if (!bcryptCheck) {
-          res.status(400).send({ msg: "contraseña incorrecta" });
-        } else {
-          res.status(200).send({
-            access: jwt.createAccessToken(userStore),
-            refresh: jwt.createRefreshToken(userStore),
+          return res.status(400).send({ msg: "Contraseña incorrecta" });
+        }else {
+          return res.status(200).send({
+          access: jwt.createAccessToken(userStore),
+          refresh: jwt.createRefreshToken(userStore),
           });
         }
       });
     })
     .catch((err) => {
-      res.status(200).send({ msg: err });
+      console.log('hola')
+      return res.status(500).json({ msg: "Email no registrado" });
     });
 }
 
