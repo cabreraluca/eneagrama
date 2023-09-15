@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
-import { ClientLayout } from '../layouts';
+import { AdminLayout, ClientLayout } from '../layouts';
 import { AuthComponent } from '../pages/admin/Auth';
 import { useAuth } from '../hooks';
 import { ResetPassword, ChangePassword } from '../components/Auth';
@@ -8,7 +8,8 @@ import { QuestContainer } from '../components/QuestContainer';
 import { UserResults } from '../components/Users/UserResults';
 import { Home } from '../components/Home/Home';
 import { Login, RegisterForm } from '../components/Auth';
-import { ClientMenu } from '../components/User/ClientMenu';
+import { UserInfo } from '../components/User/UserInfo';
+import { ClientInfo } from '../components/User/ClientInfo';
 export function WebRouter() {
   const {user} = useAuth()
   const loadLayout = (Layout, Page) =>{
@@ -30,10 +31,12 @@ export function WebRouter() {
         </>
       ):
         <>
+        <Route path='/' element={loadLayout(ClientLayout, Home)}/>
         <Route path='/home' element={loadLayout(ClientLayout, Home)}/>
         <Route path='/cuestionario' element={loadLayout(ClientLayout, QuestContainer)}/>
+        <Route path='/user/:id' element={loadLayout(ClientLayout, ClientInfo)} />
         <Route path='/user/result/:id' element={loadLayout(ClientLayout, UserResults)} />
-        <Route path='/user/:id' element={loadLayout(ClientLayout, ClientMenu)} />
+        <Route path='/admin/user/:id' element={loadLayout(AdminLayout, UserInfo)} />
         </>
       }
     </Routes>

@@ -45,9 +45,10 @@ export const QuestionsProvider = ({children}) =>{
             "puntaje": 0
         }
     ];
+    
     useEffect(() => {
       const storageResults = JSON.parse(localStorage.getItem("storageResults")) || []; 
-      storageResults !== [] ? setSelect(storageResults) : setSelect([]);
+      setSelect(storageResults);
     }, [])
     
 

@@ -139,7 +139,6 @@ export class User{
             }
             const response = await fetch(url, params);
             const result = await response.json()
-            console.log(result)
         } catch (error) {
             console.log(error)
         }
@@ -147,10 +146,7 @@ export class User{
 
     async getUser(accessToken, idUser) {
         try {
-            console.log(accessToken);
-            console.log(idUser);
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}/${idUser}`;
-            console.log(url)
             const params ={
                 method: "GET",
                 headers: {

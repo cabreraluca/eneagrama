@@ -3,7 +3,7 @@
 }
 
 .inputsForm input{
-    font-size: 1rem;
+    font-size: .8rem;
 }
 
 .checkBox{
@@ -33,7 +33,7 @@
     background-color: #f27b20;
     color: white;
     border-radius: .8rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     cursor: pointer;
     animation-name: show;
     animation-duration: 2.5s;

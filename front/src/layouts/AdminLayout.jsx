@@ -6,10 +6,7 @@ export const AdminLayout = (props) => {
     const {children} = props;
   return (
     <section className='admin-Layout'>
-      <div className='admin-Layout__left'>
-        <AdminMenu />
-        <Logout/>
-      </div>
+      <AdminMenu />
       <main className='admin-Layout__right'>
             {children}
       </main>
