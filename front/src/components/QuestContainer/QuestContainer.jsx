@@ -16,7 +16,6 @@ export const QuestContainer = () => {
   const { select, resultadoQuest, indexAnswer, questionsAnswered} = useContext(QuestionsContext);
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
-  const storageResults = JSON.parse(localStorage.getItem("storageResults")) || [];
   const [dbResults, setDbResults] = useState([]);
   const [testInProgress, setTestInProgress] = useState(true);
 
@@ -36,13 +35,9 @@ export const QuestContainer = () => {
   
 
   useEffect(() => {
-    const idStorage = JSON.parse(localStorage.getItem("id"))  || 0;
+    const idStorage = JSON.parse(localStorage.getItem("id")) || 0;
     const allQuestions  = data.test;
-    if (storageResults !== []) {
-      setQuest(allQuestions[idStorage])
-    } else {
-      setQuest(allQuestions[indexAnswer]);
-    }
+    setQuest(allQuestions[idStorage])
   }, [indexAnswer]);
   
   const updateDBResults = async (results) => {

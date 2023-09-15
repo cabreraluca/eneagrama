@@ -25,7 +25,7 @@
 
 .label{
     color: red;
-    font-size: .8rem;
+    font-size: .7rem;
     padding-bottom: .9rem;
 }
 
@@ -121,6 +121,7 @@ label{
     align-items: center;
     animation-name: show;
     animation-duration: 2.5s;
+    margin-top: 1rem;
 }
 
 /* RESET PASSWORD CLASSES */

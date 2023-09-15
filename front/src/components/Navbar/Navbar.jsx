@@ -53,6 +53,18 @@ export const NavbarDefault = () => {
           Cuenta
         </a>
       </Typography>
+      {user.role === "admin" ? 
+                <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+                onClick={() => {navigate(`/admin/users`)}}
+              >
+                <a href="#" className="flex items-center">
+                  Usuarios
+                </a>
+              </Typography> : ""}
     </ul>
   );
  

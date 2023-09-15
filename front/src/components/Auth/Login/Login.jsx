@@ -63,10 +63,12 @@ export const Login = () => {
                 Ingresar
         </Form.Button>
         <section className='buttonsLogin'>
-          <p className='newAccount'>¿No tienes cuenta?</p>
-          <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
-            Registrate.
-          </Form.Button>
+          <div style={{display: "flex", gap: ".5rem"}}>
+            <p className='newAccount'>¿No tienes cuenta?</p>
+            <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
+              Registrate.
+            </Form.Button>
+          </div>
           <Form.Button className='resetPass' onClick={()=> navigate("/reset-password")}>
                   ¿Olvidaste tu contraseña?
           </Form.Button>

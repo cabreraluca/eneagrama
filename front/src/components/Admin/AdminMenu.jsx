@@ -1,32 +1,24 @@
 import React from 'react'
-import {Menu, Icon} from "semantic-ui-react";
-import {Link, useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useAuth } from '../../hooks';
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import { Button } from '@material-tailwind/react';
 
 
 export const AdminMenu = () => {
-    const {pathname} = useLocation();
     const {user:{role}} = useAuth();
     const isAdmin = role === "admin";
+    const navigate = useNavigate();
 
-    const isActive = (path) =>{
-        if(path === pathname) return true;
-        return false;
-    }
   return (
-    <Menu fluid vertical icon text className='admin-menu'>
+    <nav className='w[100vw] text-center m-2 flex gap-4'>
         {isAdmin && (
          <>   
-        <Menu.Item as={Link} to="/admin/users" active={isActive("/admin/users")}>
-            <Icon name='user outline' />
-            Usuarios
-        </Menu.Item>
-        <Menu.Item as={Link} to="/admin/" active={isActive("/admin/")}>
-            <Icon name='home outline' />
-            Home
-        </Menu.Item>
+         
+        <Button onClick={() => {navigate('/home')}} size="sm" className='bg-orange-800 w-[10%] flex items-center justify-center gap-2'><ArrowLeftIcon className='h-[1.1rem]'/>Volver a la app</Button>
+        <Button onClick={() => {navigate('/admin/users')}} size="sm" className='bg-orange-800 w-[10%]'>Usuarios</Button>
         </>
         )}
-    </Menu>
+    </nav>
   )
 }
