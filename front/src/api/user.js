@@ -20,7 +20,7 @@ export class User{
         }
     }
     async createUser(accessToken, data){
-        console.log(accessToken, data)
+        console.log(accessToken)
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}`
             console.log(url)
@@ -34,6 +34,7 @@ export class User{
             };
 
             const response = await fetch(url, params);
+            console.log(response)
             const result = await response.json();
 
             if(response.status !== 200){
