@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useAuth } from "../../hooks";
 import { User } from "../../api";
 import { useNavigate } from "react-router-dom";
@@ -31,9 +31,6 @@ export const Users = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
   const TABLE_HEAD = ["Nombre", "Email", "Estado",  "Rol", "Detalles", ""];
-  const [createUser, setCreateUser] = useState(false);
-
-  const showCreateUser = () =>setCreateUser((prevState) => !prevState);
 
   const fetchUsers = async () => {
     if (query === "") {
@@ -44,6 +41,7 @@ export const Users = () => {
       setUsers(usersList);
     }
   };
+
   useEffect(() => {
     fetchUsers();
   }, [accessToken, query]);
@@ -74,11 +72,8 @@ export const Users = () => {
               Vea la información de todos los usuarios.
             </Typography>
           </div>
-          {createUser ? <CreateUser accessToken={accessToken} userController={userController} /> : ""}
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <Button className="flex items-center gap-3" size="sm" onClick={()=> showCreateUser()}>
-              <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Agregar un usuario
-            </Button>
+            <CreateUser  fetchUsers={fetchUsers} accessToken={accessToken}/>
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -120,9 +115,8 @@ export const Users = () => {
             </tr>
           </thead>
           <tbody>
-          {/* users.map((user) => <UserView user={user} fullUsers={users} index={users.indexOf(user)}/>) */}
             {searchResults.length === 0 && search !== "" && <h2 className="w-[100vw] text-center pt-6 text-[1.6rem]">No se encontraron resultados</h2>}
-            {searchResults.length > 0 ? searchResults.map((user) => <UserView user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView user={user} fullUsers={users} index={users.indexOf(user)}/>)}
+            {searchResults.length > 0 ? searchResults.map((user) => <UserView key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} fullUsers={users} index={users.indexOf(user)}/>)}
           </tbody>
         </table>
       </CardBody>
