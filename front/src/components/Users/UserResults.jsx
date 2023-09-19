@@ -20,11 +20,14 @@ export const UserResults = () => {
         fetchUser();
       }, [accessToken, pathname]);
   return (
-    <div>
-        <p>{user.firstname} {user.lastname}</p>
-        {!user.finished ? <h2>No has realizado el test.</h2> : userResults.map((result, index) => (
-            <p key={index}>Area {result.area}: {result.puntaje}</p>
-        ))}
+    <div className='flex flex-col w-[100vw] h-[50vh] items-center justify-center gap-2'>
+        <h1 className='text-2xl'>{user.firstname} {user.lastname}</h1>
+        {user.finished? <h2>Tus resultados son</h2> : ""}
+        <div className='flex flex-col items-center'>
+          {!user.finished ? <h2 className='text-center text-xl text-red-700'>No has realizado el test.</h2> : userResults.map((result, index) => (
+              <p key={index}>Area {result.area}: {result.puntaje}</p>
+          ))}
+        </div>
     </div>
   )
 }

@@ -7,6 +7,7 @@ import { User } from "../../api";
 import { useAuth } from "../../hooks";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { UserResultsPDF } from "../Users/UserResultsPDF";
+import { Button } from "@material-tailwind/react";
 
 const UserController = new User();
 
@@ -66,20 +67,19 @@ export const QuestContainer = () => {
 
   return (
     <div>
-      <main>
+      <main className="w-[100vw] flex flex-col items-center">
         {!testComplete ? <Quest quest={quest}/> : <></>}
-        {questionsAnswered === data.test.length && !testComplete ? <input type="submit" onClick={submitChange} value={"Generar informe"}/> : <></>}
+        {questionsAnswered === data.test.length && !testComplete ? <input className="text-center cursor-pointer border-2 p-2 bg-orange-800" type="submit" onClick={submitChange} value={"Generar informe"}/> : <></>}
       </main>
       {testComplete ? (
-        <div>
-          <h2>
-             Tus resultados son:
+        <div className="w-[100vw] h-[50vh] flex flex-col items-center justify-center">
+          <h1 className="text-[2rem] font-bold">
+             Tus resultados son: </h1>
             {dbResults.map((res) => (
               <Result key={res.area} result={res} />
             ))}
-          </h2>
           <PDFDownloadLink document={<UserResultsPDF result={dbResults}/>} fileName="Resultado-Test-Eneagrama">
-            <button>Descargar</button>
+            <Button className="mt-6 bg-red-400">Descargar en PDF</Button>
           </PDFDownloadLink>
         </div>
       ) : (

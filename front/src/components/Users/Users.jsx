@@ -75,7 +75,7 @@ export const Users = () => {
         </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
-            <TabsHeader className="flex gap-4">
+            <TabsHeader className="flex gap-4 bg-transparent">
             <Button variant="outlined" size="sm" onClick={() => setQuery("finished")}>Finalizados</Button>
             <Button variant="outlined" size="sm" onClick={() => setQuery("started")}>Comenzados</Button>
             <Button variant="outlined" size="sm" onClick={() => setQuery("")}>Todos</Button>
@@ -85,16 +85,16 @@ export const Users = () => {
             <Input
               value={search}
               onChange={inputChange}
-              label="Search"
+              label="Búsqueda por nombre"
               icon={<MagnifyingGlassIcon className="h-5 w-5" />}
             />
           </div>
         </div>
       </CardHeader>
-      <CardBody className="px-0 h-[40rem]">
-        <table className="mt-4 w-full min-w-max table-auto text-left">
+      <CardBody className="px-0 h-[55vh] 2xl:h-[65vh] overflow-y-scroll mt-2">
+        <table className="w-full min-w-max table-auto text-left">
           <thead>
-            <tr>
+            <tr className="h-[2rem]">
               {TABLE_HEAD.map((head) => (
                 <th
                   key={head}
@@ -117,18 +117,10 @@ export const Users = () => {
           </tbody>
         </table>
       </CardBody>
-      <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-        <Typography variant="small" color="blue-gray" className="font-normal">
-          Page 1 of 10
+      <CardFooter className="flex items-center justify-end border-t border-blue-gray-50 p-4">
+        <Typography variant="small" color="blue-gray" className="font-bold p-2 text-md">
+          Total de usuarios: {users.length}
         </Typography>
-        <div className="flex gap-2">
-          <Button variant="outlined" size="sm">
-            Previous
-          </Button>
-          <Button variant="outlined" size="sm">
-            Next
-          </Button>
-        </div>
       </CardFooter>
     </Card>
   )

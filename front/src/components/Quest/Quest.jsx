@@ -49,7 +49,7 @@ export const Quest = ({ quest }) => {
         </div>
       </article>
       : 
-      <h2>¡Has contestado todas las preguntas!</h2>}
+      <h2 className="text-[2rem] text-blue-800">¡Has contestado todas las preguntas!</h2>}
     </section>
   );
 };
