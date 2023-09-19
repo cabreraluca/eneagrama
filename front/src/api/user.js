@@ -126,6 +126,8 @@ export class User{
         }
     }
     async deleteUser(accessToken, idUser) {
+        console.log(accessToken)
+        console.log(idUser)
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}/${idUser}`;
             const params = {
@@ -136,6 +138,8 @@ export class User{
             }
             const response = await fetch(url, params);
             const result = await response.json()
+
+            console.log(result)
         } catch (error) {
             console.log(error)
         }

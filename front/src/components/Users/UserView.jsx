@@ -2,10 +2,12 @@ import React from 'react'
 import { Typography , Chip, Tooltip, IconButton, Button} from "@material-tailwind/react";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from 'react-router-dom';
+import {EditUser} from './EditUser'
 
-export const UserView = ({user, fullUsers}, index) => {
+export const UserView = ({user, fullUsers, fetchUsers, accessToken}, index) => {
     const navigate = useNavigate();
-    const { firstname, lastname, email, finished, started, role, _id } = user;
+    const { firstname, lastname, email, finished, started, role, _id} = user;
+
     const isLast = index === fullUsers.length - 1;
           const classes = isLast
             ? "p-4"
@@ -87,7 +89,7 @@ export const UserView = ({user, fullUsers}, index) => {
               <td className={classes}>
                 <Tooltip content="Edit User">
                   <IconButton variant="text">
-                    <PencilIcon className="h-4 w-4" />
+                    <EditUser accessToken={accessToken} fetchUsers={fetchUsers} userData={user}/>
                   </IconButton>
                 </Tooltip>
               </td>

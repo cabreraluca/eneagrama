@@ -56,10 +56,7 @@ export const Users = () => {
     setSearchResults(filtrado);
   }, [search, users]);
   
-  const onDelete =  async (userId) =>{
-    await userController.deleteUser(accessToken, userId);
-    fetchUsers();
-  };
+  
   return (
     <Card className="h-[100%] w-[full]">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -116,7 +113,7 @@ export const Users = () => {
           </thead>
           <tbody>
             {searchResults.length === 0 && search !== "" && <h2 className="w-[100vw] text-center pt-6 text-[1.6rem]">No se encontraron resultados</h2>}
-            {searchResults.length > 0 ? searchResults.map((user) => <UserView key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} fullUsers={users} index={users.indexOf(user)}/>)}
+            {searchResults.length > 0 ? searchResults.map((user) => <UserView hola={'hola'} accessToken={accessToken} fetchUsers={fetchUsers} key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} fullUsers={users} index={users.indexOf(user)}/>)}
           </tbody>
         </table>
       </CardBody>

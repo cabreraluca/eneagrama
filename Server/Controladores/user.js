@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 async function createUser(req, res){
   const {password} = req.body;
   const user = new User({ ...req.body});
-  console.log('usuario:', user)
   const salt = bcrypt.genSaltSync(10);
   const hashPassword = bcrypt.hashSync(password, salt);
   user.password = hashPassword;
@@ -44,7 +43,6 @@ async function updateUser(req, res){
 
 async function deleteUser(req, res) {
   const { id } = req.params;
-
   try {
     User.findByIdAndDelete(id).then((deleted) => {
       res.status(200).send(deleted);
