@@ -94,12 +94,12 @@ export const EditUser = (props) => {
                             error={formik.errors.role}
                         />
                         <section>
-                            <Form.Button type='button' onClick={() => onDelete(userData._id)}>
+                            <Form.Button primary fluid type='button' onClick={() => onDelete(userData._id)}>
                                 Eliminar usuario
                             </Form.Button>
-                            <Form.Button type='button' onClick={() => onResetResults(userData._id)}>
+                            {userData.started? <Form.Button primary fluid type='button' onClick={() => onResetResults(userData._id)}>
                                 Reiniciar test    
-                            </Form.Button> 
+                            </Form.Button> : ""} 
                         </section>
                         <Form.Button type='submit' primary fluid>
                             Aplicar

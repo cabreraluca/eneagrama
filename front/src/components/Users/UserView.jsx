@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography , Chip, Tooltip, IconButton, Button} from "@material-tailwind/react";
-import { PencilIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from 'react-router-dom';
 import {EditUser} from './EditUser'
 
