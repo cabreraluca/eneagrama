@@ -53,6 +53,7 @@ export const Login = () => {
         <section>
           <label htmlFor="email" form='email'>Email</label>
           <Form.Input
+              id="email"
               name='email' 
               placeholder="Correo electronico"
               onChange={formik.handleChange} 
@@ -64,6 +65,7 @@ export const Login = () => {
         <section>
           <label htmlFor="password">Contraseña</label>
           <Form.Input 
+              id="password"
               name='password' 
               type='password' 
               placeholder="Contraseña" 

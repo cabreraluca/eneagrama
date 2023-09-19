@@ -13,6 +13,10 @@ export const UserInfo = () => {
     const [user, setUser] = useState({});
     const [userResults, setUserResults] = useState([]);
 
+    const hStyle = "text-[1.1rem]";
+    const infoStyle = "flex items-center justify-between md:w-[50%] 2xl:w-[30%] mb-4";
+    const pStyle = "font-normal text-gray-700";
+
     useEffect(() => {
         const fetchUser = async () => {
           const data = await userController.getUser(accessToken, id);
@@ -23,12 +27,26 @@ export const UserInfo = () => {
         fetchUser();
       }, [accessToken, pathname]);
   return (
-    <section>
-        <h1>Informacion del usuario</h1>
-        <h2>Email: {user.email}</h2>
-        <h2>Nombre completo: {user.firstname} {user.lastname}</h2>
-        <h3>Rol: {user.role}</h3>
-        {userResults.length !== 0 ? <h3>Resultados: {userResults.map((item) => <Result key={item.area} result={item}/>)}</h3> : <h2>No hay resultados</h2>}
+    <section className='w-[100vw] 2xl:h-[70vh] gap-10 flex flex-col justify-center p-8'>
+        <div className='border-b-2 pb-2'>
+          <h1 className='text-[2rem]'>Información del usuario</h1>
+          <h2 className='text-[1rem] text-gray-600'>Detalles personales del usuario</h2>
+        </div>
+        <div className='flex flex-col gap-2'>
+          <div className={infoStyle}>
+            <h3 className={hStyle}>Email </h3>
+            <p className={pStyle}>{user.email}</p>
+          </div>
+         <div className={infoStyle}>
+           <h3 className={hStyle}>Nombre completo </h3>
+           <p className={pStyle}>{user.firstname} {user.lastname}</p>
+         </div>
+          <div className={infoStyle}>
+            <h3 className={hStyle}>Rol </h3>
+            <p className={pStyle}>{user.role}</p>
+          </div>
+          {userResults.length !== 0 ? <h3 className={hStyle}>Resultados:   {userResults.map((item) => <Result key={item.area} result={item}/>)}</h3> : <h2 className={hStyle}>No hay resultados del test</h2>}
+        </div>
     </section>
   )
 }

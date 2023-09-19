@@ -15,8 +15,8 @@ export const AdminMenu = () => {
         {isAdmin && (
          <>   
          
-        <Button onClick={() => {navigate('/home')}} size="sm" className='bg-orange-800 w-[10%] flex items-center justify-center gap-2'><ArrowLeftIcon className='h-[1.1rem]'/>Volver a la app</Button>
-        <Button onClick={() => {navigate('/admin/users')}} size="sm" className='bg-orange-800 w-[10%]'>Usuarios</Button>
+        <Button onClick={() => {navigate('/home')}} size="sm" className='bg-orange-800 w-[15%] 2xl:w-[10%] flex items-center justify-center gap-2'><ArrowLeftIcon className='h-[1.1rem]'/>Volver a la app</Button>
+        <Button onClick={() => {navigate('/admin/users')}} size="sm" className='bg-orange-800 w-[15%] 2xl:w-[10%]'>Usuarios</Button>
         </>
         )}
     </nav>

@@ -45,6 +45,8 @@
     align-items: center;
     animation-name: show;
     animation-duration: 2.5s;
+    gap: .5rem;
+    margin-top: .5rem;
 }
 
 .buttonsRegister p{

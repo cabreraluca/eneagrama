@@ -5,7 +5,6 @@ export class Auth {
 
     async register(data) {
         try {
-            console.log(data);
             const url = `${this.baseApi}/${Env.API_ROUTES.REGISTER}`;
             const params = {
                 method: "POST",

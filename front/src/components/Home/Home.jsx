@@ -8,6 +8,7 @@ export const Home = () => {
 
     return (
         <section className='w-[100%] lg:[100vw] flex items-center text-center flex-col gap-5 pt-6'>
+            <h1 className='text-2xl font-bold'>¡Completá tu eneagrama!</h1>
             <h3 className='w-[60%] lg:w-[50%]'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, illo! Iusto excepturi dolor consequatur laudantium expedita ut culpa eaque labore. Labore a corporis ut totam recusandae animi eos quas sed.
                 Veritatis mollitia quis sequi aliquam, hic fugiat illum nobis quam explicabo libero obcaecati placeat quae tempore. Nemo illo odit porro quae enim beatae asperiores, numquam pariatur atque autem iusto natus!

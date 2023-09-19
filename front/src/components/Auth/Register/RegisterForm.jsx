@@ -31,6 +31,20 @@ export const RegisterForm = () => {
         
     };
 
+    const notifyError = (error) =>{
+        console.log(error)
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
+
     const formik = useFormik({
         initialValues: registerInitialValues(),
         validationSchema: registerValidationSchema(),
@@ -40,7 +54,7 @@ export const RegisterForm = () => {
                 await authController.register(formValue);
                 notify();
             } catch (error) {
-                console.log(error)
+                notifyError(error.message);
             }
         }
     })
@@ -49,28 +63,28 @@ export const RegisterForm = () => {
     <section className='formContainer'>
         <div className='logoContainer'>
             <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
-            <h1>Viaja dentro de tí mismo</h1>
+            <h1 className='text-xl mt-2'>Viaja dentro de tí mismo</h1>
         </div>
         <Form className='register-form' onSubmit={formik.handleSubmit}>
             <section className='inputsForm'>
                 <label htmlFor="email">Email</label>
-                <Form.Input className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
+                <Form.Input id="email" className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
             </section>
             <section className='inputsForm'>
-                <label htmlFor="email">Nombre</label>
-                <Form.Input className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
+                <label htmlFor="firstname">Nombre</label>
+                <Form.Input id="firstname" className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
             </section>
             <section className='inputsForm'>
-                <label htmlFor="email">Apellido</label>
-                <Form.Input className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
+                <label htmlFor="lastname">Apellido</label>
+                <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
             </section>
             <section className='inputsForm'>
-                <label htmlFor="email">Contraseña</label>
-                <Form.Input className='inputsRegister' name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
+                <label htmlFor="password">Contraseña</label>
+                <Form.Input id="passoword" className='inputsRegister' name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
             </section>
             <section className='inputsForm'>
-                <label htmlFor="email">Repita la contraseña</label>
-                <Form.Input className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
+                <label htmlFor="repeatPassword">Repita la contraseña</label>
+                <Form.Input id="repeatPassoword" className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
             </section>
             <Form.Checkbox
                 className='checkBox inline-block' 
