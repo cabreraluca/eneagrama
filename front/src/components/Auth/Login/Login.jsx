@@ -6,8 +6,6 @@ import { useAuth } from '../../../hooks';
 import { ToastContainer, toast } from 'react-toastify';
 import { validationSchema, initialValues } from './LoginForm';
 import './Login.css'
-import { AuthComponent } from '../../../pages/admin/Auth';
-import { Users } from '../../Users/Users';
 import { useNavigate } from 'react-router-dom';
 
 const authController = new Auth();
@@ -43,54 +41,53 @@ export const Login = () => {
     }
   })
   return (
-    <div>
-    <section className='formContainer'>
-      <div className='logoContainer'>
-        <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
-        <h1>Viaja dentro de tí mismo</h1>
-      </div>
-      <Form onSubmit={formik.handleSubmit} className='formLogin'>
-        <section>
-          <label htmlFor="email" form='email'>Email</label>
-          <Form.Input
-              id="email"
-              name='email' 
-              placeholder="Correo electronico"
-              onChange={formik.handleChange} 
-              value={formik.values.email} 
-              error={formik.errors.email}
-              className='input'
-          />
-        </section>
-        <section>
-          <label htmlFor="password">Contraseña</label>
-          <Form.Input 
-              id="password"
-              name='password' 
-              type='password' 
-              placeholder="Contraseña" 
-              onChange={formik.handleChange} 
-              value={formik.values.password} 
-              error={formik.errors.password}
-              className='input'/>
-        </section>
-        <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
-                Ingresar
-        </Form.Button>
-        <ToastContainer />
-        <section className='buttonsLogin'>
-          <div style={{display: "flex", gap: ".5rem"}}>
-            <p className='newAccount'>¿No tienes cuenta?</p>
-            <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
-              Registrate.
-            </Form.Button>
-          </div>
-          <Form.Button className='resetPass' onClick={()=> navigate("/reset-password")}>
-                  ¿Olvidaste tu contraseña?
+    <section className='w-[100vw] h-[100vh] flex flex-col items-center justify-center ContainerLogin bg-bottom '>
+      <section className='formContainer flex flex-col justify-center gap-10'>
+        <div className='w-[100vw] flex items-center justify-center'>
+          <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="" className='h-[5.5rem] lg:h-[7rem] 2xl:h-[9rem]'/>
+        </div>
+        <Form onSubmit={formik.handleSubmit} className='flex flex-col items-center gap-4'>
+          <section className='lg:w-[20vw]'>
+            <label htmlFor="email" className='font-semibold '>Email</label>
+            <Form.Input
+                id="email"
+                name='email' 
+                placeholder="Correo electronico"
+                onChange={formik.handleChange} 
+                value={formik.values.email} 
+                error={formik.errors.email}
+                className='inputLogin'
+            />
+          </section>
+          <section className='lg:w-[20vw]'>
+            <label htmlFor="password" className='font-semibold '>Contraseña</label>
+            <Form.Input 
+                id="password"
+                name='password' 
+                type='password' 
+                placeholder="Contraseña" 
+                onChange={formik.handleChange} 
+                value={formik.values.password} 
+                error={formik.errors.password}
+                className='inputLogin'/>
+          </section>
+          <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
+                  Ingresar
           </Form.Button>
-        </section>
-      </Form>
+          <ToastContainer />
+          <section className='flex flex-col items-center'>
+            <div className='flex gap-2 items-center'>
+              <p className='font-semibold textNewAccount'>¿No tienes cuenta?</p>
+              <Form.Button className='newAccountButton' onClick={()=>navigate('/register')}>
+                Regístrate.
+              </Form.Button>
+            </div>
+            <Form.Button className='resetPass' onClick={()=> navigate("/reset-password")}>
+                    ¿Olvidaste tu contraseña?
+            </Form.Button>
+          </section>
+        </Form>
+      </section>
     </section>
-    </div>
   )
 }

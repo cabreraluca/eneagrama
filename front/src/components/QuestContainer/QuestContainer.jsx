@@ -14,29 +14,35 @@ const UserController = new User();
 export const QuestContainer = () => {
   
   const { user, accessToken } = useAuth();
-  const { select, resultadoQuest, indexAnswer, questionsAnswered} = useContext(QuestionsContext);
+  const { select, resultadoQuest, indexAnswer, questionsAnswered, setSelect} = useContext(QuestionsContext);
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
   const [dbResults, setDbResults] = useState([]);
   const [testInProgress, setTestInProgress] = useState(true);
+  let idStorage;
 
   useEffect(() => {
-    const fetchData = async () =>{
+    const fetchDataUser = async () =>{
       const userData = await UserController.getUser(accessToken, user._id);
       if(userData.finished){
         setTestComplete(true);
         setDbResults(userData.results);
-      }
-      userData.started = true;
-      userData.password = null;
-      UserController.updateUser( user._id, userData);
+        userData.password = null;
+        UserController.updateUser( user._id, userData);
+      }      
     }
-    fetchData()
+    fetchDataUser()
+    if (!user.started) {
+        idStorage = 0
+        localStorage.removeItem("id");
+        localStorage.removeItem("storageResults");
+        setSelect([]);
+    }
   }, [])
   
 
   useEffect(() => {
-    const idStorage = JSON.parse(localStorage.getItem("id")) || 0;
+    let idStorage = JSON.parse(localStorage.getItem("id")) || 0;
     const allQuestions  = data.test;
     setQuest(allQuestions[idStorage])
   }, [indexAnswer]);

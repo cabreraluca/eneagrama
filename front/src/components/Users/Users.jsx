@@ -51,8 +51,9 @@ export const Users = () => {
   }
 
   useEffect(() => {
-    let filtrado = users.filter((item) => item.firstname.toLowerCase().includes(search.toLowerCase()))
-    filtrado.length === 0 ? filtrado = users.filter((item) => item.lastname.toLowerCase().includes(search.toLowerCase()))  : "";
+    const filterResult = search.replace(/ /g, "");
+    console.log(filterResult)
+    let filtrado = users.filter((item) => item.firstname.replace(/ /g, "").toLowerCase().concat(item.lastname.toLowerCase()).includes(filterResult.toLowerCase()));
     setSearchResults(filtrado);
   }, [search, users]);
   
