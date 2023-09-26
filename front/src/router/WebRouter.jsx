@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import { AdminLayout, ClientLayout } from '../layouts';
-import { AuthComponent } from '../pages/admin/Auth';
 import { useAuth } from '../hooks';
 import { ResetPassword, ChangePassword } from '../components/Auth';
 import { QuestContainer } from '../components/QuestContainer';

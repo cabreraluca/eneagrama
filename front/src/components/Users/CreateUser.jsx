@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import {Form} from "semantic-ui-react"
+import {Dropdown, Form} from "semantic-ui-react"
 import { useFormik } from 'formik';
 import {createUserInitialValues, createUserValidationSchema} from './CreateUserForm'
 import { User } from '../../api';
@@ -79,8 +79,7 @@ export const CreateUser = (props) => {
                             <label htmlFor="repeatPassword">Repita la contraseña</label>
                             <Form.Input id="repeatPassword" className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
                         </section>
-                        <Form.Dropdown
-                            className='prueba'
+                        {/* <Dropdown
                             name="role"
                             label="Rol"
                             placeholder="Selecciona un rol"
@@ -90,7 +89,12 @@ export const CreateUser = (props) => {
                             onChange={(_, data) => formik.setFieldValue('role', data.value)}
                             value={formik.values.role}
                             error={formik.errors.role}
-                        />
+                        /> */}
+                        <Select label="Selecciona el rol" onChange={(element) => { 
+                            formik.setFieldValue('role', element)
+                        }}>
+                            {roleOptions.map((rol) => <Option key={rol.key} value={rol.value} >{rol.text}</Option>)}
+                        </Select>   
                         <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
                             Crear usuario
                         </Form.Button>               

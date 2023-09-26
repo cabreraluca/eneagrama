@@ -1,197 +1,61 @@
-.formContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+*{
+    font-family: 'Raleway';
+}
+
+.ContainerLogin{
+    background-image: url('../../../assets/pattern2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inputLogin input{
+    border: 2px solid #f37352;
+    padding: .2rem;
+    margin-top: .6rem;
+    border-radius: .3rem;
     width: 100%;
-    background-image: linear-gradient(to bottom,#0f79ca, #0a3f68);
 }
-
-.formContainer form{
-    display: flex;
-}
-
-.logoContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    height: 80%;
-    background-color: white;
-    border-radius: 2rem 0 0 2rem;
-    flex-direction: column;
-}
-
 
 .label{
-    color: red;
-    font-size: .7rem;
-    padding-bottom: .9rem;
-}
-
-label{
-    text-align: center;
-    font-weight: 600;
-    color: rgb(56, 55, 55);
-    animation-name: show;
-    animation-duration: 2s;
-}
-
-.form{
-    height: 80%;
-    display: flex;
-    background-color: rgb(230, 227, 227);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 40%;
-    border-radius: 0 2rem 2rem 0;
-}
-
-@keyframes show {
-    from{
-        opacity: 0;
-    }
-
-    to{
-        opacity: 1;
-    }
-}
-
-.input{
-    animation-name: show;
-    animation-duration: 2.5s;
-}
-
-.input input{
-    font-size: 1.2rem;
-    padding: .5rem;
-    width: 90%;
-    margin: .8rem;
-    border: 1px solid #f27b20;
-    border-radius: .5rem;
-}
-
-.buttonEnviar button{
-    font-size: 1.1rem;
-    border: none;
-    width: 8rem;
-    height: 2rem;
-    font-weight: 600;
-    background-color: #f27b20;
-    color: white;
-    border-radius: .8rem;
-    margin-top: 1.5rem;
-    cursor: pointer;
-    transition: .2s;
-    animation-name: show;
-    animation-duration: 2.5s;
-}
-
-.buttonEnviar button:hover{
-    background-color: #b45e1b;
-}
-
-.newAccount{
-    display: flex;
-    gap: .2rem;
-    align-items: center;
+    color: rgb(160, 19, 19);
+    font-weight: bold;
+    margin-top: 1rem;
     font-size: .9rem;
 }
 
-.newAccountButton button{
-    background-color: transparent;
-    border: none;
-    color: #0f79ca;
-    font-size: .9rem;
-    cursor: pointer;
-}
-
-.resetPass button{
-    background-color: transparent;
-    border: none;
-    color: #0f79ca;
-    font-size: .9rem;
-    cursor: pointer;
-}
-
-.buttonsLogin{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation-name: show;
-    animation-duration: 2.5s;
+.buttonEnviar{
     margin-top: 1rem;
 }
 
-/* RESET PASSWORD CLASSES */
-
-.resetPassContainer{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: linear-gradient(to bottom,#0f79ca, #0a3f68);
-}
-
-.formReset{
-    background-color: whitesmoke;
-    border-radius: .8rem;
-    width: 35%;
-}
-
-.resetContainerForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.resetContainerForm p{
-    margin-bottom: 1rem;
-    text-align: center;
-    font-weight: 400;
-}
-
-.resetContainerForm h2{
-    font-weight: 700;
-}
-
-.resetInputContainer{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.resetInput{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.resetInput input{
-    width: 80%;
-    text-align: center;
-}
-
-.buttonResetPass{
-    width: 70%;
-}
-
-.buttonResetPass button{
-    font-size: 1.1rem;
-    border: none;
-    font-weight: 600;
-    background-color: #0a3f68;
+.buttonEnviar button{
+    background-color: #2b2c91;
     color: white;
-    border-radius: .8rem;
-    margin-top: 1.5rem;
+    font-weight: bold;
+    padding: .4rem 2rem;
+    border-radius: .3rem;
+}
+
+.buttonEnviar button:hover{
+    background-color: #21226b;
+}
+
+.newAccountButton{
+    font-weight: 600;
+    color: white;
     cursor: pointer;
-    padding: .5rem;
-    width: 100%;
+}
+
+.textNewAccount{
+    color: black;
+}
+
+.resetPass{
+    font-weight: 600;
+    color: white;
+    margin-top: .5rem;
+    cursor: pointer;
+}
+
+.newAccountButton:hover, .resetPass:hover{
+    color: #2b2c91;
 }
