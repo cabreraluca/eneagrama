@@ -6,7 +6,8 @@ export function EditUserInitialValues(user){
         lastname: user?.lastname || "",
         email: user?.email || "",
         role: user?.role || "",
-        testEnabled: user?.testEnabled || ""
+        testEnabled: user?.testEnabled,
+        company: user?.company || "",
     };
 }
 
@@ -16,6 +17,7 @@ export function EditUserValidationSchema(user){
         lastname: Yup.string().required(true),
         email: Yup.string().email().required(true),
         role: Yup.string().required(true),
-        testEnabled: Yup.bool()
+        testEnabled: Yup.bool().required(true),
+        company: Yup.string()
     })
 }

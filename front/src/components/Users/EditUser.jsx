@@ -13,10 +13,9 @@ const userController = new User();
 export const EditUser = (props) => {
     const {user} = useAuth()
     const {role} = user;
-    const { fetchUsers, userData, accessToken} = props;
+    const { fetchUsers, userData, accessToken, companies} = props;
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen((cur) => !cur);
-    
     const roleOptions = [{
             key: "admin",
             text: "Administrador",
@@ -87,7 +86,7 @@ export const EditUser = (props) => {
                             <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
                         </section>
                         <section>
-                            {role === 'admin' ?<Form.Checkbox 
+                            {role === 'admin' && !userData.company &&userData.role !== "company"?<Form.Checkbox 
                                 id="testEnabled" 
                                 className='checkBox inline-block'                 
                                 name='termsAccepted' 
@@ -109,6 +108,7 @@ export const EditUser = (props) => {
                             value={formik.values.role}
                             error={formik.errors.role}
                         /> : ""}
+                        {role === 'admin'? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
                         <section>
                             <Form.Button primary fluid type='button' onClick={() => onDelete(userData._id)}>
                                 Eliminar usuario

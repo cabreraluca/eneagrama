@@ -3,7 +3,7 @@ import { Typography , Chip, Tooltip, IconButton, Button} from "@material-tailwin
 import { useNavigate } from 'react-router-dom';
 import {EditUser} from './EditUser'
 
-export const UserView = ({user, fullUsers, fetchUsers, accessToken}, index) => {
+export const UserView = ({user, fullUsers, fetchUsers, accessToken, companies}, index) => {
     const navigate = useNavigate();
     const { firstname, lastname, email, finished, started, role, _id} = user;
 
@@ -88,7 +88,7 @@ export const UserView = ({user, fullUsers, fetchUsers, accessToken}, index) => {
               <td className={classes}>
                 <Tooltip content="Edit User">
                   <IconButton variant="text">
-                    <EditUser accessToken={accessToken} fetchUsers={fetchUsers} userData={user}/>
+                    <EditUser companies={companies} accessToken={accessToken} fetchUsers={fetchUsers} userData={user}/>
                   </IconButton>
                 </Tooltip>
               </td>

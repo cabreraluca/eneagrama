@@ -69,8 +69,6 @@ export class User{
     async filterUsers(accessToken, param) {
         try {
           const url = `${this.baseApi}/${Env.API_ROUTES.FILTER_USERS}/?${param}=true`;
-          console.log(url);
-          console.log(param);
           const params = {
             headers: {
               Authorization: accessToken,

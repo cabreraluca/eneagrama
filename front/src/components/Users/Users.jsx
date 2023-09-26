@@ -35,7 +35,7 @@ export const Users = () => {
   const [filterByCompany, setFilterByCompany] = useState(false)
   const [companyToSearch, setCompanyToSearch] = useState("")
 
-  const fetchUsers = async (companyId) => {
+  const fetchUsers = async () => {
     if(role === "admin"){
       if (query === "" && !companyToSearch) {
         const usersList = await userController.getUsers(accessToken);
@@ -63,8 +63,7 @@ export const Users = () => {
   useEffect(() => {
     fetchUsers();
     fetchCompanies()
-    console.log(companyToSearch)
-  }, [accessToken, query, companyToSearch]);
+  }, [accessToken, query, companyToSearch, filterByCompany]);
 
   const inputChange = (e) =>{
     setSearch(e.target.value);
@@ -96,9 +95,9 @@ export const Users = () => {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
             <TabsHeader className="flex gap-4 bg-transparent">
-              <Button variant="outlined" size="sm" onClick={() => setQuery("finished")}>Finalizados</Button>
-              <Button variant="outlined" size="sm" onClick={() => setQuery("started")}>Comenzados</Button>
-              <Button variant="outlined" size="sm" onClick={() => setQuery("")}>Todos</Button>
+              <Button variant="outlined" size="sm" onClick={() => [setQuery("finished"), setFilterByCompany(false)]}>Finalizados</Button>
+              <Button variant="outlined" size="sm" onClick={() => [setQuery("started"), setFilterByCompany(false)]}>Comenzados</Button>
+              <Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false)]}>Todos</Button>
               <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button>
               <Dialog
                 size="xs"
@@ -158,7 +157,7 @@ export const Users = () => {
           </thead>
           <tbody>
             {searchResults.length === 0 && search !== "" && <h2 className="w-[100vw] text-center pt-6 text-[1.6rem]">No se encontraron resultados</h2>}
-            {searchResults.length > 0 ? searchResults.map((user) => <UserView accessToken={accessToken} fetchUsers={fetchUsers} key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} fullUsers={users} index={users.indexOf(user)}/>)}
+            {searchResults.length > 0 ? searchResults.map((user) => <UserView accessToken={accessToken} fetchUsers={fetchUsers} companies={companies} key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} companies={companies} fullUsers={users} index={users.indexOf(user)}/>)}
           </tbody>
         </table>
       </CardBody>
