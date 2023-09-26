@@ -53,7 +53,7 @@ export const NavbarDefault = () => {
           Cuenta
         </a>
       </Typography>
-      {user.role === "admin" ? 
+      {user.role === "admin" || "company" ? 
                 <Typography
                 as="li"
                 variant="small"

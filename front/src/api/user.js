@@ -61,6 +61,7 @@ export class User{
             if (response.status !== 200) throw result;
 
             return result;
+            console.log(result);
         } catch (error) {
             console.log(error)
         }
@@ -84,6 +85,18 @@ export class User{
           return result;
         } catch (error) {
           console.log(error);
+        }
+    }
+
+    async getCompanyUsers(companyId){
+        try {
+            const url = `${this.baseApi}/${Env.API_ROUTES.USERS_BY_COMPANY}/${companyId}`
+            const response = await fetch(url);
+            const result = await response.json();
+
+            return result 
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -183,5 +196,21 @@ export class User{
         } catch (error) {
             
         }
+    }
+
+    async getCompanies(){
+        try {
+            const url = `${this.baseApi}/${Env.API_ROUTES.COMPANIES}`
+            const params = {
+                method: "GET",
+            }
+
+            const response = await fetch(url, params);
+            const result = await response.json();
+            return result;
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 }

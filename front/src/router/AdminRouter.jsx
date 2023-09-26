@@ -10,7 +10,7 @@ export function AdminRouter() {
   const { user } = useAuth();
   const navigate = useNavigate()
 
-  const isAdmin = user && user.role === 'admin';
+  const isAdmin = user && user.role === 'admin' || "company";
 
   if (!user) {
     return (

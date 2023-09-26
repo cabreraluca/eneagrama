@@ -12,7 +12,9 @@ export const Env = {
         USERS: "users",
         USER_TOKEN: "userToken",
         RESET_PASSWORD: "auth/resetpassword",
-        FILTER_USERS: "filterUsers"
+        FILTER_USERS: "filterUsers",
+        USERS_BY_COMPANY: "usersByCompany",
+        COMPANIES: "companiesList",
     },
     JWT: {
         ACCESS: "access",

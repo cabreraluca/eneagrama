@@ -69,9 +69,18 @@ async function getUsers(req, res) {
   res.status(200).send(response);
 }
 
+async function getCompanyUsers(req, res){
+  const {company} = req.params;
+  const response = await User.find({company: company})
+  res.status(200).send(response);
+}
+
 async function filterUsers(req, res){
-  const {finished, started} = req.query;
+  const {finished, started, company} = req.query;
   if(req.query !== ""){
+    if(company){
+      const response = await User.find({company: company});
+    }
     if(finished){
       const response = await User.find({finished});
       res.status(200).send(response);
@@ -85,6 +94,16 @@ async function filterUsers(req, res){
         }
       } 
   }
+}
+
+async function getCompaniesList(req, res){
+  try {
+    const response = await User.find({role: 'company'})
+    res.status(200).send(response);
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 async function getUserByToken(req, res){
@@ -118,5 +137,7 @@ module.exports = {
     getUser,
     getUserByToken,
     createUser,
-    filterUsers
+    filterUsers,
+    getCompanyUsers,
+    getCompaniesList
 }

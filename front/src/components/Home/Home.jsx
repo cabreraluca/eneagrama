@@ -1,9 +1,10 @@
 import { Button } from '@material-tailwind/react';
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks';
 
 export const Home = () => {
-
+    const {user} = useAuth();
     const navigate = useNavigate();
 
     return (
@@ -24,9 +25,11 @@ export const Home = () => {
                 Temporibus, laudantium. Nemo culpa blanditiis cupiditate! Modi explicabo nostrum vitae eum quis similique unde dicta magnam necessitatibus eos sunt tempora numquam, inventore dolores facilis qui totam facere nemo impedit consectetur?
                 Repudiandae excepturi modi reiciendis dolor laboriosam, aliquam numquam recusandae accusantium! Nobis reprehenderit eaque, dignissimos voluptatem quibusdam veritatis nam in eos odio et beatae consectetur velit explicabo minus sapiente. Atque, dolorem?
             </h3>
-            <Button onClick={() => {navigate('/cuestionario')}}>
+            { user.testEnabled? <Button onClick={() => {navigate('/cuestionario')}}>
                 Realizar test
-            </Button>
+            </Button> :
+            <h2>Debes esperar a que te habiliten el test</h2>
+            }
         </section>
     )
 }

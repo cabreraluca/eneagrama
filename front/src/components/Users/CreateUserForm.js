@@ -7,6 +7,7 @@ export function createUserInitialValues() {
         firstname: "",
         lastname:"",
         role: "",
+        company: "",
     };
 }
 
@@ -21,6 +22,6 @@ export function createUserValidationSchema(){
         repeatPassword: Yup.string()
             .required("Campo obligatorio")
             .oneOf([Yup.ref("password")], "Las contraseñas deben ser iguales"),
-        role: Yup.string().required("Campo obligatorio")
+        role: Yup.string()
     })
 }

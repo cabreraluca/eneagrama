@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useAuth } from "../../hooks";
 import { User } from "../../api";
 import { useNavigate } from "react-router-dom";
-import { Button, button} from "@material-tailwind/react";
+import { Button, Option, Select, button} from "@material-tailwind/react";
 import { UserView } from "./UserView";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
@@ -25,25 +25,39 @@ import { CreateUser } from "./CreateUser";
 const userController = new User();
 
 export const Users = () => {
-  const { accessToken } = useAuth();
+  const { accessToken, user } = useAuth();
+  const {role} = user;
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const [companies, setCompanies] = useState([])
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
   const TABLE_HEAD = ["Nombre", "Email", "Estado",  "Rol", "Detalles", ""];
 
   const fetchUsers = async () => {
-    if (query === "") {
-      const usersList = await userController.getUsers(accessToken);
-      setUsers(usersList);
-    } else {
-      const usersList = await userController.filterUsers(accessToken, query);
-      setUsers(usersList);
+    if(role === "admin"){
+      if (query === "") {
+        const usersList = await userController.getUsers(accessToken);
+        setUsers(usersList);
+      } else {
+        const usersList = await userController.filterUsers(accessToken, query);
+        setUsers(usersList);
+      }
+    }
+    if(role === "company"){
+      const userList = await userController.getCompanyUsers(user._id);
+      setUsers(userList);
     }
   };
+  const fetchCompanies = async () =>{
+    const companiesList = await userController.getCompanies();
+    setCompanies(companiesList);
+    console.log(companies)
+  }
 
   useEffect(() => {
     fetchUsers();
+    fetchCompanies()
   }, [accessToken, query]);
 
   const inputChange = (e) =>{
@@ -70,7 +84,7 @@ export const Users = () => {
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <CreateUser  fetchUsers={fetchUsers} accessToken={accessToken}/>
+            <CreateUser user={user} role={role} companies={companies} fetchUsers={fetchUsers} accessToken={accessToken}/>
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -113,7 +127,7 @@ export const Users = () => {
           </thead>
           <tbody>
             {searchResults.length === 0 && search !== "" && <h2 className="w-[100vw] text-center pt-6 text-[1.6rem]">No se encontraron resultados</h2>}
-            {searchResults.length > 0 ? searchResults.map((user) => <UserView hola={'hola'} accessToken={accessToken} fetchUsers={fetchUsers} key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} fullUsers={users} index={users.indexOf(user)}/>)}
+            {searchResults.length > 0 ? searchResults.map((user) => <UserView accessToken={accessToken} fetchUsers={fetchUsers} key={user._id} user={user} fullUsers={searchResults} index={searchResults.indexOf(user)}/>) : search === "" && users?.map((user) => <UserView key={user._id} user={user} fullUsers={users} index={users.indexOf(user)}/>)}
           </tbody>
         </table>
       </CardBody>

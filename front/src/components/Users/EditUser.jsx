@@ -6,10 +6,13 @@ import { User } from '../../api';
 import { Button, Dialog, Select, Option } from '@material-tailwind/react';
 import { PencilIcon } from '@heroicons/react/24/solid';
 import "./User.css"
+import { useAuth } from '../../hooks';
 
 const userController = new User();
 
 export const EditUser = (props) => {
+    const {user} = useAuth()
+    const {role} = user;
     const { fetchUsers, userData, accessToken} = props;
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen((cur) => !cur);
@@ -40,6 +43,8 @@ export const EditUser = (props) => {
     const onResetResults = async (userId) =>{
         await userController.updateUser(userId, {results: [], finished: false, started: false})
         handleOpen();
+        localStorage.removeItem("id");
+        localStorage.removeItem("storageResults")
         fetchUsers();
     }
     const formik = useFormik({
@@ -48,7 +53,7 @@ export const EditUser = (props) => {
         validateOnChange: false,
         onSubmit: async (formValue) =>{
             try {
-                console.log('hola')
+                console.log(formValue)
                 await userController.updateUser(userData._id, formValue);
                 fetchUsers()
                 handleOpen()
@@ -81,7 +86,18 @@ export const EditUser = (props) => {
                             <label htmlFor="lastname">Apellido</label>
                             <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
                         </section>
-                        <Form.Dropdown
+                        <section>
+                            {role === 'admin' ?<Form.Checkbox 
+                                id="testEnabled" 
+                                className='checkBox inline-block'                 
+                                name='termsAccepted' 
+                                label="Habilitar test"
+                                onChange={(_, data)=> formik.setFieldValue("testEnabled", data.checked)}
+                                checked={formik.values.testEnabled}
+                                error={formik.errors.testEnabled}
+                            /> : ""}
+                        </section>
+                        {role === 'admin' ?<Form.Dropdown
                             className='prueba'
                             name="role"
                             label="Rol"
@@ -92,7 +108,7 @@ export const EditUser = (props) => {
                             onChange={(_, data) => formik.setFieldValue('role', data.value)}
                             value={formik.values.role}
                             error={formik.errors.role}
-                        />
+                        /> : ""}
                         <section>
                             <Form.Button primary fluid type='button' onClick={() => onDelete(userData._id)}>
                                 Eliminar usuario

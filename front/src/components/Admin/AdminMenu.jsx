@@ -7,7 +7,7 @@ import { Button } from '@material-tailwind/react';
 
 export const AdminMenu = () => {
     const {user:{role}} = useAuth();
-    const isAdmin = role === "admin";
+    const isAdmin = role === "admin" || "company";
     const navigate = useNavigate();
 
   return (
