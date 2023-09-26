@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import {Form} from "semantic-ui-react"
+import {Dropdown, Form} from "semantic-ui-react"
 import { useFormik } from 'formik';
 import {createUserInitialValues, createUserValidationSchema} from './CreateUserForm'
 import { User } from '../../api';
@@ -90,8 +90,7 @@ export const CreateUser = (props) => {
                             <label htmlFor="repeatPassword">Repita la contraseña</label>
                             <Form.Input id="repeatPassword" className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
                         </section>
-                        {role === 'admin' ? <Form.Dropdown
-                            className='prueba'
+                        {/* {role === 'admin' ? {/* <Dropdown
                             name="role"
                             label="Rol"
                             placeholder="Selecciona un rol"
@@ -101,8 +100,7 @@ export const CreateUser = (props) => {
                             onChange={(_, data) => formik.setFieldValue('role', data.value)}
                             value={formik.values.role}
                             error={formik.errors.role}
-                        /> : ""}
-                        {role === 'admin'? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
+                        /> */}
                         <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
                             Crear usuario
                         </Form.Button>               

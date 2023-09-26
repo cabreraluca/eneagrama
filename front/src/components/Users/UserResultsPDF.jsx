@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Document, Page, Text, View } from "@react-pdf/renderer";
 
 
 export const UserResultsPDF = ({result}) => {
-    console.log(result)
 
   return (
     <Document>

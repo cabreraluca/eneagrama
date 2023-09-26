@@ -1,6 +1,7 @@
 import { Button } from '@material-tailwind/react';
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ClockIcon } from "@heroicons/react/24/solid";
 import { useAuth } from '../../hooks';
 
 export const Home = () => {
@@ -8,29 +9,23 @@ export const Home = () => {
     const navigate = useNavigate();
 
     return (
-        <section className='w-[100%] lg:[100vw] flex items-center text-center flex-col gap-5 pt-6'>
-            <h1 className='text-2xl font-bold'>¡Completá tu eneagrama!</h1>
-            <h3 className='w-[60%] lg:w-[50%]'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, illo! Iusto excepturi dolor consequatur laudantium expedita ut culpa eaque labore. Labore a corporis ut totam recusandae animi eos quas sed.
-                Veritatis mollitia quis sequi aliquam, hic fugiat illum nobis quam explicabo libero obcaecati placeat quae tempore. Nemo illo odit porro quae enim beatae asperiores, numquam pariatur atque autem iusto natus!
-                Id placeat quam officiis maiores doloremque minus consectetur ad explicabo nesciunt! Reprehenderit soluta iure repellat repellendus beatae assumenda ducimus, laborum odit vitae omnis quod ipsa. Odio blanditiis laudantium eum facere.
-                Nesciunt quo non labore error amet quaerat ducimus quas, placeat quasi corporis quidem nobis eum sit asperiores qui vero ex voluptas dolores est reprehenderit laborum dolorum minima. Commodi, placeat voluptatibus?
-                Consequatur assumenda reprehenderit sequi provident dolore nihil omnis, modi harum iusto, corrupti eum. Magnam, labore atque nostrum doloremque, repudiandae sapiente commodi quo ratione repellat maiores veniam voluptates aliquid voluptas similique.
-                Dolores amet dolorum et minima corporis, nemo, dolor eaque, accusantium enim illum obcaecati doloremque perspiciatis rerum veniam nobis deleniti atque placeat magni. A modi facere dolorum quam repellendus, dignissimos dolores?
-                Libero facilis suscipit qui corrupti, quidem culpa quos eum nemo sunt rem cumque dolores debitis quis eaque provident quo assumenda iste distinctio sit dolorum incidunt sequi non. Nihil, ullam maxime?
-                Enim repellendus tempore, distinctio aliquid dolorum odit id temporibus, cumque magnam voluptatibus, placeat asperiores tenetur velit corrupti voluptatem delectus nihil at labore? Soluta sit vel quae, fugiat ducimus animi dolorem.
-                Assumenda consectetur officia necessitatibus unde minima rerum in non sint ut dignissimos enim eligendi blanditiis saepe nemo, dolorum error quibusdam beatae quisquam! Ipsum et tenetur, exercitationem totam sed voluptatum omnis!
-                Vel quo nobis molestias numquam explicabo unde blanditiis, distinctio temporibus, accusantium consequatur officiis rem facere ratione natus illo, corporis ipsa architecto a nesciunt debitis! Incidunt in libero quos alias provident.
-                Enim odio fugit aliquam placeat ex laborum officiis consequatur incidunt consectetur, exercitationem veniam error dolor? Esse, debitis voluptas. Deleniti vitae, architecto aperiam cupiditate harum quod neque provident earum. Numquam, alias!
-                Temporibus, laudantium. Nemo culpa blanditiis cupiditate! Modi explicabo nostrum vitae eum quis similique unde dicta magnam necessitatibus eos sunt tempora numquam, inventore dolores facilis qui totam facere nemo impedit consectetur?
-                Repudiandae excepturi modi reiciendis dolor laboriosam, aliquam numquam recusandae accusantium! Nobis reprehenderit eaque, dignissimos voluptatem quibusdam veritatis nam in eos odio et beatae consectetur velit explicabo minus sapiente. Atque, dolorem?
-            </h3>
-            { user.testEnabled? <Button onClick={() => {navigate('/cuestionario')}}>
-                Realizar test
-            </Button> :
-            <h2>Debes esperar a que te habiliten el test</h2>
-            }
+        <section className='w-[100%] h-[100%] 2xl:h-[60vh] flex flex-col xl:flex-row items-center justify-center xl:justify-around gap-5 pt-6'>
+            <h1 className='text-[2.5rem] lg:text-[2.5rem] 2xl:text-[3rem] font-bold w-[100%] xl:w-[50%] bg-gradient-to-r from-red-500 from-10 via-pink-500 via-10 to-yellow-500 to-80  bg-clip-text  text-transparent text-center'>¡Completa tu eneagrama!</h1>
+            <div className='flex items-center flex-col gap-6 w-[100%] xl:w-[60%] font-semibold mt-20'>
+                <h2 className='2xl:text-[1.2rem]'><ClockIcon className='w-[2rem] text-indigo-900 inline'/> Tiempo estimado: 20-30 min.</h2>
+                <p className='w-[65%] leading-8 2xl:text-[1.2rem]'>
+                  Debes tomarte un tiempo tranquilo/a, responderlo sin pensar demasiado y con total honestidad hacia vos mismo, en base a lo que sientas en este momento de tu vida. No lo analices con la mente. Tendrás que presionar el boton <span className='font-bold'>"SI"</span> en los enunciados con los cuales te sientas identificado o que te suela pasar frecuentemente y presionar el boton <span className='font-bold'>"NO"</span> en los que no sea así, o no te sientas identificado para nada.
+                  No podrás volver a una pregunta que ya has respondido.
+                  <span className='block text-orange-600 font-bold text-xl mt-4'>Recomendación</span> Una vez comenzado el test recomendamos que se finalice en el momento para poder generar un informe lo más acertado posible.
+                </p>
+                {user.testEnabled?<Button className='bg-indigo-900 xl:h-[3rem] xl:w-[15rem] mt-6 xl:mt-10' size='lg' onClick={() => {navigate('/cuestionario')}}>
+                    Realizar test
+                </Button> : 
+                <h2>Debes esperar a que te habiliten el test</h2>
+                }
+            </div>
         </section>
+        // {User.started && !User.finished : "No has terminado el test"}
     )
 }
 

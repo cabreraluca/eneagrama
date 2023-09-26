@@ -9,7 +9,7 @@ import { WebRouter } from './router/WebRouter';
 function App() {
 
   return (
-    <div className="App">
+    <div className="w-[100%]">
       <AuthProvider>
         <BrowserRouter>
           <QuestionsProvider>

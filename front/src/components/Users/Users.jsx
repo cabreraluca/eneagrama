@@ -12,13 +12,12 @@ import {
   Input,
   Typography,
   CardBody,
-  Chip,
   CardFooter,
   Tabs,
   TabsHeader,
-  Tab,
-  IconButton,
-  Tooltip,
+  Select,
+  Option,
+  Dialog
 } from "@material-tailwind/react";
 import { CreateUser } from "./CreateUser";
 
@@ -33,6 +32,8 @@ export const Users = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
   const TABLE_HEAD = ["Nombre", "Email", "Estado",  "Rol", "Detalles", ""];
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen((cur) => !cur);
 
   const fetchUsers = async () => {
     if(role === "admin"){
@@ -65,8 +66,8 @@ export const Users = () => {
   }
 
   useEffect(() => {
-    let filtrado = users.filter((item) => item.firstname.toLowerCase().includes(search.toLowerCase()))
-    filtrado.length === 0 ? filtrado = users.filter((item) => item.lastname.toLowerCase().includes(search.toLowerCase()))  : "";
+    const filterResult = search.replace(/ /g, "");
+    let filtrado = users.filter((item) => item.firstname.replace(/ /g, "").toLowerCase().concat(item.lastname.toLowerCase()).includes(filterResult.toLowerCase()));
     setSearchResults(filtrado);
   }, [search, users]);
   
@@ -90,9 +91,32 @@ export const Users = () => {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
             <TabsHeader className="flex gap-4 bg-transparent">
-            <Button variant="outlined" size="sm" onClick={() => setQuery("finished")}>Finalizados</Button>
-            <Button variant="outlined" size="sm" onClick={() => setQuery("started")}>Comenzados</Button>
-            <Button variant="outlined" size="sm" onClick={() => setQuery("")}>Todos</Button>
+              <Button variant="outlined" size="sm" onClick={() => setQuery("finished")}>Finalizados</Button>
+              <Button variant="outlined" size="sm" onClick={() => setQuery("started")}>Comenzados</Button>
+              <Button variant="outlined" size="sm" onClick={() => setQuery("")}>Todos</Button>
+              <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button>
+              <Dialog
+                size="xs"
+                open={open}
+                handler={handleOpen}
+                className="bg-transparent shadow-none"
+                >
+                  <div className="w-[100%] bg-white h-[30vh] flex flex-col items-center justify-center rounded-md">
+                    <div className=" border-b-[1px] border-gray-300 w-[70%]">
+                      <Typography color="black" className=" font-normal pb-2 text-lg">
+                        Seleccione la empresa
+                      </Typography>
+                    </div>
+                    <div className="w-[70%] mt-6">
+                      <Select className="bg-white" label="Seleccione el usuario"
+                        onChange={(element) => { 
+                          console.log(element)
+                        }}>
+                            {users.map((user) => <Option className="bg-white" key={user._id} value={user._id} >{user.firstname}</Option>)}
+                      </Select>
+                    </div>
+                  </div> 
+                </Dialog>
             </TabsHeader>
           </Tabs>
           <div className="w-full md:w-72">

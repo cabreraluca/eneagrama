@@ -6,7 +6,6 @@ import {
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
-import { Logout } from "../Auth";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks";
 
@@ -33,9 +32,9 @@ export const NavbarDefault = () => {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="small"
+        variant="mediun"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-semibold"
         onClick={() => {navigate(`/user/result/${user._id}`)}}
       >
         <a href="#" className="flex items-center">
@@ -44,9 +43,9 @@ export const NavbarDefault = () => {
       </Typography>
       <Typography
         as="li"
-        variant="small"
+        variant="mediun"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-semibold"
         onClick={() => {navigate(`/user/${user._id}`)}}
       >
         <a href="#" className="flex items-center">
@@ -56,9 +55,9 @@ export const NavbarDefault = () => {
       {user.role === "admin" || "company" ? 
                 <Typography
                 as="li"
-                variant="small"
+                variant="mediun"
                 color="blue-gray"
-                className="p-1 font-normal"
+                className="p-1 font-semibold"
                 onClick={() => {navigate(`/admin/users`)}}
               >
                 <a href="#" className="flex items-center">
@@ -76,12 +75,12 @@ export const NavbarDefault = () => {
           href="/home"
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="logo" style={{width: "10rem"}}/>
+          <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="logo" style={{width: "10rem"}}/>
         </Typography>
         <div className="flex items-center justify-between">
             <div className="hidden lg:flex lg:items-center lg:justify-evenly">
                 {navList}
-                <Button size="sm" className='bg-orange-800 ml-6' onClick={onLogout}>
+                <Button size="sm" className='bg-indigo-900 ml-6' onClick={onLogout}>
                     Cerrar sesión
                 </Button>
             </div>     
@@ -127,7 +126,7 @@ export const NavbarDefault = () => {
       <Collapse open={openNav}>
         <div className="container mx-auto">
             {navList}
-            <Button size="sm" fullWidth className='bg-orange-800' onClick={onLogout}>
+            <Button size="sm" fullWidth className='bg-indigo-900' onClick={onLogout}>
               Cerrar sesión
             </Button>
         </div>

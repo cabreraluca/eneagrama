@@ -44,7 +44,7 @@ export function ResetPassword() {
         <div className='resetPassContainer'>
             <Form className='formReset' onSubmit={formik.handleSubmit}>
                 <section className='resetContainerForm'>
-                    <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
+                    <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp   " alt="" />
                     <h2>Recuperá tu contraseña</h2>
                     <p>Introduce tu correo electrónico para cambiar tu contraseña.</p>
                 </section>

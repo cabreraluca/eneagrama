@@ -62,8 +62,7 @@ export const RegisterForm = () => {
   return (
     <section className='formContainer'>
         <div className='logoContainer'>
-            <img src="https://integraeneagrama.com/wp-content/uploads/2020/06/logo.png" alt="" />
-            <h1 className='text-xl mt-2'>Viaja dentro de tí mismo</h1>
+            <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="" />
         </div>
         <Form className='register-form' onSubmit={formik.handleSubmit}>
             <section className='inputsForm'>
