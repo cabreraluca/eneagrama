@@ -31,11 +31,6 @@ export const CreateUser = (props) => {
         }
     ];
 
-    const checkSelect = async (e) =>{
-        console.log(e)
-        console.log(props);
-    }
-
 
     const formik = useFormik({
         initialValues: createUserInitialValues(),
@@ -95,11 +90,10 @@ export const CreateUser = (props) => {
                             value={formik.values.role}
                             error={formik.errors.role}
                         /> */}
-                        <Select label="Selecciona el rol" onChange={(element) => {
-                            console.log(element)    
+                        <Select label="Selecciona el rol" onChange={(element) => { 
                             formik.setFieldValue('role', element)
                         }}>
-                            {roleOptions.map((rol) => <Option value={rol.value} >{rol.text}</Option>)}
+                            {roleOptions.map((rol) => <Option key={rol.key} value={rol.value} >{rol.text}</Option>)}
                         </Select>   
                         <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
                             Crear usuario
