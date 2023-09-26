@@ -15,8 +15,6 @@ import {
   CardFooter,
   Tabs,
   TabsHeader,
-  Select,
-  Option,
   Dialog
 } from "@material-tailwind/react";
 import { CreateUser } from "./CreateUser";
@@ -34,32 +32,39 @@ export const Users = () => {
   const TABLE_HEAD = ["Nombre", "Email", "Estado",  "Rol", "Detalles", ""];
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
+  const [filterByCompany, setFilterByCompany] = useState(false)
+  const [companyToSearch, setCompanyToSearch] = useState("")
 
-  const fetchUsers = async () => {
+  const fetchUsers = async (companyId) => {
     if(role === "admin"){
-      if (query === "") {
+      if (query === "" && !companyToSearch) {
         const usersList = await userController.getUsers(accessToken);
         setUsers(usersList);
-      } else {
+      } else{
         const usersList = await userController.filterUsers(accessToken, query);
         setUsers(usersList);
       }
+      if(filterByCompany){
+        const usersList = await userController.getCompanyUsers(companyToSearch)
+        setUsers(usersList)
+      } 
     }
     if(role === "company"){
       const userList = await userController.getCompanyUsers(user._id);
       setUsers(userList);
     }
+
   };
   const fetchCompanies = async () =>{
     const companiesList = await userController.getCompanies();
     setCompanies(companiesList);
-    console.log(companies)
   }
 
   useEffect(() => {
     fetchUsers();
     fetchCompanies()
-  }, [accessToken, query]);
+    console.log(companyToSearch)
+  }, [accessToken, query, companyToSearch]);
 
   const inputChange = (e) =>{
     setSearch(e.target.value);
@@ -110,9 +115,11 @@ export const Users = () => {
                     <div className="w-[70%] mt-6">
                       <Select className="bg-white" label="Seleccione el usuario"
                         onChange={(element) => { 
-                          console.log(element)
+                          setFilterByCompany(true)
+                          setCompanyToSearch(element)
+                          handleOpen()
                         }}>
-                            {users.map((user) => <Option className="bg-white" key={user._id} value={user._id} >{user.firstname}</Option>)}
+                            {companies.map((company) => <Option className="bg-white" key={company._id} value={company._id} >{company.firstname}</Option>)}
                       </Select>
                     </div>
                   </div> 

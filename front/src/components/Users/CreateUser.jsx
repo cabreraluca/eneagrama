@@ -90,7 +90,8 @@ export const CreateUser = (props) => {
                             <label htmlFor="repeatPassword">Repita la contraseña</label>
                             <Form.Input id="repeatPassword" className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
                         </section>
-                        {/* {role === 'admin' ? {/* <Dropdown
+                        <Form.Dropdown
+                            className='prueba'
                             name="role"
                             label="Rol"
                             placeholder="Selecciona un rol"
@@ -100,7 +101,7 @@ export const CreateUser = (props) => {
                             onChange={(_, data) => formik.setFieldValue('role', data.value)}
                             value={formik.values.role}
                             error={formik.errors.role}
-                        /> */}
+                        />
                         <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
                             Crear usuario
                         </Form.Button>               
