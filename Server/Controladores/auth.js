@@ -82,8 +82,13 @@ async function sendPasswordResetEmail(req, res) {
     const mailOptions = {
       from: 'no-responder@eneagrama.com',
       to: user.email,
-      subject: 'Recuperación de Contraseña',
-      text: `Para restablecer tu contraseña, haz clic en el siguiente enlace: http://localhost:3000/reset-password/${resetToken}`,
+      subject: 'Mapa Personal - Recuperación de Contraseña',
+      text: `Hemos recibido una solicitud para reestablecer tu contraseña, Para hacerlo, haz clic en el siguiente enlace: 
+      http://localhost:3000/reset-password/${resetToken}
+      
+      
+      Si no has solicitado el cambio de contraseña, ignora este mail.
+      `,
     };
 
     console.log(mailOptions)

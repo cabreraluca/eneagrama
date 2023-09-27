@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Form } from 'semantic-ui-react';
 import { Auth } from '../../../api';
 import {useFormik} from 'formik'
+import { useAuth } from '../../../hooks';
 import { emailInitialValues, emailValidationSchema} from './ResetPassword.form';
 import { ToastContainer, toast } from 'react-toastify';
 const AuthController = new Auth();
-
-export function ResetPassword() {
-
+export function ResetPassword({user}) {
     const notify = () =>{
         toast.success('Email enviado', {
             position: "top-right",
@@ -22,7 +21,7 @@ export function ResetPassword() {
     }
 
     const formik = useFormik({
-        initialValues: emailInitialValues(),
+        initialValues: emailInitialValues(user?.email),
         validationSchema: emailValidationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) =>{

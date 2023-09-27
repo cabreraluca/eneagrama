@@ -1,8 +1,8 @@
 import * as Yup from "yup";
 
-export function emailInitialValues(){
+export function emailInitialValues(email){
     return {
-        email: ""
+        email: email || ""
     };
 }
 

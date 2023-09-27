@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Form } from 'semantic-ui-react';
 import {useFormik} from 'formik'
 import { User } from '../../../api';
-import { useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { useAuth } from '../../../hooks';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import {initialValues, passwordValidationSchema} from './ChangePassword.Form'
 
 const userController = new User();
@@ -10,12 +13,34 @@ const userController = new User();
 export function ChangePassword() {
     const [userData, setUserData] = useState();
     const {pathname} = useLocation();
+    const {logout} = useAuth()
     const token = pathname.replace("/reset-password/", "");
+    const navigate = useNavigate()
+
+    const notify = () =>{
+      toast.success('Contraseña cambiada correctamente, redirigiendo al inicio de sesión', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setTimeout(() => {
+            navigate('/')
+            logout()
+            }, "4000");
+  }
 
     useEffect(() => {
         const fetchUser = async () =>{
-            const user = await userController.getUserByToken(token);
-            setUserData(user);
+            const userDB = await userController.getUserByToken(token);
+            setUserData(userDB);
+            if(!userDB){
+              navigate('/')
+            }
         }
         fetchUser()
     }, [token])
@@ -42,8 +67,7 @@ export function ChangePassword() {
     
         try {
           await userController.updateUser(userId, userData);
-          //Agregar toastify de contraseña cambiada correctamente
-          // Mandar al login
+          notify()
         } catch (error) {
           console.error( error);
         }
@@ -57,6 +81,7 @@ export function ChangePassword() {
             <Form.Button type="submit" primary fluid>
                     Cambiar contraseña
             </Form.Button>
+            <ToastContainer />
         </Form>
     </div>
   )
