@@ -77,14 +77,16 @@ export const EditUser = (props) => {
                             <label htmlFor="email">Email</label>
                             <Form.Input id="email" className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
                         </section>
-                        <section>
-                            <label htmlFor="firstname">Nombre</label>
-                            <Form.Input id="firstname" className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
-                        </section>
-                        <section>
-                            <label htmlFor="lastname">Apellido</label>
-                            <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
-                        </section>
+                        {userData.role !== 'company' ? 
+                            <section>
+                                <label htmlFor="firstname">Nombre</label>
+                                <Form.Input id="firstname" className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
+                            </section>: ""}
+                        {userData.role !== 'company' ? 
+                            <section>
+                                <label htmlFor="lastname">Apellido</label>
+                                <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
+                            </section>: ""}
                         <section>
                             {role === 'admin' && !userData.company &&userData.role !== "company"?<Form.Checkbox 
                                 id="testEnabled" 
@@ -108,7 +110,7 @@ export const EditUser = (props) => {
                             value={formik.values.role}
                             error={formik.errors.role}
                         /> : ""}
-                        {role === 'admin'? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
+                        {role === 'admin' && userData.role !== 'company' ? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
                         <section>
                             <Form.Button primary fluid type='button' onClick={() => onDelete(userData._id)}>
                                 Eliminar usuario

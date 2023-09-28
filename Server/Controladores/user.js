@@ -13,7 +13,6 @@ async function createUser(req, res){
       res.status(200).send(userStored);
     });
   } catch (err) { 
-    console.log('No guardado');
     res.status(400).send({ msg: err });
   }
 }
@@ -21,7 +20,6 @@ async function createUser(req, res){
 async function updateUser(req, res){
     const {id} = req.params;
     const userData = req.body;
-    console.log(userData);
 
     if(userData.password){
       const salt = bcrypt.genSaltSync(10);
@@ -30,10 +28,8 @@ async function updateUser(req, res){
   }
 
     try {
-        console.log(userData);
         const updatedUser = await User.findByIdAndUpdate({_id: id}, userData);
         res.status(200).send(updatedUser);
-        console.log("guardado");
     } catch (error) {
         res.status(400).send("No se pudo actualizar");
         console.log(error)
@@ -108,7 +104,6 @@ async function getCompaniesList(req, res){
 
 async function getUserByToken(req, res){
   const {token} = req.params;
-  console.log(token)
   try {
     const response = await User.findOne({resetPasswordToken: token})
     .then((user) => {

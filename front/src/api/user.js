@@ -20,10 +20,8 @@ export class User{
         }
     }
     async createUser(accessToken, data){
-        console.log(accessToken)
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}`
-            console.log(url)
             const params = {
                 method: "POST",
                 headers: {

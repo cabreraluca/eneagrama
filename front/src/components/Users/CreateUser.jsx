@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Dropdown, Form} from "semantic-ui-react"
 import { useFormik } from 'formik';
 import {createUserInitialValues, createUserValidationSchema} from './CreateUserForm'
@@ -13,6 +13,7 @@ export const CreateUser = (props) => {
     const {accessToken, fetchUsers, companies, role, user} = props;
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen((cur) => !cur);
+    const [formCompanyValue, setFormCompanyValue] = useState("")
 
     const roleOptions = [{
             key: "admin",
@@ -30,7 +31,6 @@ export const CreateUser = (props) => {
             value: "company"
         }
     ];
-
 
     const formik = useFormik({
         initialValues: createUserInitialValues(),
@@ -74,14 +74,18 @@ export const CreateUser = (props) => {
                             <label htmlFor="email">Email</label>
                             <Form.Input id="email" className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
                         </section>
-                        <section>
+                        {formCompanyValue !== 'company' ? <section>
                             <label htmlFor="firstname">Nombre</label>
                             <Form.Input id="firstname" className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
-                        </section>
-                        <section>
+                        </section> : ""}
+                        {formCompanyValue !== 'company' ? <section>
                             <label htmlFor="lastname">Apellido</label>
                             <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
-                        </section>
+                        </section>: ""}
+                        {role !== 'company' ? <section>
+                            <label htmlFor="companyName">Nombre de empresa</label>
+                            <Form.Input id="companyName" className='inputsRegister' name="companyName" placeholder="Nombre de empresa" onChange={formik.handleChange} value={formik.values.companyName} error={formik.errors.companyName}/>
+                        </section> : ""}
                         <section>
                             <label htmlFor="password">Contraseña</label>
                             <Form.Input id="password" className='inputsRegister' name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
@@ -98,11 +102,11 @@ export const CreateUser = (props) => {
                             fluid
                             selection
                             options={roleOptions}
-                            onChange={(_, data) => formik.setFieldValue('role', data.value)}
+                            onChange={(_, data) => [formik.setFieldValue('role', data.value), setFormCompanyValue(data.value)]}
                             value={formik.values.role}
                             error={formik.errors.role}
                         /> : ""}
-                        {role === 'admin'? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
+                        {role === 'admin' && formCompanyValue !== "company"? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
                         <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
                             Crear usuario
                         </Form.Button>               

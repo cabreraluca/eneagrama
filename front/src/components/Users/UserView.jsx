@@ -5,7 +5,7 @@ import {EditUser} from './EditUser'
 
 export const UserView = ({user, fullUsers, fetchUsers, accessToken, companies}, index) => {
     const navigate = useNavigate();
-    const { firstname, lastname, email, finished, started, role, _id} = user;
+    const { firstname, lastname, email, finished, started, role, _id, companyName} = user;
 
     const isLast = index === fullUsers.length - 1;
           const classes = isLast
@@ -13,7 +13,7 @@ export const UserView = ({user, fullUsers, fetchUsers, accessToken, companies}, 
             : "p-4 border-b border-blue-gray-50";
 
     return (
-            <tr key={firstname}>
+            <tr key={companyName ? companyName : firstname}>
               <td className={classes}>
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1">
@@ -22,7 +22,7 @@ export const UserView = ({user, fullUsers, fetchUsers, accessToken, companies}, 
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {firstname}
+                      {companyName ? companyName : firstname}
                     </Typography>
                     <Typography
                       variant="small"
@@ -73,7 +73,7 @@ export const UserView = ({user, fullUsers, fetchUsers, accessToken, companies}, 
                   color="blue-gray"
                   className="font-normal"
                 >
-                  {role}
+                  {role === 'user' ? "Usuario" : role === 'company' ? "Empresa" : role === 'admin' ? "Administrador" : ""}
                 </Typography>
               </td>
               <td className={classes}>

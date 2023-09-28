@@ -63,7 +63,7 @@ export const Users = () => {
   useEffect(() => {
     fetchUsers();
     fetchCompanies()
-  }, [accessToken, query, companyToSearch, filterByCompany]);
+  }, [accessToken, query, companyToSearch, filterByCompany, companies]);
 
   const inputChange = (e) =>{
     setSearch(e.target.value);
@@ -95,10 +95,10 @@ export const Users = () => {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
             <TabsHeader className="flex gap-4 bg-transparent">
-              <Button variant="outlined" size="sm" onClick={() => [setQuery("finished"), setFilterByCompany(false)]}>Finalizados</Button>
-              <Button variant="outlined" size="sm" onClick={() => [setQuery("started"), setFilterByCompany(false)]}>Comenzados</Button>
-              <Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false)]}>Todos</Button>
-              <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button>
+              {role === 'admin' ?<Button variant="outlined" size="sm" onClick={() => [setQuery("finished"), setFilterByCompany(false)]}>Finalizados</Button> : ""}
+              {role === 'admin' ?<Button variant="outlined" size="sm" onClick={() => [setQuery("started"), setFilterByCompany(false)]}>Comenzados</Button> : ""}
+              {role === 'admin' ?<Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false)]}>Todos</Button> : ""}
+              {role === 'admin' ? <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button> : ""}
               <Dialog
                 size="xs"
                 open={open}
@@ -118,7 +118,7 @@ export const Users = () => {
                           setCompanyToSearch(element)
                           handleOpen()
                         }}>
-                            {companies.map((company) => <Option className="bg-white" key={company._id} value={company._id} >{company.firstname}</Option>)}
+                            {companies.map((company) => <Option className="bg-white" key={company._id} value={company._id} >{company.companyName}</Option>)}
                       </Select>
                     </div>
                   </div> 
