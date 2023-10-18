@@ -106,7 +106,7 @@ export const CreateUser = (props) => {
                             value={formik.values.role}
                             error={formik.errors.role}
                         /> : ""}
-                        {role === 'admin' && formCompanyValue !== "company"? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
+                        {role === 'admin' && formCompanyValue !== "company"? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.companyName}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
                         <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
                             Crear usuario
                         </Form.Button>               

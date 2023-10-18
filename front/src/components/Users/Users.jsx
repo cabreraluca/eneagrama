@@ -40,7 +40,7 @@ export const Users = () => {
       if (query === "" && !companyToSearch) {
         const usersList = await userController.getUsers(accessToken);
         setUsers(usersList);
-      } else{
+      } else if (query !== ""){
         const usersList = await userController.filterUsers(accessToken, query);
         setUsers(usersList);
       }
@@ -50,8 +50,13 @@ export const Users = () => {
       } 
     }
     if(role === "company"){
-      const userList = await userController.getCompanyUsers(user._id);
-      setUsers(userList);
+      if(query === ""){
+        const userList = await userController.getCompanyUsers(user._id);
+        setUsers(userList);
+      }else{
+        const userList = await userController.filterCompanyUsers(user._id, query)
+        setUsers(userList)
+      }
     }
 
   };
@@ -95,9 +100,9 @@ export const Users = () => {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
             <TabsHeader className="flex gap-4 bg-transparent">
-              {role === 'admin' ?<Button variant="outlined" size="sm" onClick={() => [setQuery("finished"), setFilterByCompany(false)]}>Finalizados</Button> : ""}
-              {role === 'admin' ?<Button variant="outlined" size="sm" onClick={() => [setQuery("started"), setFilterByCompany(false)]}>Comenzados</Button> : ""}
-              {role === 'admin' ?<Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false)]}>Todos</Button> : ""}
+              <Button variant="outlined" size="sm" onClick={() => [setQuery("finished"), setFilterByCompany(false)]}>Finalizados</Button>
+              <Button variant="outlined" size="sm" onClick={() => [setQuery("started"), setFilterByCompany(false)]}>Comenzados</Button>
+              <Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false), setCompanyToSearch("")]}>Todos</Button>
               {role === 'admin' ? <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button> : ""}
               <Dialog
                 size="xs"

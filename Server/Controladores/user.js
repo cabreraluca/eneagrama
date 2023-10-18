@@ -71,6 +71,22 @@ async function getCompanyUsers(req, res){
   res.status(200).send(response);
 }
 
+async function filterCompanyUsers(req, res){
+  const {query, companyId} = req.params;
+  if(query === "finished"){
+    const response = await User.find({company: companyId, finished: true});
+    res.status(200).send(response);
+  }else if(query !== "finished"){
+    if(query === "started"){
+      const response = await User.find({company: companyId, started: true, finished: false});
+      res.status(200).send(response);
+    }else{
+      const response = await User.find({company: companyId, started: false, finished: false});
+      res.status(200).send(response);
+    }
+  }
+}
+
 async function filterUsers(req, res){
   const {finished, started, company} = req.query;
   if(req.query !== ""){
@@ -134,5 +150,6 @@ module.exports = {
     createUser,
     filterUsers,
     getCompanyUsers,
-    getCompaniesList
+    getCompaniesList,
+    filterCompanyUsers
 }

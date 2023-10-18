@@ -15,6 +15,7 @@ export const NavbarDefault = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const navigate = useNavigate();
   const {user} = useAuth();
+  console.log(user.role)
   const {logout} = useAuth();
   const onLogout = () => {
     logout()
@@ -52,7 +53,7 @@ export const NavbarDefault = () => {
           Cuenta
         </a>
       </Typography>
-      {user.role === "admin" || "company" ? 
+      {user.role !== "user" ? 
                 <Typography
                 as="li"
                 variant="mediun"

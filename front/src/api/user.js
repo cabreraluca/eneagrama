@@ -96,6 +96,17 @@ export class User{
         }
     }
 
+    async filterCompanyUsers(companyId, query){
+        try {
+            const url = `${this.baseApi}/${Env.API_ROUTES.FILTER_COMPANY_USERS}/${companyId}/${query}`
+            const response = await fetch(url)
+            const result = response.json();
+            return result;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async getUserByToken(token){
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.USER_TOKEN}/${token}`
