@@ -20,10 +20,8 @@ export class User{
         }
     }
     async createUser(accessToken, data){
-        console.log(accessToken)
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.USER}`
-            console.log(url)
             const params = {
                 method: "POST",
                 headers: {
@@ -93,6 +91,17 @@ export class User{
             const result = await response.json();
 
             return result 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async filterCompanyUsers(companyId, query){
+        try {
+            const url = `${this.baseApi}/${Env.API_ROUTES.FILTER_COMPANY_USERS}/${companyId}/${query}`
+            const response = await fetch(url)
+            const result = response.json();
+            return result;
         } catch (error) {
             console.log(error)
         }

@@ -7,6 +7,7 @@ export function createUserInitialValues() {
         firstname: "",
         lastname:"",
         role: "",
+        companyName: "",
         company: "",
     };
 }
@@ -16,12 +17,13 @@ export function createUserValidationSchema(){
         email: Yup.string()
             .email("El email no es valido")
             .required("Campo obligatorio"),
-        firstname: Yup.string().required("Campo Obligatorio"),
-        lastname: Yup.string().required("Campo Obligatorio"),
+        firstname: Yup.string(),
+        lastname: Yup.string(),
         password: Yup.string().required("Campo obligatorio"),
         repeatPassword: Yup.string()
             .required("Campo obligatorio")
             .oneOf([Yup.ref("password")], "Las contraseñas deben ser iguales"),
+        companyName: Yup.string(),
         role: Yup.string()
     })
 }

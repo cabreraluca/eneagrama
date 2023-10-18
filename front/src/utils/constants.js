@@ -15,6 +15,7 @@ export const Env = {
         FILTER_USERS: "filterUsers",
         USERS_BY_COMPANY: "usersByCompany",
         COMPANIES: "companiesList",
+        FILTER_COMPANY_USERS: "filterCompanyUsers"
     },
     JWT: {
         ACCESS: "access",

@@ -11,6 +11,7 @@ const UserSchema = mongoose.Schema({
         unique: true
     },
     company: String,
+    companyName: String,
     password: String,
     testEnabled: {type: Boolean, default: false},
     resetPasswordToken: String,

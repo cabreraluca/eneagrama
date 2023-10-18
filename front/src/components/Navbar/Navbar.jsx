@@ -15,7 +15,6 @@ export const NavbarDefault = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const navigate = useNavigate();
   const {user} = useAuth();
-  console.log(user)
   const {logout} = useAuth();
   const onLogout = () => {
     logout()

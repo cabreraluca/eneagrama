@@ -15,6 +15,7 @@ api.get("/filterUsers", md_auth.auth, UserController.filterUsers);
 api.get("/user/:id", md_auth.auth, UserController.getUser);
 api.get("/userToken/:token", UserController.getUserByToken);
 api.get("/usersByCompany/:company", UserController.getCompanyUsers);
+api.get("/filterCompanyUsers/:companyId/:query", UserController.filterCompanyUsers)
 api.get("/companiesList", UserController.getCompaniesList)
 
 module.exports = api;

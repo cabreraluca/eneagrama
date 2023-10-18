@@ -77,14 +77,14 @@ export const EditUser = (props) => {
                             <label htmlFor="email" className='font-semibold'>Email</label>
                             <Form.Input id="email" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
                         </section>
-                        <section className='flex flex-col mb-2 w-[100%]'>
+                        {userData.role !== 'company' ? <section className='flex flex-col mb-2 w-[100%]'>
                             <label htmlFor="firstname" className='font-semibold'>Nombre</label>
                             <Form.Input id="firstname" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
-                        </section>
-                        <section className='flex flex-col mb-2 w-[100%]'>
+                        </section> : ""}
+                        {userData.role !== 'company' ? <section className='flex flex-col mb-2 w-[100%]'>
                             <label htmlFor="lastname" className='font-semibold'>Apellido</label>
                             <Form.Input id="lastname" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
-                        </section>
+                        </section> : ""}
                         <section className='flex flex-col mb-2 w-[100%]'>
                             {role === 'admin' && !userData.company &&userData.role !== "company"?<Form.Checkbox 
                                 id="testEnabled" 
@@ -106,7 +106,7 @@ export const EditUser = (props) => {
                             {role === 'admin'? <Select label='Seleccione la empresa' onChange={(element) => {
                                 formik.setFieldValue("company", element)
                             }}>
-                                {companies.map((company) => <Option key={company._id} value={company._id}>{company.firstname}</Option>)}
+                                {companies.map((company) => <Option key={company._id} value={company._id}>{company.companyName}</Option>)}
                             </Select> : ""}
                         </section>
                         <section className='flex gap-2 mb-2 w-[100%]'>                         
@@ -115,7 +115,7 @@ export const EditUser = (props) => {
                         </section>    
                         <Button size='sm' className='w-[100%]' type='submit'>
                                 Aplicar cambios
-                        </Button>                        
+                       </Button>                             
                     </Form>
                 </Dialog>
             </div>
