@@ -97,7 +97,7 @@ export const Users = () => {
             <TabsHeader className="flex gap-4 bg-transparent">
               <Button variant="outlined" size="sm" onClick={() => [setQuery("finished"), setFilterByCompany(false)]}>Finalizados</Button>
               <Button variant="outlined" size="sm" onClick={() => [setQuery("started"), setFilterByCompany(false)]}>Comenzados</Button>
-              <Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false)]}>Todos</Button>
+              <Button variant="outlined" size="sm" onClick={() => [setQuery(""), setFilterByCompany(false), setCompanyToSearch("")]}>Todos</Button>
               <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button>
               <Dialog
                 size="xs"

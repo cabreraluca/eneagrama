@@ -86,7 +86,7 @@ export const UserView = ({user, fullUsers, fetchUsers, accessToken, companies}, 
                 </Typography>
               </td>
               <td className={classes}>
-                <Tooltip content="Edit User">
+                <Tooltip content="Editar" placement="right">
                   <IconButton variant="text">
                     <EditUser companies={companies} accessToken={accessToken} fetchUsers={fetchUsers} userData={user}/>
                   </IconButton>

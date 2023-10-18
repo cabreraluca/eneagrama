@@ -8,13 +8,14 @@ import { useAuth } from "../../hooks";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { UserResultsPDF } from "../Users/UserResultsPDF";
 import { Button } from "@material-tailwind/react";
+import {AiOutlineFilePdf} from 'react-icons/ai'
 
 const UserController = new User();
 
 export const QuestContainer = () => {
   
   const { user, accessToken } = useAuth();
-  const { select, resultadoQuest, indexAnswer, questionsAnswered, setSelect} = useContext(QuestionsContext);
+  const { select, resultadoQuest, indexAnswer, questionsAnswered, setSelect, informe} = useContext(QuestionsContext);
   const [quest, setQuest] = useState({});
   const [testComplete, setTestComplete] = useState(false);
   const [dbResults, setDbResults] = useState([]);
@@ -48,6 +49,7 @@ export const QuestContainer = () => {
   }, [indexAnswer]);
   
   const updateDBResults = async (results) => {
+    console.log(results)
     const userData = await UserController.getUser(accessToken, user._id);
     userData.results = results;
     userData.finished = true;
@@ -66,6 +68,7 @@ export const QuestContainer = () => {
     setDbResults(resultadoQuest);
     localStorage.removeItem("id");
     localStorage.removeItem("storageResults");
+    console.log(resultadoQuest)
     await updateDBResults(resultadoQuest);
     setTestComplete(true);
     setTestInProgress(false);
@@ -78,14 +81,15 @@ export const QuestContainer = () => {
         {questionsAnswered === data.test.length && !testComplete ? <input className="text-center cursor-pointer border-2 p-2 bg-orange-800" type="submit" onClick={submitChange} value={"Generar informe"}/> : <></>}
       </main>
       {testComplete ? (
-        <div className="w-[100vw] h-[50vh] flex flex-col items-center justify-center">
-          <h1 className="text-[2rem] font-bold">
-             Tus resultados son: </h1>
-            {dbResults.map((res) => (
-              <Result key={res.area} result={res} />
-            ))}
-          <PDFDownloadLink document={<UserResultsPDF result={dbResults}/>} fileName="Resultado-Test-Eneagrama">
-            <Button className="mt-6 bg-red-400">Descargar en PDF</Button>
+        <div className="w-[100vw] h-[100%] flex flex-col items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#2b2c91" fill-opacity="0.7" d="M0,320L48,288C96,256,192,192,288,181.3C384,171,480,213,576,229.3C672,245,768,235,864,202.7C960,171,1056,117,1152,85.3C1248,53,1344,43,1392,37.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+            {
+            <div className="h-[100%]">
+              <Result results={dbResults} flex={"items-center"}/>
+            </div>
+            }
+          <PDFDownloadLink document={<UserResultsPDF informe={informe}/>} fileName="Resultado-Test-Eneagrama">
+            <Button className="mt-6 bg-red-400 flex items-center gap-2">Descargar en PDF <AiOutlineFilePdf className="text-xl"/></Button>
           </PDFDownloadLink>
         </div>
       ) : (

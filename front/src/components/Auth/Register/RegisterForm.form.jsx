@@ -6,7 +6,6 @@ export function registerInitialValues() {
         repeatPassword:"",
         firstname: "",
         lastname:"",
-        termsAccepted: false
     };
 }
 
@@ -15,12 +14,11 @@ export function registerValidationSchema(){
         email: Yup.string()
             .email("El email no es valido")
             .required("Campo obligatorio"),
-        firstname: Yup.string().required("Campo Obligatorio"),
-        lastname: Yup.string().required("Campo Obligatorio"),
+        firstname: Yup.string().required("Campo obligatorio"),
+        lastname: Yup.string().required("Campo obligatorio"),
         password: Yup.string().required("Campo obligatorio"),
         repeatPassword: Yup.string()
             .required("Campo obligatorio")
             .oneOf([Yup.ref("password")], "Las contraseñas deben ser iguales"),
-        termsAccepted: Yup.bool().isTrue(true)
     })
 }

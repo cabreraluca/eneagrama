@@ -27,7 +27,7 @@ export const UserInfo = () => {
         fetchUser();
       }, [accessToken, pathname]);
   return (
-    <section className='w-[100vw] 2xl:h-[70vh] gap-10 flex flex-col justify-center p-8'>
+    <section className='w-[100%] 2xl:h-[100%] gap-10 flex flex-col justify-center p-8'>
         <div className='border-b-2 pb-2'>
           <h1 className='text-[2rem]'>Información del usuario</h1>
           <h2 className='text-[1rem] text-gray-600'>Detalles personales del usuario</h2>
@@ -45,7 +45,7 @@ export const UserInfo = () => {
             <h3 className={hStyle}>Rol </h3>
             <p className={pStyle}>{user.role}</p>
           </div>
-          {userResults.length !== 0 ? <h3 className={hStyle}>Resultados:   {userResults.map((item) => <Result key={item.area} result={item}/>)}</h3> : <h2 className={hStyle}>No hay resultados del test</h2>}
+          {userResults.length !== 0 ? <div>   {<Result results={userResults} flex={"items-start"}/>}</div> : <h2 className={hStyle}>No hay resultados del test</h2>}
         </div>
     </section>
   )

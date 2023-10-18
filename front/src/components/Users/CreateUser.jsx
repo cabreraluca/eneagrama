@@ -69,43 +69,43 @@ export const CreateUser = (props) => {
                 handler={handleOpen}
                 className="bg-transparent shadow-none"
                 >
-                    <Form onSubmit={formik.handleSubmit} className='mx-auto formNewUser'>
-                        <section>
-                            <label htmlFor="email">Email</label>
-                            <Form.Input id="email" className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
+                    <Form onSubmit={formik.handleSubmit} className='mx-auto h-[100%] formNewUser'>
+                        <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="email" className='font-semibold'>Email</label>
+                            <Form.Input id="email" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
                         </section>
-                        <section>
-                            <label htmlFor="firstname">Nombre</label>
-                            <Form.Input id="firstname" className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
+                        <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="firstname" className='font-semibold'>Nombre</label>
+                            <Form.Input id="firstname" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
                         </section>
-                        <section>
-                            <label htmlFor="lastname">Apellido</label>
-                            <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
+                        <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="lastname" className='font-semibold'>Apellido</label>
+                            <Form.Input id="lastname" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
                         </section>
-                        <section>
-                            <label htmlFor="password">Contraseña</label>
-                            <Form.Input id="password" className='inputsRegister' name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
+                        <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="password" className='font-semibold'>Contraseña</label>
+                            <Form.Input id="password" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="password" type='password'placeholder="Contraseña" onChange={formik.handleChange} value={formik.values.password} error={formik.errors.password}/>
                         </section>
-                        <section>
-                            <label htmlFor="repeatPassword">Repita la contraseña</label>
-                            <Form.Input id="repeatPassword" className='inputsRegister' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
+                        <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="repeatPassword" className='font-semibold'>Repita la contraseña</label>
+                            <Form.Input id="repeatPassword" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="repeatPassword" type='password' placeholder="Repetir contraseña" onChange={formik.handleChange} value={formik.values.repeatPassword} error={formik.errors.repeatPassword}/>
                         </section>
-                        {role === 'admin' ? <Form.Dropdown
-                            className='prueba'
-                            name="role"
-                            label="Rol"
-                            placeholder="Selecciona un rol"
-                            fluid
-                            selection
-                            options={roleOptions}
-                            onChange={(_, data) => formik.setFieldValue('role', data.value)}
-                            value={formik.values.role}
-                            error={formik.errors.role}
-                        /> : ""}
-                        {role === 'admin'? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
-                        <Form.Button type='submit' primary fluid loading={formik.isSubmitting}>
+                        <section className='flex flex-col gap-2 mb-2 w-[100%]'>
+                            {role === 'admin' ? <Select className="bg-white" label="Seleccione el usuario"
+                                    onChange={(element) => { 
+                                    formik.setFieldValue('role', element)
+                                    }}>
+                                        {roleOptions.map((role) => <Option className="bg-white" key={role.key} value={role.value} >{role.text}</Option>)}
+                                </Select> : ""}
+                            {role === 'admin' ? <Select label='Seleccione la empresa' onChange={(element) => {
+                                formik.setFieldValue("company", element)
+                            }}>
+                                {companies.map((company) => <Option key={company._id} value={company._id}>{company.firstname}</Option>)}
+                            </Select> : ""}
+                        </section>
+                        <Button size='sm' className='w-[100%]' type='submit'>
                             Crear usuario
-                        </Form.Button>               
+                        </Button>               
                     </Form>
                 </Dialog>
             </div>

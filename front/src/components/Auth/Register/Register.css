@@ -1,62 +1,46 @@
-.inputsForm label{
-    font-size: .9rem;
-}
-
-.inputsForm input{
-    font-size: .8rem;
-}
-
-.checkBox{
-    font-size: .8rem;
-    animation-name: show;
-    animation-duration: 2.5s;
+.formRegisterContainer{
+    background-image: url('../../../assets/pattern2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
 }
 
 .checkBox input{
     display: inline-block;
 }
 
-.checkBox label{
-    color: rgb(56, 56, 56);
+.buttonRegister{
+    margin-top: 1rem;
+}
+
+.buttonRegister button{
+    background-color: #2b2c91;
+    color: white;
+    font-weight: bold;
+    padding: .4rem 2rem;
+    border-radius: .3rem;
+}
+
+.inputsForm input{
+    width: 100%;
+}
+
+.label{
+    font-size: .8rem;
+    margin-top: .4rem;
 }
 
 .inputsRegister input{
-    font-size: .9rem;
-}
-
-.buttonRegister  button{
-    font-size: 1rem;
-    border: none;
-    width: 8rem;
-    height: 2rem;
-    font-weight: 600;
-    background-color: #f27b20;
-    color: white;
-    border-radius: .8rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    animation-name: show;
-    animation-duration: 2.5s;
-}
-
-.buttonsRegister{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation-name: show;
-    animation-duration: 2.5s;
-    gap: .5rem;
-    margin-top: .5rem;
-}
-
-.buttonsRegister p{
-    font-size: .9rem;
+    background-color: transparent;
+    border-bottom: 1px solid #f27b20;
+    margin-top: .6rem;
 }
 
 .buttonIS button{
-    background-color: transparent;
-    border: none;
-    color: #0f79ca;
-    font-size: .9rem;
-    cursor: pointer;
+    font-weight: 600;
+    color: rgb(70, 86, 138);
+}
+
+.buttonIS button:hover{
+    color: rgb(32, 40, 68);
 }
