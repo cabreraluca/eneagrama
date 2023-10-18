@@ -72,22 +72,20 @@ export const EditUser = (props) => {
                 handler={handleOpen}
                 className="bg-transparent shadow-none"
                 >
-                    <Form onSubmit={formik.handleSubmit} className='mx-auto formNewUser'>
-                        <section>
-                            <label htmlFor="email">Email</label>
-                            <Form.Input id="email" className='inputsRegister' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
+                    <Form onSubmit={formik.handleSubmit} className='mx-auto h-[100%] formNewUser'>
+                        <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="email" className='font-semibold'>Email</label>
+                            <Form.Input id="email" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="email" placeholder="Correo electronico" onChange={formik.handleChange} value={formik.values.email} error={formik.errors.email}/>
                         </section>
-                        {userData.role !== 'company' ? 
-                            <section>
-                                <label htmlFor="firstname">Nombre</label>
-                                <Form.Input id="firstname" className='inputsRegister' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
-                            </section>: ""}
-                        {userData.role !== 'company' ? 
-                            <section>
-                                <label htmlFor="lastname">Apellido</label>
-                                <Form.Input id="lastname" className='inputsRegister' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
-                            </section>: ""}
-                        <section>
+                        {userData.role !== 'company' ? <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="firstname" className='font-semibold'>Nombre</label>
+                            <Form.Input id="firstname" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="firstname" placeholder= "Nombre" onChange={formik.handleChange} value={formik.values.firstname} error={formik.errors.firstname}/>
+                        </section> : ""}
+                        {userData.role !== 'company' ? <section className='flex flex-col mb-2 w-[100%]'>
+                            <label htmlFor="lastname" className='font-semibold'>Apellido</label>
+                            <Form.Input id="lastname" className='bg-white w-[100%] rounded-md p-1 inputUpdateUser' name="lastname" placeholder= "Apellido" onChange={formik.handleChange} value={formik.values.lastname} error={formik.errors.lastname}/>
+                        </section> : ""}
+                        <section className='flex flex-col mb-2 w-[100%]'>
                             {role === 'admin' && !userData.company &&userData.role !== "company"?<Form.Checkbox 
                                 id="testEnabled" 
                                 className='checkBox inline-block'                 
@@ -97,31 +95,27 @@ export const EditUser = (props) => {
                                 checked={formik.values.testEnabled}
                                 error={formik.errors.testEnabled}
                             /> : ""}
+                        </section >
+                        <section className='flex flex-col gap-2 mb-2 w-[100%]'>
+                            {role === 'admin' ?<Select className="bg-white mb-2" label="Seleccione el rol"
+                                onChange={(element) => { 
+                                formik.setFieldValue('role', element)
+                                }}>
+                                    {roleOptions.map((role) => <Option className="bg-white" key={role.key} value={role.value} >{role.text}</Option>)}
+                            </Select> : ""}
+                            {role === 'admin'? <Select label='Seleccione la empresa' onChange={(element) => {
+                                formik.setFieldValue("company", element)
+                            }}>
+                                {companies.map((company) => <Option key={company._id} value={company._id}>{company.companyName}</Option>)}
+                            </Select> : ""}
                         </section>
-                        {role === 'admin' ?<Form.Dropdown
-                            className='prueba'
-                            name="role"
-                            label="Rol"
-                            placeholder="Selecciona un rol"
-                            fluid
-                            selection
-                            options={roleOptions}
-                            onChange={(_, data) => formik.setFieldValue('role', data.value)}
-                            value={formik.values.role}
-                            error={formik.errors.role}
-                        /> : ""}
-                        {role === 'admin' && userData.role !== 'company' ? <Form.Dropdown label="Empresa" placeholder="Seleccionar empresa" search selection options={companies.map(company => ({ key: company._id, text: `${company.firstname}`, value: company._id, }))} onChange={(_, data) => formik.setFieldValue("company", data.value)} value={formik.values.company || ""} error={formik.errors.company}/> : ""}
-                        <section>
-                            <Form.Button primary fluid type='button' onClick={() => onDelete(userData._id)}>
-                                Eliminar usuario
-                            </Form.Button>
-                            {userData.started? <Form.Button primary fluid type='button' onClick={() => onResetResults(userData._id)}>
-                                Reiniciar test    
-                            </Form.Button> : ""} 
-                        </section>
-                        <Form.Button type='submit' primary fluid>
-                            Aplicar
-                        </Form.Button>          
+                        <section className='flex gap-2 mb-2 w-[100%]'>                         
+                            {userData.started?  <Button size='sm' className='w-[100%]' onClick={() => onResetResults(userData._id)}>Reiniciar test</Button> : ""} 
+                            <Button  size='sm' className='w-[100%]' color='red' onClick={() => onDelete(userData._id)}>Eliminar usuario</Button>
+                        </section>    
+                        <Button size='sm' className='w-[100%]' type='submit'>
+                                Aplicar cambios
+                       </Button>                             
                     </Form>
                 </Dialog>
             </div>

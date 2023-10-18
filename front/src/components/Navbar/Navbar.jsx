@@ -15,7 +15,6 @@ export const NavbarDefault = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const navigate = useNavigate();
   const {user} = useAuth();
-  console.log(user.role)
   const {logout} = useAuth();
   const onLogout = () => {
     logout()
@@ -33,7 +32,7 @@ export const NavbarDefault = () => {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="mediun"
+        variant="h6"
         color="blue-gray"
         className="p-1 font-semibold"
         onClick={() => {navigate(`/user/result/${user._id}`)}}
@@ -44,7 +43,7 @@ export const NavbarDefault = () => {
       </Typography>
       <Typography
         as="li"
-        variant="mediun"
+        variant="h6"
         color="blue-gray"
         className="p-1 font-semibold"
         onClick={() => {navigate(`/user/${user._id}`)}}
@@ -56,7 +55,7 @@ export const NavbarDefault = () => {
       {user.role !== "user" ? 
                 <Typography
                 as="li"
-                variant="mediun"
+                variant="h6"
                 color="blue-gray"
                 className="p-1 font-semibold"
                 onClick={() => {navigate(`/admin/users`)}}

@@ -8,11 +8,29 @@
     background-size: cover;
 }
 
+.containerResetPass{
+    background-image: url('../../../assets/pattern2.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+}
+
 .inputLogin input{
     border: 2px solid #f37352;
     padding: .2rem;
     margin-top: .6rem;
     border-radius: .3rem;
+    width: 100%;
+}
+
+.resetInput{
+    width: 100%;
+}
+
+.resetInput input{
+    background-color: transparent;
+    border-bottom: 1px solid #f37352;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
@@ -27,7 +45,7 @@
     margin-top: 1rem;
 }
 
-.buttonEnviar button{
+.buttonEnviar button, .buttonResetPass button{
     background-color: #2b2c91;
     color: white;
     font-weight: bold;
@@ -59,3 +77,4 @@
 .newAccountButton:hover, .resetPass:hover{
     color: #2b2c91;
 }
+
