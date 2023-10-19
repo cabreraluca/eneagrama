@@ -149,16 +149,14 @@ export const Result = ({results , flex} ) => {
       "reaccion" : "",
       "sugerencia" : ""
     }
-    console.log(media)
-    console.log(highArea)
-    console.log(highArea2)
-    if ((highArea.puntaje - media) > 1) {
+    console.log(highArea2.puntaje - media)
+    if ((Math.abs(highArea.puntaje - media)) > 0) {
       newInforme.firstArea = highArea.valoresBuenos; 
       if ((highArea.puntaje - media) >= 4) {
         newInforme.highFirstArea = highArea.valoresAltos;
       }
     } 
-    if ((highArea2.puntaje - media) > 1) {
+    if ((Math.abs(highArea2.puntaje - media)) > 0) {
       newInforme.secondArea = highArea2.valoresBuenos;
       if ((highArea2.puntaje - media) >= 4) {
         newInforme.highSecondArea = highArea2.valoresAltos;
