@@ -49,7 +49,6 @@ function login(req, res) {
       });
     })
     .catch((err) => {
-      console.log('hola')
       return res.status(500).json({ msg: "Email no registrado" });
     });
 }

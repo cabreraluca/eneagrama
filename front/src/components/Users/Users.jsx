@@ -40,14 +40,17 @@ export const Users = () => {
       if (query === "" && !companyToSearch) {
         const usersList = await userController.getUsers(accessToken);
         setUsers(usersList);
-      }else if(query === "" && companyToSearch !== ""){
-          setFilterByCompany(true)
-          const usersList = await userController.getCompanyUsers(companyToSearch);
-          setUsers(usersList)
-        } else if(query !== "" && companyToSearch !== ""){
-          const usersList = await userController.filterCompanyUsers(companyToSearch, query)
-          setUsers(usersList)
-        }
+      } else if (query !== "" && !companyToSearch){
+        const usersList = await userController.filterUsers(accessToken, query);
+        setUsers(usersList);
+      }
+      else if(filterByCompany && query === ""){
+        const usersList = await userController.getCompanyUsers(companyToSearch)
+        setUsers(usersList)
+      } else if (filterByCompany && query !== ""){
+        const userList = await userController.filterCompanyUsers(companyToSearch, query)
+        setUsers(userList)
+      }
     }
     if(role === "company"){
       if(query === ""){

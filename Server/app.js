@@ -8,10 +8,10 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(
-    cors()
-);
-
+app.use(cors({
+    origin: 'https://flrtw2zz-3000.brs.devtunnels.ms',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
+}));
 const AuthRoutes = require('./Router/auth');
 const UserRoutes = require('./Router/user');
 
