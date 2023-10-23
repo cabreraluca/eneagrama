@@ -65,10 +65,10 @@ export const CreateUser = (props) => {
                 <Dialog size="xs" open={open} handler={handleOpen} className="bg-transparent shadow-none">
                     <Form onSubmit={formik.handleSubmit} className='mx-auto h-[100%] formNewUser'>
                         <section className='flex flex-col gap-2 mb-2 w-[100%]'>
-                            {role === 'admin' ? <Select className="bg-white" label="Seleccione el rol"
+                            {role === 'admin' ? <Select label="Seleccione el rol"
                                     onChange={(data) => [formik.setFieldValue('role', data), setFormCompanyValue(data)]}
                                     >
-                                        {roleOptions.map((role) => <Option className="bg-white" key={role.key} value={role.value} >{role.text}</Option>)}
+                                        {roleOptions.map((role) => <Option key={role.key} value={role.value} >{role.text}</Option>)}
                                 </Select> : ""}
                             {role === 'admin' && formCompanyValue !== "company" ? <Select label='Seleccione la empresa' onChange={(element) => {
                                 formik.setFieldValue("company", element)

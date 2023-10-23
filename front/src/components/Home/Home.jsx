@@ -30,7 +30,7 @@ export const Home = () => {
             : 
             <div>
                 {user.finished ? 
-                <div className='w-[100%] h-[100%] 2xl:h-[60vh] flex flex-col xl:flex-row items-center justify-center xl:justify-around gap-5 pt-6'>
+                <div className='w-[100%] h-[70vh] 2xl:h-[60vh] flex flex-col xl:flex-row items-center justify-center xl:justify-around gap-5 pt-6'>
                 <h1 className='text-[2.5rem] lg:text-[2.5rem] 2xl:text-[3rem] font-bold w-[100%] xl:w-[80%] bg-gradient-to-r from-red-500 from-10 via-pink-500 via-10 to-yellow-500 to-80  bg-clip-text  text-transparent text-center'>¡Has completado el test!</h1>
                 <div className='flex items-center flex-col gap-6 w-[100%] xl:w-[60%] font-semibold mt-20'>
                     <h2 className='w-[55%] text-center leading-8 2xl:text-[1.2rem]'>
@@ -39,10 +39,10 @@ export const Home = () => {
                 </div>
             </div>
                 : 
-                <div className='w-[100%] h-[100%] 2xl:h-[60vh] flex flex-col xl:flex-row items-center justify-center xl:justify-around gap-5 pt-6'>
+                <div className='w-[100%] h-[70vh] 2xl:h-[60vh] flex flex-col xl:flex-row items-center justify-center xl:justify-around gap-5 pt-6'>
                     <h1 className='text-[2.5rem] lg:text-[2.5rem] 2xl:text-[3rem] font-bold w-[100%] xl:w-[50%] bg-gradient-to-r from-red-500 from-10 via-pink-500 via-10 to-yellow-500 to-80  bg-clip-text  text-transparent text-center'>¡Continua tu eneagrama!</h1>
                     <div className='flex items-center flex-col gap-6 w-[100%] xl:w-[60%] font-semibold mt-20'>
-                        <h2 className='w-[65%] leading-8 2xl:text-[1.2rem]'>
+                        <h2 className='w-[65%] leading-8 2xl:text-[1.2rem] text-center'>
                         No has terminado el test, recuerda que recomendamos finalizarlo una vez comenzado para un mejor resultado.
                         </h2>
                         {<Button className='bg-indigo-900 xl:h-[3rem] xl:w-[15rem] mt-6 xl:mt-10' size='lg' onClick={() => {navigate('/cuestionario')}}>

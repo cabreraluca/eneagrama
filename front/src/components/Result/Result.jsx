@@ -2,7 +2,6 @@ import React, {useEffect, useContext} from 'react'
 import { QuestionsContext } from "../../context/QuestionsContext";
 
 export const Result = ({results , flex} ) => {
-  console.log(flex)
   const resultMutado = [...results];
   const { informe, setInforme } = useContext(QuestionsContext);
   const ejesPolaridad = [
@@ -207,7 +206,7 @@ export const Result = ({results , flex} ) => {
     <div className={`w-[100%] h-[100%] flex flex-col ${flex}`}>
         <section className='w-[70%] flex flex-col gap-2'>
           <h1 className='text-[2rem] font-bold text-indigo-500 border-b-2 border-indigo-500'>Descripción de tu funcionamiento actual</h1>
-          <div className='flex flex-col gap-6 text-lg border-l-8 pl-2 border-indigo-500'>
+          <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-indigo-500'>
             <p> {informe.firstArea}</p>
             <p> {informe.highFirstArea}</p>
             <p> {informe.secondArea}</p>
@@ -216,7 +215,7 @@ export const Result = ({results , flex} ) => {
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
           <h2 className='text-[2rem] font-bold text-orange-500 border-b-2 border-orange-500 pb-2'>Miedos en este momento que te impiden avanzar</h2>
-          <div className='flex flex-col gap-6 text-lg border-l-8 pl-2 border-orange-500'>
+          <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-orange-500'>
             <p>Todos tenemos miedos, a veces no conscientes, que provocan un estancamiento en nuestro desarrollo personal.</p>
             <p>Poder hacerlos conscientes y trabajarlos es lo que nos empieza a mover del lugar en el que nos encontramos para llevarnos a un lugar de mayor plenitud.</p>
             <p>{informe.firstFear}</p>
@@ -225,7 +224,7 @@ export const Result = ({results , flex} ) => {
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
             <h3 className='text-[2rem] font-bold text-amber-500 border-b-2 border-amber-500 pb-2'>Area de tu Vida donde se está drenando tu Energía – Elemento predominante</h3>
-            <div className='flex flex-col gap-6 text-lg border-l-8 pl-2 border-amber-500'>
+            <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-amber-500'>
               <p>{informe.element}</p>
               <p>{informe.ejeMedia != "" ?  informe.ejeMedia : ""}</p>
               <p>{informe.highEjeMedia != "" ?  informe.ejeMedia : ""}</p>
@@ -234,7 +233,7 @@ export const Result = ({results , flex} ) => {
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
           <h4 className='text-[2rem] font-bold text-yellow-800 border-b-2 border-yellow-800 pb-2'>Clave para tu transformación</h4>
-          <div className='flex flex-col gap-6 text-lg border-l-8 pl-2 border-yellow-800'>
+          <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-yellow-800'>
             <p>{informe.ejeEquilibrio}</p>
           </div>
         </section>
@@ -246,7 +245,7 @@ export const Result = ({results , flex} ) => {
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2 ">
           <h5 className='text-[2rem] font-bold text-red-500 border-b-2 border-red-500 pb-2'>Integración de las Energías Masculinas y Femeninas</h5>
-          <div className='flex flex-col gap-6 text-lg border-l-8 pl-2 border-red-500'>
+          <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-red-500'>
             <p>Los seres humanos estamos conformados de Energía Masculina (YANG) y Energía Femenina (YIN)
             Cada una de ellas es tan importante como la otra. Cuando hay un desbalance y una predomina vamos a sentir dificultad y carencia, por consecuencia falta de equilibrio y armonía interna lo que puede generarnos internamente sentimiendo de frustración, ira, y tristeza.
             </p>
@@ -255,7 +254,7 @@ export const Result = ({results , flex} ) => {
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
           <h5 className='text-[2rem] font-bold text-pink-500 border-b-2 border-pink-500 pb-2'>Reacción ante los problemas</h5>
-          <div className='flex flex-col gap-6 text-lg border-l-8 pl-2 border-pink-500'>
+          <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-pink-500'>
             <p>{informe.reaccion}</p>
             <p><span className='font-semibold'>Sugerencia:</span> {informe.sugerencia}</p>
           </div>
