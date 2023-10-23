@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../hooks";
 import { User } from "../../api";
-import { useNavigate } from "react-router-dom";
 import { Button, Option, Select, button} from "@material-tailwind/react";
 import { UserView } from "./UserView";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
@@ -36,18 +34,19 @@ export const Users = () => {
   const [companyToSearch, setCompanyToSearch] = useState("")
 
   const fetchUsers = async () => {
+    console.log(query)
     if(role === "admin"){
       if (query === "" && !companyToSearch) {
         const usersList = await userController.getUsers(accessToken);
         setUsers(usersList);
       }else if(query === "" && companyToSearch !== ""){
-          setFilterByCompany(true)
-          const usersList = await userController.getCompanyUsers(companyToSearch);
-          setUsers(usersList)
-        } else if(query !== "" && companyToSearch !== ""){
-          const usersList = await userController.filterCompanyUsers(companyToSearch, query)
-          setUsers(usersList)
-        }
+        setFilterByCompany(true)
+        const usersList = await userController.getCompanyUsers(companyToSearch);
+        setUsers(usersList)
+      } else if(query !== "" && companyToSearch !== ""){
+        const usersList = await userController.filterCompanyUsers(companyToSearch, query)
+        setUsers(usersList)
+      }
     }
     if(role === "company"){
       if(query === ""){
@@ -100,10 +99,12 @@ export const Users = () => {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
             <TabsHeader className="flex gap-4 bg-transparent">
-              <Button variant="outlined" size="sm" onClick={() => setQuery("finished")}>Finalizados</Button>
-              <Button variant="outlined" size="sm" onClick={() => setQuery("started")}>Comenzados</Button>
-              <Button variant="outlined" size="sm" onClick={() => setQuery("")}>Todos</Button>
-              {role === 'admin' ? <Button variant="outlined" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button> : ""}
+              <div className="flex flex-wrap lg:flex-nowrap gap-4 w-[100%]">
+                <Button variant="outlined" className="w-[45%]" size="sm" onClick={() => setQuery("finished")}>Finalizados</Button>
+                <Button variant="outlined" className="w-[45%]" size="sm" onClick={() => setQuery("started")}>Comenzados</Button>
+                <Button variant="outlined" className="w-[45%]" size="sm" onClick={() => {setQuery("")}}>Todos</Button>
+                {role === 'admin' ? <Button variant="outlined" className="w-[45%]" size="sm" onClick={() => handleOpen()}>Filtrar por empresas</Button> : ""}
+              </div>
               <Dialog
                 size="xs"
                 open={open}
