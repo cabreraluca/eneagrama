@@ -98,6 +98,7 @@ export class User{
 
     async filterCompanyUsers(companyId, query){
         try {
+            console.log(companyId)
             const url = `${this.baseApi}/${Env.API_ROUTES.FILTER_COMPANY_USERS}/${companyId}/${query}`
             const response = await fetch(url)
             const result = response.json();

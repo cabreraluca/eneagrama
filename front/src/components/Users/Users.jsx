@@ -34,18 +34,20 @@ export const Users = () => {
   const [companyToSearch, setCompanyToSearch] = useState("")
 
   const fetchUsers = async () => {
-    console.log(query)
     if(role === "admin"){
       if (query === "" && !companyToSearch) {
         const usersList = await userController.getUsers(accessToken);
         setUsers(usersList);
-      }else if(query === "" && companyToSearch !== ""){
-        setFilterByCompany(true)
-        const usersList = await userController.getCompanyUsers(companyToSearch);
+      } else if (query !== "" && !companyToSearch){
+        const usersList = await userController.filterUsers(accessToken, query);
+        setUsers(usersList);
+      }
+      else if(filterByCompany && query === ""){
+        const usersList = await userController.getCompanyUsers(companyToSearch)
         setUsers(usersList)
-      } else if(query !== "" && companyToSearch !== ""){
-        const usersList = await userController.filterCompanyUsers(companyToSearch, query)
-        setUsers(usersList)
+      } else if (filterByCompany && query !== ""){
+        const userList = await userController.filterCompanyUsers(companyToSearch, query)
+        setUsers(userList)
       }
     }
     if(role === "company"){
@@ -57,7 +59,6 @@ export const Users = () => {
         setUsers(userList)
       }
     }
-
   };
   const fetchCompanies = async () =>{
     const companiesList = await userController.getCompanies();
