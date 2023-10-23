@@ -49,7 +49,6 @@ export const QuestContainer = () => {
   }, [indexAnswer]);
   
   const updateDBResults = async (results) => {
-    console.log(results)
     const userData = await UserController.getUser(accessToken, user._id);
     userData.results = results;
     userData.finished = true;
@@ -88,7 +87,7 @@ export const QuestContainer = () => {
               <Result results={dbResults} flex={"items-center"}/>
             </div>
             }
-          <PDFDownloadLink document={<UserResultsPDF informe={informe}/>} fileName="Resultado-Test-Eneagrama">
+          <PDFDownloadLink document={<UserResultsPDF informe={informe} userName={user}/>} fileName="Resultado-Test-Eneagrama">
             <Button className="mt-6 bg-red-400 flex items-center gap-2">Descargar en PDF <AiOutlineFilePdf className="text-xl"/></Button>
           </PDFDownloadLink>
         </div>

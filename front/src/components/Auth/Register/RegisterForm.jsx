@@ -66,7 +66,7 @@ export const RegisterForm = () => {
     <section className='formRegisterContainer h-[100%] flex flex-col items-center justify-center '>
         <div className='bg-white/90 flex flex-col justify-around rounded-3xl w-[80vw] sm:w-[60%] md:w-[50%] lg:w-[30%] h-[100vh]'>
             <div className='flex items-center justify-center'>
-                <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="logo" className='h-[5rem] lg:h-[7rem] 2xl:h-[9rem]'/>
+                <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="logo" className='h-[5rem] lg:h-[7rem]'/>
             </div>
             <Form className='register-form flex flex-col items-center gap-4 w-[100%]' onSubmit={formik.handleSubmit}>
                 <section className='inputsForm lg:w-[60%]'>

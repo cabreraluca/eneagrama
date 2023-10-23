@@ -75,7 +75,7 @@ export const NavbarDefault = () => {
           href="/home"
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="logo" style={{width: "10rem"}}/>
+          <img src="https://mapapersonal.com/wp-content/uploads/2019/09/logo-mapa-personal.png.webp" alt="logo" className="h-[3rem] lg:h-[4rem] 2xl-[9rem]"/>
         </Typography>
         <div className="flex items-center justify-between">
             <div className="hidden lg:flex lg:items-center lg:justify-evenly">
