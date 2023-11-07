@@ -58,8 +58,8 @@ export const Quest = ({ quest }) => {
           <p className="text-center text-[1.3rem] xl:text-[1.8rem] p-2 h-[10rem] font-semibold w-[70vw]">{question}</p>
         </div>
         <div className="flex w-[90%] xl:w-[60%] justify-evenly">
-          <Button onClick={checkAnswer} className={buttonStyle} value={"si"}>SI</Button>
-          <Button onClick={checkAnswer} className={buttonStyle} value={"no"}>NO</Button>
+          <button onClick={checkAnswer} className="buttonQuest" value={"si"}>SI</button>
+          <button onClick={checkAnswer} className="buttonQuest" value={"no"}>NO</button>
         </div>
       </article>
       : 
