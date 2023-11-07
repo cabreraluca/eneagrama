@@ -4,6 +4,7 @@ import data  from '../../data/preguntas.json';
 import { Progress, Button } from "@material-tailwind/react";
 import { User } from "../../api";
 import { useAuth } from "../../hooks";  
+import './Quest.css'
 
 const UserController = new User();
 
