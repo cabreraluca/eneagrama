@@ -1,0 +1,11 @@
+.buttonQuest{
+    background-color: #F78332;
+    color: white;
+    font-weight: bold;
+    padding: .4rem 2rem;
+    border-radius: .3rem;
+}
+
+.buttonQuest:hover{
+    background-color: #a5541b;
+}

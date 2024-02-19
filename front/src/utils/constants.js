@@ -1,8 +1,8 @@
 const SERVER_IP = "localhost:3977";
 
 export const Env = {
-    BASE_PATH: `https://flrtw2zz-3977.brs.devtunnels.ms/`,
-    BASE_API: `https://flrtw2zz-3977.brs.devtunnels.ms/api/v1`,
+    BASE_PATH: `http://${SERVER_IP}`,
+    BASE_API: `http://${SERVER_IP}/api/v1`,
     API_ROUTES: {
         REGISTER: "auth/register",
         LOGIN: "auth/login",
