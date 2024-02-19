@@ -71,7 +71,7 @@ export const Login = () => {
                 error={formik.errors.password}
                 className='inputLogin'/>
           </section>
-          <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar'>
+          <Form.Button type="submit" primary fluid loading={formik.isSubmitting} className='buttonEnviar '> 
                   Ingresar
           </Form.Button>
           <ToastContainer />
