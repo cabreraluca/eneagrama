@@ -23,6 +23,8 @@ export const UserResultsPDF = ({informe , userName}) => {
                     <Text style={{marginTop: "15px"}}>{informe.highFirstArea}</Text>
                     <Text style={{marginTop: "15px"}}>{informe.secondArea}</Text>
                     <Text style={{marginTop: "15px"}}>{informe.highSecondArea}</Text>
+                    <Text style={{marginTop: "15px"}}>{informe.thirdArea}</Text>
+                    <Text style={{marginTop: "15px"}}>{informe.highThirdArea}</Text>
                   </View>
                 </View>
             </View>
@@ -34,6 +36,7 @@ export const UserResultsPDF = ({informe , userName}) => {
                 <View style={{lineHeight: "1.5px"}}>
                   <Text>{informe.firstFear}</Text>
                   <Text>{informe.secondFear}</Text>
+                  <Text>{informe.thirdFear}</Text>
                 </View>
               </View>
             </View>
@@ -43,8 +46,8 @@ export const UserResultsPDF = ({informe , userName}) => {
                   <View style={{marginTop: "15px"}}>
                     <Text>{informe.element}</Text>
                     <Text>{informe.ejeMedia != "" ?  informe.ejeMedia : ""}</Text>
-                    <Text>{informe.highEjeMedia != "" ?  informe.ejeMedia : ""}</Text>
-                    <Text>{informe.peligro != "" ? informe.ejeMedia: ""}</Text>
+                    <Text>{informe.highEjeMedia != "" ?  informe.highEjeMedia : ""}</Text>
+                    <Text>{informe.peligro != "" ? informe.peligro: ""}</Text>
                   </View>
                 </View>
             </View>

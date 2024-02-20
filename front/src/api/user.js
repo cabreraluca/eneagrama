@@ -4,6 +4,7 @@ export class User{
     baseApi = Env.BASE_API;
 
     async getMe(accessToken) {
+        console.log(accessToken)
         try {
             const url = `${this.baseApi}/${Env.API_ROUTES.USER_ME}`;
             const params = {
@@ -12,6 +13,7 @@ export class User{
                 }
             }
             const response = await fetch(url, params);
+            console.log(response)
             const result = await response.json();
 
             return result;

@@ -37,7 +37,8 @@ export const Result = ({results , flex} ) => {
       "elemento" : "Hoy tu elemento TIERRA está predominando en tu interior. Mucho foco de atención a cómo te muestras y te ven los demás. Foco en los logros y en lo económico/material.",
       "encimaMedia" : "Necesidad de mostrarse como una persona sin problemas, que los demás perciban una actitud positiva de uno mismo.",
       "altaMedia": results[2].puntaje > results[6].puntaje ? "Hay mucha energía puesta en querer transmitir a los demás y hacerles saber lo bien que le está yendo, que logra sus objetivos, comentar acerca de sus proyectos, negocios, etc. Si “me ven y conoces mis logros” puede que quieran contratarme, mirarme, y así obtener valoración de través de mi éxito." : "Hay mucha energía puesta en que los demás te vean bien, sin problemas, alegre, optimista, entusiasta. Hay una creencia de que No está bueno andar contando si tengo problemas, o estoy triste, ya que eso puede alejarlos de mí. La queja aleja…y yo quiero que quieran están conmigo. Entonces puede ser que los otros no se enteren de lo que verdaderamente sientes o te suceda y esto trae aparejado que no puedan tenderte una mano, ayudarte o sólo escuchar lo que está en tu corazón.",
-      "peligro": `Caer en la superficialidad en los vínculos
+      "peligro": `Caer en la superficialidad en los vínculos. 
+
       Transformación: Salir a la vida desde la profundidad de tu ser, de tu sentir y los valores verdaderamente importantes para tu vida. De lo profundo a la superficie, y no al revés.
       `
     },{
@@ -119,7 +120,7 @@ export const Result = ({results , flex} ) => {
   resultMutado.sort((a, b) => b.puntaje - a.puntaje);
   const highArea = resultMutado[0];
   const highArea2 =  resultMutado[1];
-  const highArea3 =  resultMutado[1];
+  const highArea3 =  resultMutado[2];
   const lowArea = resultMutado[8];
   const lowArea2 = resultMutado[7];
   const lowArea3 = resultMutado[6];
@@ -136,19 +137,23 @@ export const Result = ({results , flex} ) => {
       "highFirstArea" : "",
       "secondArea" : "",
       "highSecondArea" : "",
+      "thirdArea" : "",
+      "highThirdArea" : "",
       "firstFear": lowArea.miedo,
       "secondFear": lowArea2.miedo,
+      "thirdFear": lowArea3.miedo,
       "element" : element,
       "ejeMedia": "",
       "highEjeMedia": "",
       "ejePeligro": "",
       "ejeEquilibrio": ejesEquilibrio[0].clave,
+      "comunicado" : "",
       "recomendacion" : "",
       "energiasYingYang" : "",
       "reaccion" : "",
-      "sugerencia" : ""
+      "sugerencia" : "",
+      "peligro": ""
     }
-    console.log(highArea2.puntaje - media)
     if ((Math.abs(highArea.puntaje - media)) > 0) {
       newInforme.firstArea = highArea.valoresBuenos; 
       if ((highArea.puntaje - media) >= 4) {
@@ -161,9 +166,16 @@ export const Result = ({results , flex} ) => {
         newInforme.highSecondArea = highArea2.valoresAltos;
       }
     }
-    if ( ((predominantEje.valor1 - media) > 1 && (predominantEje.valor1 - media) <= 3) && ((predominantEje.valor2 - media) > 1 && (predominantEje.valor2 - media) <= 3) ) {
+    if ((Math.abs(highArea3.puntaje - media)) > 0) {
+      newInforme.thirdArea = highArea3.valoresBuenos;
+      if ((highArea3.puntaje - media) >= 4) {
+        newInforme.highThirdArea = highArea3.valoresAltos;
+      }
+    }
+    console.log((predominantEje.valor1 - media) > 1 && (predominantEje.valor1 - media) >= 2)
+    if ( ((predominantEje.valor1 - media) > 1 && (predominantEje.valor1 - media) >= 2) && ((predominantEje.valor2 - media) > 1 && (predominantEje.valor2 - media) >= 2) ) {
       newInforme.ejeMedia = predominantEje.encimaMedia;
-      if ((predominantEje.valor1 - media) == 3 && (predominantEje.valor2 - media) == 3) {
+      if ((predominantEje.valor1 - media) >= 3 && (predominantEje.valor2 - media) >= 3) {
         newInforme.highEjeMedia = predominantEje.altaMedia;
         newInforme.peligro = predominantEje.peligro;
       }
@@ -198,6 +210,9 @@ export const Result = ({results , flex} ) => {
         newInforme.sugerencia = reaccionAnteProblemas.sugerencia3;
       }
     }
+    if (ejesEquilibrio[0].nombre === 'Eje de la Comunicación' &&  ejesPolaridad[0].nombre === 'ejeImagen' && ejesEquilibrio[3].nombre === 'Eje del Ser' ) {
+      newInforme.comunicado = "Lo que se esta comunicando puede estar siendo superficial o tender a la apariencia y no hablando de temas realmente importantes o que necesitan ser hablados."
+    }
 
     setInforme(newInforme)
   }, [])
@@ -211,6 +226,8 @@ export const Result = ({results , flex} ) => {
             <p> {informe.highFirstArea}</p>
             <p> {informe.secondArea}</p>
             <p> {informe.highSecondArea}</p>
+            <p> {informe.thirdArea}</p>
+            <p> {informe.highThirdArea}</p>
           </div>
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
@@ -220,6 +237,7 @@ export const Result = ({results , flex} ) => {
             <p>Poder hacerlos conscientes y trabajarlos es lo que nos empieza a mover del lugar en el que nos encontramos para llevarnos a un lugar de mayor plenitud.</p>
             <p>{informe.firstFear}</p>
             <p>{informe.secondFear}</p>
+            <p>{informe.thirdFear}</p>
           </div>
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
@@ -227,14 +245,15 @@ export const Result = ({results , flex} ) => {
             <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-amber-500'>
               <p>{informe.element}</p>
               <p>{informe.ejeMedia != "" ?  informe.ejeMedia : ""}</p>
-              <p>{informe.highEjeMedia != "" ?  informe.ejeMedia : ""}</p>
-              <p>{informe.peligro != "" ? informe.ejeMedia: ""}</p>
+              <p>{informe.highEjeMedia != "" ?  informe.highEjeMedia : ""}</p>
+              <p>{informe.peligro != "" ? `Peligro: ${informe.peligro}` : ""}</p>
             </div>
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
           <h4 className='text-[2rem] font-bold text-yellow-800 border-b-2 border-yellow-800 pb-2'>Clave para tu transformación</h4>
           <div className='flex flex-col gap-6 text-lg md:border-l-8 md:pl-2 md:border-yellow-800'>
             <p>{informe.ejeEquilibrio}</p>
+            <p>{informe.comunicado != '' ? informe.comunicado : ""}</p>
           </div>
         </section>
         <section className="mt-6 w-[70%] flex flex-col text-lg gap-2">
