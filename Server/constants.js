@@ -1,5 +1,5 @@
-const  DB_USER  =  "cabreraluca10";
-const DB_PASSWORD =  "Entrerios870";
+const  DB_USER  =  "******";
+const DB_PASSWORD =  "*****";
 const DB_HOST = "eneagrama-database.189rizj.mongodb.net";
 
 const API_VERSION = "v1";
